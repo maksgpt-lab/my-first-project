@@ -173,16 +173,30 @@ body {
 .lesson-article h2 {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .lesson-article h2::before {
   content: '';
   display: inline-block;
-  width: 4px;
-  height: 1.2em;
-  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  width: 3px;
+  height: 1.1em;
+  background: linear-gradient(180deg, #818cf8, #a78bfa);
   border-radius: 2px;
   flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.5);
+}
+.lesson-article ul li::marker,
+.lesson-article ol li::marker {
+  color: #6366f1;
+}
+.lesson-article hr {
+  border-color: rgba(255,255,255,0.08) !important;
+  position: relative;
+}
+.lesson-article p + blockquote,
+.lesson-article ul + blockquote,
+.lesson-article h3 + blockquote {
+  margin-top: 1.5rem;
 }
 
 /* gradient border on cards */

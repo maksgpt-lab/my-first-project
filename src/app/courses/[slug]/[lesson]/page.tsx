@@ -96,24 +96,31 @@ export default async function LessonPage({
       </div>
 
       {/* ── Reading area ── */}
-      <main className="flex-1 bg-[#f8f9fc]">
-        <div className="max-w-3xl mx-auto px-6 py-14">
+      <main className="flex-1 bg-[#080810] relative">
+        {/* subtle glow behind content */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-indigo-600/5 blur-[100px]" />
+        </div>
 
-          <article
-            className="lesson-article prose prose-lg prose-gray max-w-none
-              prose-headings:font-bold prose-headings:text-gray-900 prose-headings:tracking-tight
-              prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5
-              prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-3
-              prose-p:text-gray-600 prose-p:leading-[1.85] prose-p:text-[17px]
-              prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-gray-900 prose-strong:font-semibold
-              prose-code:bg-indigo-50 prose-code:text-indigo-700 prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
-              prose-pre:bg-gray-900 prose-pre:text-gray-100
-              prose-li:text-gray-600 prose-li:leading-relaxed
-              prose-ul:space-y-2 prose-ol:space-y-2
-              prose-hr:border-gray-200 prose-hr:my-10"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          />
+        <div className="relative max-w-3xl mx-auto px-6 py-14">
+          {/* content card */}
+          <div className="bg-white/[0.03] border border-white/[0.07] rounded-3xl px-8 sm:px-12 py-12">
+            <article
+              className="lesson-article prose prose-lg max-w-none
+                prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight
+                prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5
+                prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-3
+                prose-p:text-gray-300 prose-p:leading-[1.9] prose-p:text-[17px]
+                prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-white prose-strong:font-semibold
+                prose-code:bg-indigo-500/15 prose-code:text-indigo-300 prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-[#0d0f1e] prose-pre:border prose-pre:border-white/10
+                prose-li:text-gray-300 prose-li:leading-relaxed
+                prose-ul:space-y-2 prose-ol:space-y-2
+                prose-hr:border-white/10 prose-hr:my-10"
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
+          </div>
 
           {/* Progress */}
           <div className="mt-14 flex justify-center">
