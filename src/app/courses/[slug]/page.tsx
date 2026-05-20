@@ -73,9 +73,12 @@ export default async function CoursePage({
                       {lesson.title}
                     </Link>
                   ) : (
-                    <span className="font-medium text-white/30">
+                    <Link
+                      href={`/club/${slug}/${lesson.slug}`}
+                      className="font-medium text-white/40 hover:text-white/70 transition-colors"
+                    >
                       {lesson.title}
-                    </span>
+                    </Link>
                   )}
                   {lesson.description && (
                     <p className="text-sm text-white/25 mt-0.5 truncate">

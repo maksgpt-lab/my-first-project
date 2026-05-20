@@ -141,6 +141,30 @@ body {
   margin: 2rem 0;
   font-style: normal;
   overflow: hidden;
+  position: relative;
+}
+.prompt-copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 10px;
+  font-family: monospace;
+  font-weight: 600;
+  color: rgba(129,140,248,.5);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.prompt-copy-btn:hover {
+  color: #818cf8;
+  background: rgba(99,102,241,.12);
+}
+.prompt-copy-btn.copied {
+  color: #34d399;
 }
 .lesson-article blockquote::before {
   content: '▸ ПРОМПТ';

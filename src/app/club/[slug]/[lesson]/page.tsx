@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LessonProgressButton from "@/components/LessonProgress";
 import CopyPromptButtons from "@/components/CopyPromptButtons";
-import { getCourse, getCourses, getLessonContent } from "@/lib/courses";
+import { getCourse, getLessonContent } from "@/lib/courses";
 
 export async function generateMetadata({
   params,
@@ -23,17 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const params = [];
-  for (const course of getCourses()) {
-    for (const lesson of course.lessons) {
-      params.push({ slug: course.slug, lesson: lesson.slug });
-    }
-  }
-  return params;
-}
-
-export default async function LessonPage({
+export default async function ClubLessonPage({
   params,
 }: {
   params: Promise<{ slug: string; lesson: string }>;
@@ -45,8 +35,6 @@ export default async function LessonPage({
   const lessonMeta = course.lessons.find((l) => l.slug === lessonSlug);
   if (!lessonMeta) notFound();
 
-  if (!lessonMeta.free) notFound();
-
   const lessonData = getLessonContent(slug, lessonSlug);
   if (!lessonData) notFound();
 
@@ -54,7 +42,10 @@ export default async function LessonPage({
   const prevLesson = course.lessons[currentIndex - 1];
   const nextLesson = course.lessons[currentIndex + 1];
 
-  const contentHtml = await markdownToHtml(lessonData.content);
+  const { remark } = await import("remark");
+  const { default: html } = await import("remark-html");
+  const result = await remark().use(html).process(lessonData.content);
+  const contentHtml = result.toString();
 
   const wordCount = lessonData.content.split(/\s+/).length;
   const readMinutes = Math.max(1, Math.round(wordCount / 200));
@@ -66,8 +57,6 @@ export default async function LessonPage({
       {/* ── Dark header ── */}
       <div className="bg-[#080810] border-b border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-6 pt-10 pb-12">
-
-          {/* Breadcrumb */}
           <nav className="text-sm text-white/25 mb-8 flex items-center gap-2 flex-wrap">
             <Link href="/courses" className="hover:text-white/50 transition-colors">Курсы</Link>
             <span>·</span>
@@ -76,20 +65,13 @@ export default async function LessonPage({
             <span className="text-white/40">Урок {currentIndex + 1}</span>
           </nav>
 
-          {/* Badges */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full">
-              Бесплатный урок
+            <span className="text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1 rounded-full">
+              Клуб
             </span>
             <span className="text-xs text-white/20">{readMinutes} мин чтения</span>
-            {lessonData.data.updatedAt && (
-              <span className="text-xs text-white/20">
-                Обновлено {String(lessonData.data.updatedAt)}
-              </span>
-            )}
           </div>
 
-          {/* Title */}
           <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight tracking-tight">
             {lessonMeta.title}
           </h1>
@@ -98,13 +80,11 @@ export default async function LessonPage({
 
       {/* ── Reading area ── */}
       <main className="flex-1 bg-[#080810] relative">
-        {/* subtle glow behind content */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-indigo-600/5 blur-[100px]" />
         </div>
 
         <div className="relative max-w-3xl mx-auto px-6 py-14">
-          {/* content card */}
           <div className="bg-white/[0.03] border border-white/[0.07] rounded-3xl px-8 sm:px-12 py-12">
             <article
               className="lesson-article prose prose-lg max-w-none
@@ -125,8 +105,7 @@ export default async function LessonPage({
 
           <CopyPromptButtons />
 
-          {/* Progress */}
-          <div className="mt-14 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <LessonProgressButton lessonId={`${slug}/${lessonSlug}`} />
           </div>
         </div>
@@ -135,9 +114,9 @@ export default async function LessonPage({
       {/* ── Navigation ── */}
       <div className="bg-[#080810] border-t border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-6 py-8 flex justify-between gap-4">
-          {prevLesson && prevLesson.free ? (
+          {prevLesson ? (
             <Link
-              href={`/courses/${slug}/${prevLesson.slug}`}
+              href={`/club/${slug}/${prevLesson.slug}`}
               className="flex-1 p-5 glass-dark rounded-2xl hover:border-indigo-500/30 transition-all group"
             >
               <div className="text-xs text-white/25 mb-1.5 group-hover:text-indigo-400 transition-colors">← Предыдущий</div>
@@ -148,30 +127,15 @@ export default async function LessonPage({
           ) : <div />}
 
           {nextLesson ? (
-            nextLesson.free ? (
-              <Link
-                href={`/courses/${slug}/${nextLesson.slug}`}
-                className="flex-1 p-5 glass-dark rounded-2xl hover:border-indigo-500/30 transition-all text-right group"
-              >
-                <div className="text-xs text-white/25 mb-1.5 group-hover:text-indigo-400 transition-colors">Следующий →</div>
-                <div className="text-sm font-medium text-white/60 group-hover:text-white transition-colors">
-                  {nextLesson.title}
-                </div>
-              </Link>
-            ) : (
-              <div className="flex-1 p-5 glass-dark rounded-2xl border-indigo-500/20 text-right">
-                <div className="text-xs text-indigo-400 mb-1.5">Следующий →</div>
-                <div className="text-sm font-semibold text-white/60 mb-3">
-                  {nextLesson.title}
-                </div>
-                <Link
-                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
-                  className="text-xs text-indigo-400 font-medium hover:text-indigo-300 transition-colors"
-                >
-                  Открыть в клубе →
-                </Link>
+            <Link
+              href={`/club/${slug}/${nextLesson.slug}`}
+              className="flex-1 p-5 glass-dark rounded-2xl hover:border-indigo-500/30 transition-all text-right group"
+            >
+              <div className="text-xs text-white/25 mb-1.5 group-hover:text-indigo-400 transition-colors">Следующий →</div>
+              <div className="text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                {nextLesson.title}
               </div>
-            )
+            </Link>
           ) : null}
         </div>
       </div>
@@ -179,11 +143,4 @@ export default async function LessonPage({
       <Footer />
     </div>
   );
-}
-
-async function markdownToHtml(markdown: string): Promise<string> {
-  const { remark } = await import("remark");
-  const { default: html } = await import("remark-html");
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
 }
