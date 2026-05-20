@@ -16,6 +16,12 @@ export default function Header() {
             Курсы
           </Link>
           <Link
+            href="/guides"
+            className="text-white/50 hover:text-white transition-colors font-medium hidden sm:block"
+          >
+            Гайды
+          </Link>
+          <Link
             href="https://t.me/+0ip_wx4Y4pFkMTAy"
             className="btn-glow text-white px-5 py-2.5 rounded-xl font-semibold text-sm"
           >
