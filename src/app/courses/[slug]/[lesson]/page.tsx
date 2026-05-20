@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LessonProgressButton from "@/components/LessonProgress";
 import { getCourse, getCourses, getLessonContent } from "@/lib/courses";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; lesson: string }>;
+}): Promise<Metadata> {
+  const { slug, lesson: lessonSlug } = await params;
+  const course = getCourse(slug);
+  if (!course) return {};
+  const lesson = course.lessons.find((l) => l.slug === lessonSlug);
+  if (!lesson) return {};
+  return {
+    title: `${lesson.title} — ${course.title} — AI для бизнеса`,
+    description: lesson.description,
+  };
+}
 
 export async function generateStaticParams() {
   const params = [];
@@ -81,8 +99,13 @@ export default async function LessonPage({
             dangerouslySetInnerHTML={{ __html: await markdownToHtml(lessonData.content) }}
           />
 
+          {/* Progress button */}
+          <div className="mt-12 flex justify-center">
+            <LessonProgressButton lessonId={`${slug}/${lessonSlug}`} />
+          </div>
+
           {/* Navigation */}
-          <div className="mt-16 pt-8 border-t border-gray-100 flex justify-between gap-4">
+          <div className="mt-8 pt-8 border-t border-gray-100 flex justify-between gap-4">
             {prevLesson && prevLesson.free ? (
               <Link
                 href={`/courses/${slug}/${prevLesson.slug}`}

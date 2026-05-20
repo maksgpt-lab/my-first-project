@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CourseProgress from "@/components/CourseProgress";
 import { getCourse, getCourses } from "@/lib/courses";
 
 export async function generateStaticParams() {
   return getCourses().map((c) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const course = getCourse(slug);
+  if (!course) return {};
+  return {
+    title: `${course.title} — AI для бизнеса`,
+    description: course.description,
+  };
 }
 
 export default async function CoursePage({
@@ -37,6 +53,8 @@ export default async function CoursePage({
           <p className="text-gray-500 text-lg leading-relaxed mb-12">
             {course.description}
           </p>
+
+          <CourseProgress courseSlug={slug} lessons={course.lessons} />
 
           {/* Lessons */}
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
