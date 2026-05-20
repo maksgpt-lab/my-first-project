@@ -77,7 +77,7 @@ export default function Home() {
                 Начать обучение →
               </Link>
               <Link
-                href="#"
+                href="https://t.me/+0ip_wx4Y4pFkMTAy"
                 className="glass-dark text-white/70 hover:text-white px-9 py-4 rounded-2xl text-lg font-medium transition-colors"
               >
                 Telegram-клуб
@@ -190,7 +190,7 @@ export default function Home() {
                   и ранний доступ к новым курсам.
                 </p>
                 <Link
-                  href="#"
+                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
                   className="inline-block bg-white text-indigo-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
                 >
                   Вступить бесплатно

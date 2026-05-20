@@ -12,7 +12,7 @@ export default function Footer() {
           Автоматизируй бизнес с помощью AI — без кода
         </p>
         <Link
-          href="#"
+          href="https://t.me/+0ip_wx4Y4pFkMTAy"
           className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
         >
           Telegram-клуб →

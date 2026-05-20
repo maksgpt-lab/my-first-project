@@ -108,7 +108,7 @@ export default async function CoursePage({
                 Вступай в Telegram-клуб и открой весь курс.
               </p>
               <Link
-                href="#"
+                href="https://t.me/+0ip_wx4Y4pFkMTAy"
                 className="inline-block bg-white text-indigo-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
               >
                 Вступить в клуб

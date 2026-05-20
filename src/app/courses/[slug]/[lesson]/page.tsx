@@ -143,9 +143,8 @@ export default async function LessonPage({
                     {nextLesson.title}
                   </div>
                   <Link
-                    href="#"
-                    className="text-xs text-blue-600 hover:underline"
-                  className="text-xs text-indigo-600 font-medium hover:underline"
+                    href="https://t.me/+0ip_wx4Y4pFkMTAy"
+                    className="text-xs text-indigo-600 font-medium hover:underline"
                   >
                     Открыть в клубе →
                   </Link>
