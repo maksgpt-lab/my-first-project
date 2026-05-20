@@ -22,9 +22,9 @@ const benefits = [
 ];
 
 const stats = [
-  { value: "×2", label: "рост продуктивности" },
-  { value: "3 ч", label: "экономии в день" },
-  { value: "×7", label: "дороже медленный ответ" },
+  { value: "20–40%", label: "продуктивность" },
+  { value: "3 ч/день", label: "экономия времени" },
+  { value: "×7", label: "цена медленного ответа" },
 ];
 
 export default function Home() {
@@ -85,11 +85,11 @@ export default function Home() {
             </div>
 
             {/* Stats */}
-            <div className="animate-fade-up-d4 mt-24 grid grid-cols-3 gap-6 max-w-lg mx-auto">
+            <div className="animate-fade-up-d4 mt-24 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
               {stats.map((s) => (
-                <div key={s.label} className="glass-dark rounded-2xl px-4 py-5">
-                  <div className="text-2xl sm:text-3xl font-bold gradient-text">{s.value}</div>
-                  <div className="text-xs text-white/35 mt-1 leading-tight">{s.label}</div>
+                <div key={s.label} className="glass-dark rounded-2xl px-5 py-5">
+                  <div className="text-2xl font-bold gradient-text">{s.value}</div>
+                  <div className="text-xs text-white/35 mt-1.5 leading-snug">{s.label}</div>
                 </div>
               ))}
             </div>
