@@ -131,6 +131,60 @@ body {
   animation: shimmer 2s infinite;
 }
 
+/* ── Lesson article: prompt blocks ── */
+.lesson-article blockquote {
+  background: #0d0d1a;
+  border: 1px solid rgba(99,102,241,.25);
+  border-left: 3px solid #6366f1;
+  border-radius: 14px;
+  padding: 0;
+  margin: 2rem 0;
+  font-style: normal;
+  overflow: hidden;
+}
+.lesson-article blockquote::before {
+  content: '▸ ПРОМПТ';
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #818cf8;
+  letter-spacing: 0.14em;
+  background: rgba(99,102,241,.08);
+  padding: 8px 20px;
+  border-bottom: 1px solid rgba(99,102,241,.15);
+  font-family: monospace;
+}
+.lesson-article blockquote p {
+  color: #c7d2fe !important;
+  font-size: 14.5px !important;
+  line-height: 1.8 !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+}
+.lesson-article blockquote strong {
+  color: #a5b4fc !important;
+  font-weight: 600;
+}
+.lesson-article blockquote em {
+  color: #818cf8 !important;
+  font-style: italic;
+}
+.lesson-article h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lesson-article h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.2em;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
 /* gradient border on cards */
 .gradient-border {
   position: relative;

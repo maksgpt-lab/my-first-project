@@ -2,33 +2,35 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
+import { getGuides } from "@/lib/guides";
 
 const benefits = [
   {
-    icon: "🇷🇺",
+    num: "01",
     title: "На русском языке",
     text: "Весь контент на русском — никаких языковых барьеров и переводчиков.",
   },
   {
-    icon: "⚡",
+    num: "02",
     title: "Без программирования",
-    text: "Только готовые инструменты: ChatGPT, Claude, n8n, Make. Никакого кода.",
+    text: "Только готовые инструменты: ChatGPT, Claude, Make. Никакого кода.",
   },
   {
-    icon: "💼",
+    num: "03",
     title: "Реальные кейсы",
     text: "Каждый урок — конкретная задача из маркетинга, HR или управления.",
   },
 ];
 
 const stats = [
-  { value: "20–40%", label: "продуктивность" },
+  { value: "20–40%", label: "рост продуктивности" },
   { value: "3 ч/день", label: "экономия времени" },
   { value: "×7", label: "цена медленного ответа" },
 ];
 
 export default function Home() {
   const courses = getCourses();
+  const guides = getGuides().slice(0, 3);
 
   return (
     <div className="bg-[#080810] min-h-screen">
@@ -109,13 +111,12 @@ export default function Home() {
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {benefits.map((b, i) => (
+              {benefits.map((b) => (
                 <div
                   key={b.title}
                   className="card-hover gradient-border glass-dark rounded-3xl p-8"
-                  style={{ animationDelay: `${i * 0.1}s` }}
                 >
-                  <div className="text-5xl mb-6">{b.icon}</div>
+                  <div className="text-xs font-mono text-indigo-500/60 mb-5 tracking-widest">{b.num}</div>
                   <h3 className="font-bold text-white text-lg mb-3">{b.title}</h3>
                   <p className="text-white/40 leading-relaxed text-[15px]">{b.text}</p>
                 </div>
@@ -131,9 +132,7 @@ export default function Home() {
               <div className="flex items-end justify-between mb-12">
                 <div>
                   <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Курсы</p>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                    Начни с любого
-                  </h2>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white">Начни с любого</h2>
                 </div>
                 <Link href="/courses" className="text-white/30 hover:text-white transition-colors text-sm font-medium hidden sm:block">
                   Все курсы →
@@ -171,16 +170,48 @@ export default function Home() {
           </section>
         )}
 
+        {/* ── Guides ── */}
+        {guides.length > 0 && (
+          <section className="bg-[#080810] pb-28">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="flex items-end justify-between mb-12">
+                <div>
+                  <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Бесплатно</p>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white">Читай и применяй</h2>
+                </div>
+                <Link href="/guides" className="text-white/30 hover:text-white transition-colors text-sm font-medium hidden sm:block">
+                  Все гайды →
+                </Link>
+              </div>
+              <div className="divide-y divide-white/[0.05] glass-dark rounded-3xl overflow-hidden">
+                {guides.map((guide) => (
+                  <Link
+                    key={guide.slug}
+                    href={`/guides/${guide.slug}`}
+                    className="flex items-center gap-5 px-7 py-5 group hover:bg-white/[0.02] transition-colors"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-white/70 group-hover:text-white transition-colors truncate">
+                        {guide.title}
+                      </p>
+                      <p className="text-sm text-white/25 mt-0.5 truncate">{guide.description}</p>
+                    </div>
+                    <span className="text-white/20 group-hover:text-indigo-400 transition-colors shrink-0">→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── CTA ── */}
         <section className="bg-[#080810] pb-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="relative rounded-3xl overflow-hidden">
-              {/* background */}
               <div className="absolute inset-0 gradient-bg opacity-90" />
               <div className="absolute inset-0 dot-grid opacity-20" />
               <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
               <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
-
               <div className="relative z-10 px-8 py-20 text-center">
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                   Присоединись к Telegram-клубу
