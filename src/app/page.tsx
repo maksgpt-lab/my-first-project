@@ -22,7 +22,7 @@ const benefits = [
 ];
 
 const stats = [
-  { value: "20–40%", label: "рост продуктивности" },
+  { value: "×2", label: "рост продуктивности" },
   { value: "3 ч", label: "экономии в день" },
   { value: "×7", label: "дороже медленный ответ" },
 ];
