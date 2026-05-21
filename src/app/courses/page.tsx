@@ -13,7 +13,7 @@ export default function CoursesPage() {
         <section className="max-w-5xl mx-auto px-6 py-20">
 
           <div className="mb-16">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">Все курсы</p>
+            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">{courses.length} курсов</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
               Учись зарабатывать
               <br />
@@ -107,7 +107,7 @@ export default function CoursesPage() {
                 <div className="mt-5 relative overflow-hidden glass-dark rounded-2xl p-5 border border-indigo-500/20">
                   <div className="absolute left-0 top-0 bottom-0 w-1 gradient-bg" />
                   <div className="pl-4">
-                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">Результат после всех 6 курсов</p>
+                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">Результат после всех {courses.length} курсов</p>
                     <p className="text-sm text-white/50 leading-relaxed">
                       У тебя работает AI-система для бизнеса: маркетинг привлекает клиентов, продажи закрывают сделки, операционка работает без твоего постоянного участия — ты управляешь стратегией, а не тонешь в рутине.
                     </p>
@@ -117,37 +117,8 @@ export default function CoursesPage() {
             );
           })()}
 
-          {courses.length === 0 ? (
+          {courses.length === 0 && (
             <p className="text-white/30">Курсы скоро появятся.</p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {courses.map((course) => (
-                <Link
-                  key={course.slug}
-                  href={`/courses/${course.slug}`}
-                  className="card-hover gradient-border glass-dark rounded-3xl p-8 block group"
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full">
-                      {course.lessons.filter((l) => l.free).length} урока бесплатно
-                    </span>
-                    <span className="text-white/20 group-hover:text-indigo-400 transition-colors text-lg">↗</span>
-                  </div>
-                  <h2 className="font-bold text-white text-xl group-hover:gradient-text transition-all mb-3 leading-snug">
-                    {course.title}
-                  </h2>
-                  <p className="text-white/40 leading-relaxed text-[15px] mb-7">
-                    {course.description}
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 h-px bg-white/[0.06] rounded-full overflow-hidden">
-                      <div className="h-full w-[28%] gradient-bg opacity-70" />
-                    </div>
-                    <span className="text-xs text-white/25">{course.lessons.length} уроков</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
           )}
         </section>
       </main>

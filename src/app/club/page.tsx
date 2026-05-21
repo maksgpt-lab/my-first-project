@@ -106,8 +106,35 @@ export default function ClubPage() {
             })}
           </div>
 
+          {/* Agent CTA */}
+          <div className="mt-14">
+            <Link
+              href="/club/agent"
+              className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-white/[0.03] hover:bg-white/[0.05] border border-indigo-500/20 hover:border-indigo-500/40 rounded-3xl p-8 transition-all"
+            >
+              <div className="absolute inset-0 rounded-3xl bg-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Новинка</span>
+                  </span>
+                </div>
+                <p className="text-white font-semibold text-lg mb-1.5">
+                  AI-консультант по твоему бизнесу
+                </p>
+                <p className="text-white/40 text-sm leading-relaxed max-w-md">
+                  Задаёт правильные вопросы, находит точки автоматизации и даёт готовые промпты под твою ситуацию. Не общие советы — конкретный разбор.
+                </p>
+              </div>
+              <span className="relative z-10 shrink-0 text-indigo-400 group-hover:text-indigo-300 transition-colors text-2xl">
+                →
+              </span>
+            </Link>
+          </div>
+
           {/* Telegram CTA */}
-          <div className="mt-14 relative rounded-3xl overflow-hidden">
+          <div className="mt-6 relative rounded-3xl overflow-hidden">
             <div className="absolute inset-0 gradient-bg opacity-80" />
             <div className="absolute inset-0 dot-grid opacity-10" />
             <div className="relative z-10 p-10 flex flex-col sm:flex-row items-center justify-between gap-6">

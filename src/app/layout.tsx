@@ -7,7 +7,8 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://my-first-project-five-beta.vercel.app";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://my-first-project-five-beta.vercel.app";
 
 export const metadata: Metadata = {
   title: {
@@ -24,14 +25,7 @@ export const metadata: Metadata = {
     siteName: "AI для бизнеса",
     title: "AI для бизнеса",
     description: "Практические курсы по AI-инструментам для предпринимателей — без программирования, на русском языке.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "AI для бизнеса",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "AI для бизнеса" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -52,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${geist.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-gray-900">
+      <body className="min-h-full flex flex-col bg-[#080810] text-gray-900">
         {children}
       </body>
     </html>

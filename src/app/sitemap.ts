@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 import { getCourses } from "@/lib/courses";
 import { getGuides } from "@/lib/guides";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aiдлябизнеса.рф";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://my-first-project-five-beta.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const courses = getCourses();

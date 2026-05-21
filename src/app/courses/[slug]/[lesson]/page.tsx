@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LessonProgressButton from "@/components/LessonProgress";
 import CopyPromptButtons from "@/components/CopyPromptButtons";
+import PracticeWidget from "@/components/PracticeWidget";
 import { getCourse, getCourses, getLessonContent } from "@/lib/courses";
 
 export async function generateMetadata({
@@ -124,6 +125,8 @@ export default async function LessonPage({
           </div>
 
           <CopyPromptButtons />
+
+          <PracticeWidget />
 
           {/* Progress */}
           <div className="mt-14 flex justify-center">

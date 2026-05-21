@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getCourses } from "@/lib/courses";
 
 export const metadata: Metadata = {
   title: "О проекте — AI для бизнеса",
@@ -9,6 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const courses = getCourses();
+  const totalLessons = courses.reduce((sum, c) => sum + c.lessons.length, 0);
+  const freeLessons = courses.reduce(
+    (sum, c) => sum + c.lessons.filter((l) => l.free).length,
+    0
+  );
+
   return (
     <div className="bg-[#080810] min-h-screen">
       <Header />
@@ -59,9 +67,9 @@ export default function AboutPage() {
             <h2 className="text-xl font-bold text-white mb-6">Что внутри</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
               {[
-                { value: "2", label: "курса" },
-                { value: "14", label: "уроков" },
-                { value: "6", label: "бесплатных" },
+                { value: String(courses.length), label: courses.length === 1 ? "курс" : courses.length < 5 ? "курса" : "курсов" },
+                { value: String(totalLessons), label: "уроков" },
+                { value: String(freeLessons), label: "бесплатных" },
                 { value: "∞", label: "практики" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
