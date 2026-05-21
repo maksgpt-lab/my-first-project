@@ -50,6 +50,8 @@ export async function GET(request: NextRequest) {
   const today = getMoscowDateString();
   const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
 
+  const debug: Record<string, string> = {};
+
   for (const file of files) {
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
     const { data, content } = matter(raw);
@@ -57,6 +59,8 @@ export async function GET(request: NextRequest) {
     const postDate = data.date instanceof Date
       ? data.date.toISOString().split("T")[0]
       : String(data.date);
+
+    debug[file] = postDate;
 
     if (postDate === today) {
       const text = content.trim();
@@ -74,5 +78,5 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  return NextResponse.json({ message: "No post scheduled for today", date: today });
+  return NextResponse.json({ message: "No post scheduled for today", date: today, debug });
 }
