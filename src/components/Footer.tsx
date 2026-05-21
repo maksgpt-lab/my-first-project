@@ -13,6 +13,7 @@ export default function Footer() {
             { href: "/courses", label: "Курсы" },
             { href: "/prompts", label: "Промпты" },
             { href: "/guides", label: "Гайды" },
+            { href: "/pricing", label: "Тарифы" },
             { href: "/about", label: "О проекте" },
           ].map((link) => (
             <Link
@@ -24,12 +25,22 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="https://t.me/+0ip_wx4Y4pFkMTAy"
-          className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
-        >
-          Telegram-клуб →
-        </Link>
+        <div className="flex flex-col items-center sm:items-end gap-2">
+          <Link
+            href="https://t.me/+0ip_wx4Y4pFkMTAy"
+            className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
+          >
+            Telegram-клуб →
+          </Link>
+          <div className="flex gap-4">
+            <Link href="/oferta" className="text-xs text-white/15 hover:text-white/35 transition-colors">
+              Оферта
+            </Link>
+            <Link href="/refund" className="text-xs text-white/15 hover:text-white/35 transition-colors">
+              Возврат
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

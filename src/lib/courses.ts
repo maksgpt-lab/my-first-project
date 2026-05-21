@@ -17,6 +17,7 @@ export interface Course {
   title: string;
   description: string;
   cover: string;
+  order: number;
   lessons: Lesson[];
 }
 
@@ -24,9 +25,9 @@ export function getCourses(): Course[] {
   if (!fs.existsSync(COURSES_DIR)) return [];
   const dirs = fs.readdirSync(COURSES_DIR);
 
-  return dirs
-    .map((dir) => getCourse(dir))
-    .filter(Boolean) as Course[];
+  return (dirs.map((dir) => getCourse(dir)).filter(Boolean) as Course[]).sort(
+    (a, b) => a.order - b.order
+  );
 }
 
 export function getCourse(slug: string): Course | null {
@@ -58,6 +59,7 @@ export function getCourse(slug: string): Course | null {
     title: data.title ?? slug,
     description: data.description ?? "",
     cover: data.cover ?? "",
+    order: data.order ?? 999,
     lessons: lessons.sort((a, b) => a.order - b.order),
   };
 }

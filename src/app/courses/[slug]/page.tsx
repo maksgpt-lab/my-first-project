@@ -33,6 +33,10 @@ export default async function CoursePage({
   const course = getCourse(slug);
   if (!course) notFound();
 
+  const allCourses = getCourses();
+  const currentIndex = allCourses.findIndex((c) => c.slug === slug);
+  const nextCourse = allCourses[currentIndex + 1] ?? null;
+
   return (
     <div className="bg-[#080810] min-h-screen">
       <Header />
@@ -98,6 +102,23 @@ export default async function CoursePage({
               </div>
             ))}
           </div>
+
+          {/* Next course */}
+          {nextCourse && (
+            <div className="mt-8 glass-dark rounded-3xl border border-white/[0.07] p-6 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs text-white/30 mb-1">Следующий курс</p>
+                <p className="text-base font-semibold text-white">{nextCourse.title}</p>
+                <p className="text-sm text-white/35 mt-0.5 line-clamp-1">{nextCourse.description}</p>
+              </div>
+              <Link
+                href={`/courses/${nextCourse.slug}`}
+                className="shrink-0 btn-glow text-white px-5 py-2.5 rounded-xl text-sm font-semibold"
+              >
+                Перейти →
+              </Link>
+            </div>
+          )}
 
           {/* CTA */}
           <div className="mt-8 relative rounded-3xl overflow-hidden">

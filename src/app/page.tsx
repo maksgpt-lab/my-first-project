@@ -4,6 +4,24 @@ import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
 import { getGuides } from "@/lib/guides";
 
+const testimonials = [
+  {
+    text: "Раньше контент-план на месяц занимал у меня полдня. Теперь делаю за 20 минут — и качество лучше. Не верила пока не попробовала.",
+    name: "Марина К.",
+    role: "Владелец кофейни, Москва",
+  },
+  {
+    text: "Курс по промпт-инжинирингу окупился быстро. Научился писать коммерческие предложения так, что клиенты сами просят встречу.",
+    name: "Артём В.",
+    role: "B2B-продажи, Екатеринбург",
+  },
+  {
+    text: "Наконец-то обучение по AI на русском языке без воды. Конкретные промпты, конкретные результаты. Рекомендую всей команде.",
+    name: "Наталья Р.",
+    role: "HR-директор, 80+ сотрудников",
+  },
+];
+
 const benefits = [
   {
     num: "01",
@@ -23,9 +41,9 @@ const benefits = [
 ];
 
 const stats = [
-  { value: "20–40%", label: "рост продуктивности" },
-  { value: "3 ч/день", label: "экономия времени" },
-  { value: "×7", label: "цена медленного ответа" },
+  { value: "20–40%", label: "рост продуктивности по данным McKinsey" },
+  { value: "3 ч/день", label: "средняя экономия у активных пользователей" },
+  { value: "×7", label: "падение вероятности сделки при долгом ответе" },
 ];
 
 export default function Home() {
@@ -169,6 +187,76 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        {/* ── Testimonials ── */}
+        <section className="bg-[#080810] pb-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Отзывы</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">Что говорят участники</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {testimonials.map((t) => (
+                <div key={t.name} className="glass-dark rounded-3xl p-7 flex flex-col gap-5">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-indigo-400 text-sm">★</span>
+                    ))}
+                  </div>
+                  <p className="text-white/60 leading-relaxed text-[15px] flex-1">"{t.text}"</p>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{t.name}</div>
+                    <div className="text-xs text-white/30 mt-0.5">{t.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Prompts teaser ── */}
+        <section className="bg-[#080810] pb-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Бесплатно</p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white">30 готовых промптов</h2>
+                <p className="text-white/35 mt-3 text-base max-w-md">
+                  Скопируй, подставь свои данные — и получи результат за 30 секунд.
+                </p>
+              </div>
+              <Link href="/prompts" className="text-white/30 hover:text-white transition-colors text-sm font-medium hidden sm:block shrink-0">
+                Вся библиотека →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {[
+                { cat: "Тексты", title: "Пост для Telegram" },
+                { cat: "Продажи", title: "Холодное письмо клиенту" },
+                { cat: "HR", title: "Вакансия которую читают" },
+                { cat: "Маркетинг", title: "Контент-план на месяц" },
+                { cat: "Аналитика", title: "Анализ конкурентов" },
+                { cat: "Управление", title: "Регламент за 10 минут" },
+              ].map((p) => (
+                <Link
+                  key={p.title}
+                  href="/prompts"
+                  className="glass-dark rounded-2xl p-5 hover:border-indigo-500/30 border border-white/[0.07] transition-all group"
+                >
+                  <div className="text-[10px] font-mono text-indigo-500/50 mb-2">{p.cat}</div>
+                  <div className="text-sm font-medium text-white/60 group-hover:text-white transition-colors leading-snug">
+                    {p.title}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6 text-center sm:hidden">
+              <Link href="/prompts" className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+                Все 30 промптов →
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* ── Guides ── */}
         {guides.length > 0 && (
