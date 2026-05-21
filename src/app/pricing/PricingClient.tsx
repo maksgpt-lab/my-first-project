@@ -86,7 +86,7 @@ export default function PricingClient() {
         <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
           Выбери свой
           <br />
-          <span className="gradient-text">формат обучения</span>
+          <span className="gradient-text">формат доступа</span>
         </h1>
         <p className="text-white/40 text-lg max-w-md mx-auto leading-relaxed">
           Начни бесплатно — перейди на платный когда будешь готов.

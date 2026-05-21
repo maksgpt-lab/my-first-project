@@ -6,44 +6,62 @@ import { getGuides } from "@/lib/guides";
 
 const testimonials = [
   {
-    text: "Раньше контент-план на месяц занимал у меня полдня. Теперь делаю за 20 минут — и качество лучше. Не верила пока не попробовала.",
+    text: "Контент-план на месяц делала за полдня. Теперь за 20 минут — и идеи лучше. Первый раз попробовала после второго урока.",
     name: "Марина К.",
     role: "Владелец кофейни, Москва",
   },
   {
-    text: "Курс по промпт-инжинирингу окупился быстро. Научился писать коммерческие предложения так, что клиенты сами просят встречу.",
+    text: "Скрипт продаж написал за вечер. Следующие три звонка — две сделки. Раньше импровизировал, теперь знаю что говорить.",
     name: "Артём В.",
     role: "B2B-продажи, Екатеринбург",
   },
   {
-    text: "Наконец-то обучение по AI на русском языке без воды. Конкретные промпты, конкретные результаты. Рекомендую всей команде.",
+    text: "Наконец материалы на русском без воды. Сделал вакансию, регламент и КП за один вечер. Команда в шоке что так быстро.",
     name: "Наталья Р.",
-    role: "HR-директор, 80+ сотрудников",
+    role: "Руководитель, 80+ сотрудников",
   },
 ];
 
-const benefits = [
+const painPoints = [
+  {
+    icon: "⏳",
+    title: "Рутина съедает день",
+    text: "Одни и те же тексты, письма, объяснения сотрудникам — снова и снова. На стратегию времени не остаётся.",
+  },
+  {
+    icon: "😵",
+    title: "Слышал про AI — не знаешь с чего начать",
+    text: "Все вокруг говорят ChatGPT, но обучение либо на английском, либо для программистов. Непонятно как применить к своему бизнесу.",
+  },
+  {
+    icon: "📉",
+    title: "Конкуренты двигаются быстрее",
+    text: "Пока ты тратишь часы на задачи, другие делают их за минуты. Разрыв растёт с каждым месяцем.",
+  },
+];
+
+const steps = [
   {
     num: "01",
-    title: "На русском языке",
-    text: "Весь контент на русском — никаких языковых барьеров и переводчиков.",
+    title: "Выбери курс и открой первый урок",
+    text: "Три урока в каждом курсе — бесплатно. Никакой регистрации. Начни прямо сейчас.",
   },
   {
     num: "02",
-    title: "Без программирования",
-    text: "Только готовые инструменты: ChatGPT, Claude, Make. Никакого кода.",
+    title: "Сделай задание в ChatGPT",
+    text: "Каждый урок заканчивается практикой: копируешь промпт, подставляешь свои данные, получаешь результат.",
   },
   {
     num: "03",
-    title: "Реальные кейсы",
-    text: "Каждый урок — конкретная задача из маркетинга, HR или управления.",
+    title: "Применяй в бизнесе с завтрашнего утра",
+    text: "Скрипт, пост, регламент или КП — готовый инструмент, который работает уже сегодня.",
   },
 ];
 
 const stats = [
-  { value: "20–40%", label: "рост продуктивности по данным McKinsey" },
-  { value: "3 ч/день", label: "средняя экономия у активных пользователей" },
-  { value: "×7", label: "падение вероятности сделки при долгом ответе" },
+  { value: "1 вечер", label: "до первого рабочего результата" },
+  { value: "6 курсов", label: "полная программа от основ до системы" },
+  { value: "3 урока", label: "бесплатно в каждом курсе" },
 ];
 
 export default function Home() {
@@ -74,19 +92,19 @@ export default function Home() {
             <div className="animate-fade-up">
               <span className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-4 py-2 rounded-full mb-10 tracking-wider uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                Обучение AI для бизнеса · На русском
+                Практические материалы по AI · На русском · Без кода
               </span>
             </div>
 
             <h1 className="animate-fade-up-d1 text-5xl sm:text-6xl lg:text-[80px] font-bold tracking-tight leading-[1.05] text-white">
-              Зарабатывай больше
+              Первый рабочий
               <br />
-              <span className="gradient-text">с помощью AI</span>
+              <span className="gradient-text">AI-инструмент — за вечер</span>
             </h1>
 
-            <p className="animate-fade-up-d2 mt-8 text-xl sm:text-2xl text-white/40 max-w-xl mx-auto leading-relaxed font-light">
-              Практические курсы без кода. Реальные результаты
-              для предпринимателей и их команд.
+            <p className="animate-fade-up-d2 mt-8 text-xl sm:text-2xl text-white/40 max-w-2xl mx-auto leading-relaxed font-light">
+              Практические материалы для предпринимателей, маркетологов и руководителей.
+              Открываешь модуль, применяешь промпт в ChatGPT — и уже сегодня экономишь время.
             </p>
 
             <div className="animate-fade-up-d3 mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,18 +112,22 @@ export default function Home() {
                 href="/courses"
                 className="btn-glow text-white px-9 py-4 rounded-2xl text-lg font-bold"
               >
-                Начать обучение →
+                Начать бесплатно →
               </Link>
               <Link
-                href="https://t.me/+0ip_wx4Y4pFkMTAy"
+                href="/pricing"
                 className="glass-dark text-white/70 hover:text-white px-9 py-4 rounded-2xl text-lg font-medium transition-colors"
               >
-                Telegram-клуб
+                Смотреть тарифы
               </Link>
             </div>
 
+            <p className="animate-fade-up-d3 mt-4 text-sm text-white/25">
+              Первые 3 урока в каждом курсе — бесплатно. Без регистрации.
+            </p>
+
             {/* Stats */}
-            <div className="animate-fade-up-d4 mt-24 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="animate-fade-up-d4 mt-20 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
               {stats.map((s) => (
                 <div key={s.label} className="glass-dark rounded-2xl px-5 py-5">
                   <div className="text-2xl font-bold gradient-text">{s.value}</div>
@@ -119,24 +141,58 @@ export default function Home() {
           <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#080810] to-transparent" />
         </section>
 
-        {/* ── Benefits ── */}
+        {/* ── Pain points ── */}
         <section className="bg-[#080810] py-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Почему здесь</p>
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Узнаёшь себя?</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Три причины, которые отличают нас
+                Это мешает тебе расти прямо сейчас
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {benefits.map((b) => (
-                <div
-                  key={b.title}
-                  className="card-hover gradient-border glass-dark rounded-3xl p-8"
-                >
-                  <div className="text-xs font-mono text-indigo-500/60 mb-5 tracking-widest">{b.num}</div>
-                  <h3 className="font-bold text-white text-lg mb-3">{b.title}</h3>
-                  <p className="text-white/40 leading-relaxed text-[15px]">{b.text}</p>
+              {painPoints.map((p) => (
+                <div key={p.title} className="glass-dark rounded-3xl p-8 border border-white/[0.07]">
+                  <div className="text-3xl mb-5">{p.icon}</div>
+                  <h3 className="font-bold text-white text-lg mb-3">{p.title}</h3>
+                  <p className="text-white/40 leading-relaxed text-[15px]">{p.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 relative overflow-hidden glass-dark rounded-2xl p-6 border border-indigo-500/20">
+              <div className="absolute left-0 top-0 bottom-0 w-1 gradient-bg" />
+              <div className="pl-5">
+                <p className="text-white/70 text-base leading-relaxed">
+                  <span className="text-white font-semibold">ChatGPT решает всё это.</span>{" "}
+                  Но только если знаешь как правильно его попросить. Именно этому учат наши курсы — конкретным промптам под конкретные задачи твоего бизнеса.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── How it works ── */}
+        <section className="bg-[#080810] pb-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Как это работает</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                Три шага до первого результата
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {steps.map((s, i) => (
+                <div key={s.num} className="relative">
+                  <div className="glass-dark rounded-3xl p-8 border border-white/[0.07] h-full">
+                    <div className="text-xs font-mono text-indigo-500/60 mb-5 tracking-widest">{s.num}</div>
+                    <h3 className="font-bold text-white text-lg mb-3 leading-snug">{s.title}</h3>
+                    <p className="text-white/40 leading-relaxed text-[15px]">{s.text}</p>
+                  </div>
+                  {i < steps.length - 1 && (
+                    <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full glass-dark border border-white/10 items-center justify-center">
+                      <span className="text-white/30 text-xs">→</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -149,15 +205,18 @@ export default function Home() {
             <div className="max-w-5xl mx-auto px-6">
               <div className="flex items-end justify-between mb-12">
                 <div>
-                  <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Курсы</p>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white">Начни с любого</h2>
+                  <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">6 курсов</p>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white">От основ до своей AI-системы</h2>
+                  <p className="text-white/35 mt-3 text-base max-w-md">
+                    Проходи по порядку — каждый курс строится на предыдущем.
+                  </p>
                 </div>
                 <Link href="/courses" className="text-white/30 hover:text-white transition-colors text-sm font-medium hidden sm:block">
                   Все курсы →
                 </Link>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {courses.map((course) => (
+                {courses.slice(0, 4).map((course) => (
                   <Link
                     key={course.slug}
                     href={`/courses/${course.slug}`}
@@ -184,6 +243,16 @@ export default function Home() {
                   </Link>
                 ))}
               </div>
+              {courses.length > 4 && (
+                <div className="mt-5 text-center">
+                  <Link
+                    href="/courses"
+                    className="inline-block glass-dark text-white/50 hover:text-white border border-white/[0.07] hover:border-white/20 px-8 py-3 rounded-2xl text-sm font-medium transition-all"
+                  >
+                    Ещё {courses.length - 4} курса →
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -214,12 +283,52 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Benefits ── */}
+        <section className="bg-[#080810] pb-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Почему здесь</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                Не просто смотришь — сразу делаешь
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {[
+                {
+                  num: "01",
+                  title: "Практика с первого урока",
+                  text: "Каждый урок заканчивается заданием. Копируешь промпт, подставляешь свои данные — и получаешь готовый результат для бизнеса.",
+                },
+                {
+                  num: "02",
+                  title: "На русском, без кода",
+                  text: "Никаких технических барьеров. Только ChatGPT, твой браузер и задачи которые ты уже делаешь каждый день.",
+                },
+                {
+                  num: "03",
+                  title: "Полная программа с результатом",
+                  text: "6 курсов выстроены в логику: проходишь по порядку — и к финалу у тебя работающая AI-система для бизнеса.",
+                },
+              ].map((b) => (
+                <div
+                  key={b.title}
+                  className="card-hover gradient-border glass-dark rounded-3xl p-8"
+                >
+                  <div className="text-xs font-mono text-indigo-500/60 mb-5 tracking-widest">{b.num}</div>
+                  <h3 className="font-bold text-white text-lg mb-3">{b.title}</h3>
+                  <p className="text-white/40 leading-relaxed text-[15px]">{b.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Prompts teaser ── */}
         <section className="bg-[#080810] pb-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="flex items-end justify-between mb-12">
               <div>
-                <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Бесплатно</p>
+                <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">Бесплатно прямо сейчас</p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white">30 готовых промптов</h2>
                 <p className="text-white/35 mt-3 text-base max-w-md">
                   Скопируй, подставь свои данные — и получи результат за 30 секунд.
@@ -292,7 +401,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* ── CTA ── */}
+        {/* ── Final CTA ── */}
         <section className="bg-[#080810] pb-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="relative rounded-3xl overflow-hidden">
@@ -301,19 +410,28 @@ export default function Home() {
               <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
               <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
               <div className="relative z-10 px-8 py-20 text-center">
+                <p className="text-white/60 text-sm font-semibold uppercase tracking-widest mb-4">Начни сегодня</p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                  Присоединись к Telegram-клубу
+                  Первый урок — бесплатно.<br />Первый результат — сегодня вечером.
                 </h2>
                 <p className="text-white/70 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-                  Шаблоны промптов, разборы кейсов, Q&A с автором
-                  и ранний доступ к новым курсам.
+                  Открой первый курс, сделай задание — и уже завтра утром у тебя есть инструмент который экономит время каждый день.
                 </p>
-                <Link
-                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
-                  className="inline-block bg-white text-indigo-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
-                >
-                  Вступить бесплатно
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    href="/courses/chatgpt-dlya-biznesa"
+                    className="inline-block bg-white text-indigo-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
+                  >
+                    Открыть первый курс →
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-block bg-white/10 text-white border border-white/20 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-colors"
+                  >
+                    Смотреть тарифы
+                  </Link>
+                </div>
+                <p className="mt-5 text-white/40 text-sm">Без регистрации · Без карты · Первые 3 урока бесплатно</p>
               </div>
             </div>
           </div>

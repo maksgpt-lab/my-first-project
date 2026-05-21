@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Users/annabatova/Documents/my-first-project/src/app/preview/[slug]/[lesson]\")"
+    ],
+    "additionalDirectories": [
+      "/Users/annabatova/Documents/my-first-project/src/app/preview/[slug]"
+    ]
+  }
+}
