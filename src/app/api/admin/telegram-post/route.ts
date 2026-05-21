@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export const maxDuration = 300;
+
 const POSTS_DIR = path.join(process.cwd(), "content/telegram");
 
 async function sendTelegramMessage(token: string, channelId: string, text: string) {
@@ -38,9 +40,27 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md")).sort();
+
   if (!file) {
-    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md")).sort();
     return NextResponse.json({ available: files });
+  }
+
+  if (file === "all") {
+    const results: { file: string; ok: boolean; error?: string }[] = [];
+    for (const f of files) {
+      const raw = fs.readFileSync(path.join(POSTS_DIR, f), "utf8");
+      const { content } = matter(raw);
+      const res = await sendTelegramMessage(token, channelId, content.trim());
+      if (res.ok) {
+        results.push({ file: f, ok: true });
+      } else {
+        const body = await res.text();
+        results.push({ file: f, ok: false, error: body });
+      }
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+    return NextResponse.json({ results });
   }
 
   const filePath = path.join(POSTS_DIR, file.endsWith(".md") ? file : `${file}.md`);
