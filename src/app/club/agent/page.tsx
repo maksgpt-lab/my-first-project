@@ -33,7 +33,7 @@ export default function AgentPage() {
         </div>
 
         {/* How it works */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             { label: "Разбирает твою задачу", desc: "Не даёт общих советов — задаёт уточняющие вопросы" },
             { label: "Находит приоритеты", desc: "Где AI даст максимум при минимуме усилий" },

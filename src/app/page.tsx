@@ -4,23 +4,6 @@ import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
 import { getGuides } from "@/lib/guides";
 
-const testimonials = [
-  {
-    text: "Контент-план на месяц делала за полдня. Теперь за 20 минут — и идеи лучше. Первый раз попробовала после второго урока.",
-    name: "Марина К.",
-    role: "Владелец кофейни, Москва",
-  },
-  {
-    text: "Скрипт продаж написал за вечер. Следующие три звонка — две сделки. Раньше импровизировал, теперь знаю что говорить.",
-    name: "Артём В.",
-    role: "B2B-продажи, Екатеринбург",
-  },
-  {
-    text: "Наконец материалы на русском без воды. Сделал вакансию, регламент и КП за один вечер. Команда в шоке что так быстро.",
-    name: "Наталья Р.",
-    role: "Руководитель, 80+ сотрудников",
-  },
-];
 
 const painPoints = [
   {
@@ -96,13 +79,13 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="animate-fade-up-d1 text-5xl sm:text-6xl lg:text-[80px] font-bold tracking-tight leading-[1.05] text-white">
+            <h1 className="animate-fade-up-d1 text-4xl sm:text-6xl lg:text-[80px] font-bold tracking-tight leading-[1.05] text-white">
               Первый рабочий
               <br />
               <span className="gradient-text">AI-инструмент — за вечер</span>
             </h1>
 
-            <p className="animate-fade-up-d2 mt-8 text-xl sm:text-2xl text-white/40 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="animate-fade-up-d2 mt-8 text-base sm:text-2xl text-white/40 max-w-2xl mx-auto leading-relaxed font-light">
               Практические материалы для предпринимателей, маркетологов и руководителей.
               Открываешь модуль, применяешь промпт в ChatGPT — и уже сегодня экономишь время.
             </p>
@@ -127,11 +110,11 @@ export default function Home() {
             </p>
 
             {/* Stats */}
-            <div className="animate-fade-up-d4 mt-20 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="animate-fade-up-d4 mt-20 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
               {stats.map((s) => (
-                <div key={s.label} className="glass-dark rounded-2xl px-5 py-5">
-                  <div className="text-2xl font-bold gradient-text">{s.value}</div>
-                  <div className="text-xs text-white/35 mt-1.5 leading-snug">{s.label}</div>
+                <div key={s.label} className="glass-dark rounded-2xl px-3 py-4 sm:px-5 sm:py-5">
+                  <div className="text-lg sm:text-2xl font-bold gradient-text">{s.value}</div>
+                  <div className="text-[10px] sm:text-xs text-white/35 mt-1.5 leading-snug">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -257,31 +240,6 @@ export default function Home() {
           </section>
         )}
 
-        {/* ── Testimonials ── */}
-        <section className="bg-[#080810] pb-28">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Отзывы</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">Что говорят участники</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {testimonials.map((t) => (
-                <div key={t.name} className="glass-dark rounded-3xl p-7 flex flex-col gap-5">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-indigo-400 text-sm">★</span>
-                    ))}
-                  </div>
-                  <p className="text-white/60 leading-relaxed text-[15px] flex-1">"{t.text}"</p>
-                  <div>
-                    <div className="text-sm font-semibold text-white">{t.name}</div>
-                    <div className="text-xs text-white/30 mt-0.5">{t.role}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ── Benefits ── */}
         <section className="bg-[#080810] pb-28">

@@ -210,27 +210,27 @@ export default function AgentWidget() {
 
       {/* Input area */}
       {!limitReached && (
-        <div className="border-t border-white/[0.06] px-4 py-4">
+        <div className="border-t border-white/[0.06] px-3 sm:px-4 py-3 sm:py-4">
           {!isClubMember && isClubMember !== null && !isEmpty && (
             <p className="text-xs text-white/20 mb-2 text-right">
               {remaining} из {FREE_LIMIT} бесплатных вопросов
             </p>
           )}
-          <div className="flex gap-3 items-end">
+          <div className="flex gap-2 sm:gap-3 items-end">
             <textarea
               ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Напиши свой вопрос... (Enter — отправить, Shift+Enter — новая строка)"
+              placeholder="Напиши вопрос..."
               rows={2}
-              className="flex-1 bg-[#080810] border border-white/[0.08] rounded-2xl px-4 py-3 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-indigo-500/40 transition-colors"
+              className="flex-1 bg-[#080810] border border-white/[0.08] rounded-2xl px-3 sm:px-4 py-3 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-indigo-500/40 transition-colors"
             />
             <div className="flex flex-col gap-2 shrink-0">
               <button
                 onClick={sendMessage}
                 disabled={loading || !input.trim()}
-                className="btn-glow text-white text-sm font-semibold px-5 py-3 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none transition-all"
+                className="btn-glow text-white text-sm font-semibold px-4 sm:px-5 py-3 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none transition-all"
               >
                 {loading ? (
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin block" />
@@ -239,7 +239,7 @@ export default function AgentWidget() {
               {!isEmpty && (
                 <button
                   onClick={clearChat}
-                  className="text-xs text-white/20 hover:text-white/50 transition-colors px-5 py-2 rounded-xl border border-white/[0.07] hover:border-white/20"
+                  className="text-xs text-white/20 hover:text-white/50 transition-colors px-4 sm:px-5 py-2 rounded-xl border border-white/[0.07] hover:border-white/20"
                 >
                   Сбросить
                 </button>
