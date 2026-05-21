@@ -168,10 +168,10 @@ export default async function LessonPage({
                   {nextLesson.title}
                 </div>
                 <Link
-                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
+                  href="/pricing"
                   className="text-xs text-indigo-400 font-medium hover:text-indigo-300 transition-colors"
                 >
-                  Открыть в клубе →
+                  Открыть доступ →
                 </Link>
               </div>
             )

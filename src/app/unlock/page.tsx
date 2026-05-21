@@ -57,10 +57,10 @@ function UnlockForm() {
         <p className="text-center text-white/20 text-xs mt-6">
           Нет пароля?{" "}
           <a
-            href="https://t.me/+0ip_wx4Y4pFkMTAy"
+            href="/pricing"
             className="text-indigo-400 hover:text-indigo-300 transition-colors"
           >
-            Вступи в клуб →
+            Смотреть тарифы →
           </a>
         </p>
       </div>

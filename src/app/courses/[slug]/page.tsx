@@ -129,13 +129,13 @@ export default async function CoursePage({
                 Хочешь доступ ко всем урокам?
               </p>
               <p className="text-white/70 mb-6 text-sm">
-                Вступай в Telegram-клуб и открой весь курс.
+                Открой полный доступ и продолжай обучение прямо сейчас.
               </p>
               <Link
-                href="https://t.me/+0ip_wx4Y4pFkMTAy"
+                href="/pricing"
                 className="inline-block bg-white text-indigo-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
               >
-                Вступить в клуб
+                Смотреть тарифы →
               </Link>
             </div>
           </div>
