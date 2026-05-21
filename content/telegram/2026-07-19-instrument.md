@@ -22,4 +22,4 @@ category: инструмент недели
 
 Не идеален для генерации контента — там лучше ChatGPT. Но внутри рабочей среды Notion AI очень удобен.
 
-👉 Как выстроить базу знаний компании: aidabusiness.ru/courses/ai-dlya-operatsionki
+Как выстроить базу знаний компании с AI — в гайдах: aidabusiness.ru/guides
