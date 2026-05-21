@@ -25,9 +25,9 @@ category: навигация
 
 <b>Полезные ссылки:</b>
 
-🎓 Курсы — <a href="https://aiprofi.ru/courses">aiprofi.ru/courses</a>
-📝 Библиотека промптов — <a href="https://aiprofi.ru/prompts">aiprofi.ru/prompts</a>
-📖 Гайды — <a href="https://aiprofi.ru/guides">aiprofi.ru/guides</a>
+🎓 Курсы — <a href="https://aidabusiness.ru/courses">aidabusiness.ru/courses</a>
+📝 Библиотека промптов — <a href="https://aidabusiness.ru/prompts">aidabusiness.ru/prompts</a>
+📖 Гайды — <a href="https://aidabusiness.ru/guides">aidabusiness.ru/guides</a>
 
 ──────────────────
 

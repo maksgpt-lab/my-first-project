@@ -23,4 +23,4 @@ Canva — онлайн-редактор для дизайна. Многие пр
 
 Большинство функций — в бесплатном тарифе.
 
-👉 AI-инструменты для маркетинга: aiprofi.ru/courses/ai-dlya-kontenta
+👉 AI-инструменты для маркетинга: aidabusiness.ru/courses/ai-dlya-kontenta

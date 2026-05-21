@@ -22,4 +22,4 @@ Perplexity работает с интернетом в реальном врем
 
 Бесплатная версия доступна на perplexity.ai.
 
-👉 Как собрать систему из нескольких инструментов — в курсе: aiprofi.ru/courses/svoya-ai-sistema
+👉 Как собрать систему из нескольких инструментов — в курсе: aidabusiness.ru/courses/svoya-ai-sistema
