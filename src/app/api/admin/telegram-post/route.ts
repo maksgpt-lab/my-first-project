@@ -99,7 +99,16 @@ export async function GET(request: NextRequest) {
       const { data, content } = matter(raw);
       const text = content.trim();
 
-      const res = await sendTelegramMessage(token, channelId, text);
+      let res = await sendTelegramMessage(token, channelId, text);
+
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => null);
+        const retryAfter: number = errJson?.parameters?.retry_after ?? 0;
+        if (res.status === 429 && retryAfter > 0) {
+          await new Promise((r) => setTimeout(r, (retryAfter + 2) * 1000));
+          res = await sendTelegramMessage(token, channelId, text);
+        }
+      }
 
       if (res.ok) {
         const json = await res.json();
@@ -115,7 +124,7 @@ export async function GET(request: NextRequest) {
         errors.push({ file: f, error: body });
       }
 
-      await new Promise((r) => setTimeout(r, 1000));
+      await new Promise((r) => setTimeout(r, 3000));
     }
 
     const toc = buildToc(published, channelNumericId);
