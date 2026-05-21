@@ -54,7 +54,11 @@ export async function GET(request: NextRequest) {
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
     const { data, content } = matter(raw);
 
-    if (data.date === today) {
+    const postDate = data.date instanceof Date
+      ? data.date.toISOString().split("T")[0]
+      : String(data.date);
+
+    if (postDate === today) {
       const text = content.trim();
       const res = await sendTelegramMessage(token, channelId, text);
 
