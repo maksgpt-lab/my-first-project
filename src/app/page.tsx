@@ -241,6 +241,45 @@ export default function Home() {
         )}
 
 
+        {/* ── For professions ── */}
+        <section className="bg-[#080810] pb-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Для вашей профессии</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                ChatGPT решает задачи именно вашей роли
+              </h2>
+              <p className="text-white/35 mt-4 text-base max-w-lg mx-auto">
+                Готовые промпты и курсы под конкретные задачи — без воды и лишней теории.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { slug: "marketolog", label: "Маркетолог", icon: "📣", text: "Контент-план, тексты, реклама, email-кампании" },
+                { slug: "rukovoditel", label: "Руководитель", icon: "🎯", text: "Регламенты, найм, аналитика, делегирование" },
+                { slug: "prodazhi", label: "Отдел продаж", icon: "💼", text: "Скрипты, возражения, КП, реактивация клиентов" },
+                { slug: "hr", label: "HR", icon: "👥", text: "Вакансии, интервью, онбординг новых сотрудников" },
+                { slug: "buhgalter", label: "Бухгалтер", icon: "📊", text: "Деловые письма, документы, объяснительные" },
+              ].map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/for/${p.slug}`}
+                  className="glass-dark rounded-2xl p-6 border border-white/[0.07] hover:border-indigo-500/30 transition-all group flex flex-col gap-3"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl">{p.icon}</span>
+                    <span className="text-white/20 group-hover:text-indigo-400 transition-colors">→</span>
+                  </div>
+                  <div>
+                    <div className="font-bold text-white group-hover:text-indigo-300 transition-colors mb-1">{p.label}</div>
+                    <div className="text-sm text-white/35 leading-relaxed">{p.text}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Benefits ── */}
         <section className="bg-[#080810] pb-28">
           <div className="max-w-5xl mx-auto px-6">

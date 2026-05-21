@@ -9,12 +9,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const courses = getCourses();
   const guides = getGuides();
 
+  const professionSlugs = ["marketolog", "rukovoditel", "prodazhi", "hr", "buhgalter"];
+
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), priority: 1.0 },
     { url: `${BASE_URL}/courses`, lastModified: new Date(), priority: 0.9 },
     { url: `${BASE_URL}/guides`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/prompts`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), priority: 0.5 },
+    ...professionSlugs.map((slug) => ({
+      url: `${BASE_URL}/for/${slug}`,
+      lastModified: new Date(),
+      priority: 0.85,
+    })),
   ];
 
   const courseRoutes: MetadataRoute.Sitemap = courses.flatMap((course) => [
