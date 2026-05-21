@@ -39,6 +39,9 @@ export default function Footer() {
             <Link href="/refund" className="text-xs text-white/15 hover:text-white/35 transition-colors">
               Возврат
             </Link>
+            <Link href="/rekvizity" className="text-xs text-white/15 hover:text-white/35 transition-colors">
+              Реквизиты
+            </Link>
           </div>
         </div>
       </div>
