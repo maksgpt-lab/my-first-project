@@ -3,8 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
 
-const TG_LINK = "https://t.me/+0ip_wx4Y4pFkMTAy";
-
 export default function Home() {
   const courses = getCourses();
 
@@ -28,16 +26,16 @@ export default function Home() {
               <div>
                 <span className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                  На русском · Без кода · Для бизнеса
+                  На русском · Практика в уроке · Без кода
                 </span>
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-white mb-6">
-                  ChatGPT для реальной работы —{" "}
-                  <span className="gradient-text">конкретно и на русском</span>
+                  YouTube объясняет ChatGPT.{" "}
+                  <span className="gradient-text">Здесь — учатся им пользоваться.</span>
                 </h1>
 
                 <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-lg">
-                  Курсы, промпты и гайды для предпринимателей и специалистов. Без программирования — только то, что можно применить сразу.
+                  Структурированный курс с практикой прямо в уроке. Применяешь пока читаешь — не потом.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -51,7 +49,7 @@ export default function Home() {
                     href="/pricing"
                     className="glass-dark text-white/55 hover:text-white px-8 py-3.5 rounded-xl font-medium transition-colors border border-white/[0.08] text-center"
                   >
-                    Смотреть тарифы
+                    Тарифы — от 990 ₽
                   </Link>
                 </div>
 
@@ -189,12 +187,14 @@ export default function Home() {
                 <p className="text-white/30 text-sm mb-6">Санкт-Петербург · Предприниматель</p>
                 <div className="space-y-4 text-white/55 leading-relaxed">
                   <p>
-                    Я не продаю мечту — я сам работаю с AI каждый день. Строю агентов,
-                    тестирую инструменты, вижу что реально работает, а что нет.
+                    У меня есть агент, который каждое утро читает мою почту и присылает
+                    сводку: что срочно, что подождёт, что можно удалить. Папку «Входящие»
+                    я не открывал уже несколько месяцев.
                   </p>
                   <p>
-                    На западе таких материалов много. На русском — почти нет.
-                    Это я и решил исправить.
+                    Я строю такие инструменты для себя — и точно знаю, что реально
+                    работает, а что нет. На западе это уже норма. На русском материалов
+                    почти нет, и разрыв только растёт. Это я и решил исправить.
                   </p>
                 </div>
               </div>
@@ -203,24 +203,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Reviews placeholder ── */}
-        <section className="py-20">
-          <div className="max-w-5xl mx-auto px-6 text-center">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">
-              Отзывы
-            </p>
-            <h2 className="text-2xl font-bold text-white mb-3">
-              Используешь материалы в работе?
-            </h2>
-            <p className="text-white/40 mb-8 max-w-sm mx-auto leading-relaxed">
-              Напиши нам в Telegram — опубликуем твой опыт здесь.
-            </p>
-            <Link
-              href={TG_LINK}
-              className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
-            >
-              Написать в Telegram →
-            </Link>
+        {/* ── FAQ ── */}
+        <section className="py-20 bg-[#0b0b16]">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">
+                Частые вопросы
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                Отвечаем на главное
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+              {[
+                {
+                  q: "Нужен ли опыт с ChatGPT?",
+                  a: "Нет. Первый курс начинается с нуля — объясняем как работает и как писать запросы, которые дают результат с первого раза.",
+                },
+                {
+                  q: "Чем это лучше YouTube?",
+                  a: "На YouTube нужно самому искать, фильтровать и пробовать. Здесь — структурированный путь и практика прямо в уроке.",
+                },
+                {
+                  q: "Это теория или практика?",
+                  a: "Каждый урок заканчивается заданием прямо здесь. Не нужно переключаться — практика встроена в процесс.",
+                },
+                {
+                  q: "Нужно ли программирование?",
+                  a: "Нет. Только браузер и ChatGPT. Все курсы рассчитаны на людей без технического background.",
+                },
+              ].map((item) => (
+                <div key={item.q} className="glass-dark rounded-2xl border border-white/[0.07] p-6">
+                  <h3 className="font-semibold text-white mb-2 text-[15px]">{item.q}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed">{item.a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
