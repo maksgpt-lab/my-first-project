@@ -2,11 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const navLinks = [
+const navLinks: { href: string; label: string; pulse?: boolean }[] = [
   { href: "/courses", label: "Курсы" },
   { href: "/guides", label: "Гайды" },
   { href: "/prompts", label: "Промпты" },
   { href: "/pricing", label: "Тарифы" },
+  { href: "/club/agent", label: "AI-консультант", pulse: true },
 ];
 
 
@@ -26,26 +27,26 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-8 text-sm">
+        <nav className="hidden sm:flex items-center gap-7 text-sm">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-white/50 hover:text-white transition-colors font-medium"
+              className={`transition-colors font-medium flex items-center gap-1.5 ${
+                link.pulse
+                  ? "text-indigo-300 hover:text-indigo-200"
+                  : "text-white/50 hover:text-white"
+              }`}
             >
+              {link.pulse && (
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
+              )}
               {link.label}
             </Link>
           ))}
           <Link
-            href="/club/agent"
-            className="flex items-center gap-2 text-indigo-300 hover:text-white font-semibold px-4 py-2 rounded-xl border border-indigo-500/30 hover:border-indigo-400/60 bg-indigo-500/5 hover:bg-indigo-500/10 transition-all"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
-            AI-консультант
-          </Link>
-          <Link
             href="https://t.me/+0ip_wx4Y4pFkMTAy"
-            className="btn-glow text-white px-5 py-2.5 rounded-xl font-semibold text-sm"
+            className="btn-glow text-white px-5 py-2.5 rounded-xl font-semibold text-sm shrink-0"
           >
             Telegram-клуб
           </Link>
@@ -79,23 +80,19 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-white/70 hover:text-white transition-colors font-medium py-3.5 border-b border-white/[0.05] flex items-center justify-between"
+                className={`transition-colors font-medium py-3.5 border-b border-white/[0.05] flex items-center justify-between ${
+                  link.pulse ? "text-indigo-300" : "text-white/70 hover:text-white"
+                }`}
               >
-                {link.label}
-                <span className="text-white/20 text-sm">→</span>
+                <span className="flex items-center gap-2">
+                  {link.pulse && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
+                  )}
+                  {link.label}
+                </span>
+                <span className={`text-sm ${link.pulse ? "text-indigo-400/40" : "text-white/20"}`}>→</span>
               </Link>
             ))}
-            <Link
-              href="/club/agent"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between py-3.5 border-b border-white/[0.05]"
-            >
-              <span className="flex items-center gap-2 text-indigo-300 font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
-                AI-консультант
-              </span>
-              <span className="text-indigo-400/40 text-sm">→</span>
-            </Link>
             <Link
               href="https://t.me/+0ip_wx4Y4pFkMTAy"
               onClick={() => setOpen(false)}
