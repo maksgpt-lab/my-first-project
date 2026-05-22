@@ -1,35 +1,29 @@
 "use client";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
 function KatanaSVG() {
   return (
-    <svg viewBox="0 0 480 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[340px] sm:w-[460px]">
+    <svg viewBox="0 0 480 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[300px] sm:w-[440px]">
       <defs>
-        <linearGradient id="blade" x1="100" y1="28" x2="480" y2="28" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#888" stopOpacity="0.3" />
-          <stop offset="25%" stopColor="#ccc" />
-          <stop offset="52%" stopColor="#fff" />
-          <stop offset="78%" stopColor="#bbb" />
+        <linearGradient id="kat-blade" x1="100" y1="28" x2="480" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#888" stopOpacity="0.3" />
+          <stop offset="25%"  stopColor="#ccc" />
+          <stop offset="52%"  stopColor="#fff" />
+          <stop offset="78%"  stopColor="#bbb" />
           <stop offset="100%" stopColor="#777" stopOpacity="0.4" />
         </linearGradient>
-        <linearGradient id="shine" x1="100" y1="28" x2="480" y2="28" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-          <stop offset="42%" stopColor="#fff" stopOpacity="0.85" />
+        <linearGradient id="kat-shine" x1="100" y1="28" x2="480" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#fff" stopOpacity="0" />
+          <stop offset="42%"  stopColor="#fff" stopOpacity="0.85" />
           <stop offset="100%" stopColor="#fff" stopOpacity="0.1" />
         </linearGradient>
-        <filter id="tip-glow" x="-20%" y="-100%" width="140%" height="300%">
-          <feGaussianBlur stdDeviation="2.5" result="b" />
-          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
       </defs>
 
-      {/* Blade body — tapers to a point */}
-      <polygon points="478,28 102,37 102,19" fill="url(#blade)" />
-      {/* Blade spine highlight */}
-      <line x1="102" y1="28" x2="477" y2="28" stroke="url(#shine)" strokeWidth="1.2" />
-      {/* Tip glint */}
-      <polygon points="480,28 462,31 462,25" fill="white" opacity="0.95" filter="url(#tip-glow)" />
+      {/* Blade */}
+      <polygon points="478,28 102,37 102,19" fill="url(#kat-blade)" />
+      <line x1="102" y1="28" x2="477" y2="28" stroke="url(#kat-shine)" strokeWidth="1.2" />
+      <polygon points="480,28 462,31 462,25" fill="white" opacity="0.95" />
 
       {/* Guard (tsuba) */}
       <ellipse cx="93" cy="28" rx="11" ry="23" fill="#3D2510" />
@@ -43,7 +37,7 @@ function KatanaSVG() {
         <line key={x} x1={x} y1="22" x2={x + 4} y2="34" stroke="#0A0603" strokeWidth="2" opacity="0.75" />
       ))}
 
-      {/* Pommel (kashira) */}
+      {/* Pommel */}
       <ellipse cx="5" cy="28" rx="6" ry="10" fill="#3D2510" />
       <ellipse cx="5" cy="28" rx="3" ry="6"  fill="#4A2C18" />
     </svg>
@@ -53,18 +47,15 @@ function KatanaSVG() {
 function ChatGPTLogo() {
   return (
     <div className="flex flex-col items-center gap-3">
-      {/* Simplified ChatGPT mark */}
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
         <circle cx="30" cy="30" r="28" stroke="white" strokeWidth="2" opacity="0.8" />
         {[0, 60, 120, 180, 240, 300].map((angle) => {
-          const r = Math.PI / 180;
+          const rad = (angle * Math.PI) / 180;
           return (
             <line
               key={angle}
-              x1={30 + 9 * Math.cos(angle * r)}
-              y1={30 + 9 * Math.sin(angle * r)}
-              x2={30 + 22 * Math.cos(angle * r)}
-              y2={30 + 22 * Math.sin(angle * r)}
+              x1={30 + 9  * Math.cos(rad)} y1={30 + 9  * Math.sin(rad)}
+              x2={30 + 22 * Math.cos(rad)} y2={30 + 22 * Math.sin(rad)}
               stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.8"
             />
           );
@@ -85,24 +76,25 @@ export default function KatanaSection() {
     offset: ["start start", "end end"],
   });
 
-  // Katana sweeps right → left
-  const katanaX = useTransform(scrollYProgress, [0.04, 0.58], ["58vw", "-55vw"]);
+  // useMotionTemplate correctly handles vw units in the transform string
+  const katanaVw      = useTransform(scrollYProgress, [0.04, 0.58], [58, -82]);
   const katanaOpacity = useTransform(scrollYProgress, [0.02, 0.1, 0.88, 0.96], [0, 1, 1, 0]);
+  const katanaTransform = useMotionTemplate`translateX(calc(-50% + ${katanaVw}vw)) translateY(-50%) rotate(-13deg)`;
 
-  // Slash glow appears as katana crosses
-  const slashOpacity = useTransform(scrollYProgress, [0.28, 0.4, 0.68, 0.88], [0, 1, 1, 0]);
-  const slashScaleX = useTransform(scrollYProgress, [0.28, 0.44], [0, 1]);
+  // Slash glow — scaleX from center
+  const slashOpacity = useTransform(scrollYProgress, [0.28, 0.40, 0.68, 0.88], [0, 1, 1, 0]);
+  const slashScaleX  = useTransform(scrollYProgress, [0.28, 0.44], [0, 1]);
 
-  // Logo halves split apart
-  const topY    = useTransform(scrollYProgress, [0.4, 0.76], ["0%", "-90%"]);
-  const bottomY = useTransform(scrollYProgress, [0.4, 0.76], ["0%",  "90%"]);
+  // Logo halves — pixel values, more reliable than %
+  const topY      = useTransform(scrollYProgress, [0.40, 0.76], [0, -130]);
+  const bottomY   = useTransform(scrollYProgress, [0.40, 0.76], [0,  130]);
   const logoOpacity = useTransform(scrollYProgress, [0.56, 0.82], [1, 0]);
 
-  // Tagline fades in
+  // Tagline
   const tagOpacity = useTransform(scrollYProgress, [0.78, 0.94], [0, 1]);
   const tagY       = useTransform(scrollYProgress, [0.78, 0.94], [18, 0]);
 
-  // Scroll hint disappears
+  // Scroll hint
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
 
   return (
@@ -125,10 +117,10 @@ export default function KatanaSection() {
         {/* Scene */}
         <div className="relative w-full flex flex-col items-center">
 
-          {/* Logo + slash container */}
+          {/* Logo + slash — fixed size container */}
           <div className="relative" style={{ width: "min(480px, 88vw)", height: "168px" }}>
 
-            {/* Top half of logo */}
+            {/* Top half */}
             <motion.div
               className="absolute inset-0"
               style={{ clipPath: "inset(0 0 50% 0)", y: topY, opacity: logoOpacity }}
@@ -138,7 +130,7 @@ export default function KatanaSection() {
               </div>
             </motion.div>
 
-            {/* Bottom half of logo */}
+            {/* Bottom half */}
             <motion.div
               className="absolute inset-0"
               style={{ clipPath: "inset(50% 0 0 0)", y: bottomY, opacity: logoOpacity }}
@@ -150,11 +142,12 @@ export default function KatanaSection() {
 
             {/* Amber slash line */}
             <motion.div
-              className="absolute top-1/2 rounded-full pointer-events-none"
+              className="absolute rounded-full pointer-events-none"
               style={{
-                insetInline: "-15%",
+                left: "-20%",
+                right: "-20%",
+                top: "calc(50% - 1px)",
                 height: "2px",
-                translateY: "-50%",
                 background: "linear-gradient(90deg, transparent 0%, #F59E0B 18%, #FBBF24 50%, #F59E0B 82%, transparent 100%)",
                 boxShadow: "0 0 18px 6px rgba(251,191,36,0.65), 0 0 56px 12px rgba(251,191,36,0.28)",
                 opacity: slashOpacity,
@@ -164,15 +157,13 @@ export default function KatanaSection() {
             />
           </div>
 
-          {/* Katana — sweeps across logo vertically centered */}
+          {/* Katana — transform string handles vw positioning correctly */}
           <motion.div
             className="absolute pointer-events-none"
             style={{
               top: "84px",
               left: "50%",
-              x: katanaX,
-              y: "-50%",
-              rotate: -13,
+              transform: katanaTransform,
               opacity: katanaOpacity,
             }}
           >
