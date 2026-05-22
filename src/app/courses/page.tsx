@@ -7,13 +7,13 @@ export default function CoursesPage() {
   const courses = getCourses();
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
       <main className="flex-1">
         <section className="max-w-5xl mx-auto px-6 py-20">
 
           <div className="mb-16">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">{courses.length} курсов</p>
+            <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">{courses.length} курсов</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
               Учись зарабатывать
               <br />
@@ -60,7 +60,7 @@ export default function CoursesPage() {
             ];
             return (
               <div className="mb-14">
-                <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-6">
+                <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-6">
                   Рекомендуемый порядок изучения
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -70,11 +70,11 @@ export default function CoursesPage() {
                       <Link
                         key={course.slug}
                         href={`/courses/${course.slug}`}
-                        className="glass-dark rounded-2xl p-6 border border-white/[0.07] hover:border-indigo-500/30 transition-all group flex flex-col gap-4"
+                        className="glass-dark rounded-2xl p-6 border border-white/[0.07] hover:border-amber-500/30 transition-all group flex flex-col gap-4"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <span className="text-3xl font-bold gradient-text leading-none">{i + 1}</span>
-                          <span className="text-[10px] font-semibold text-indigo-400/70 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full whitespace-nowrap">
+                          <span className="text-[10px] font-semibold text-amber-500/70 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full whitespace-nowrap">
                             {meta?.tag}
                           </span>
                         </div>
@@ -96,7 +96,7 @@ export default function CoursesPage() {
                         </ul>
                         <div className="flex items-center justify-between pt-3 border-t border-white/[0.06]">
                           <span className="text-xs text-white/20">{course.lessons.length} уроков</span>
-                          <span className="text-xs text-indigo-400/60 group-hover:text-indigo-400 transition-colors">
+                          <span className="text-xs text-amber-500/60 group-hover:text-amber-500 transition-colors">
                             Открыть →
                           </span>
                         </div>
@@ -104,10 +104,10 @@ export default function CoursesPage() {
                     );
                   })}
                 </div>
-                <div className="mt-5 relative overflow-hidden glass-dark rounded-2xl p-5 border border-indigo-500/20">
+                <div className="mt-5 relative overflow-hidden glass-dark rounded-2xl p-5 border border-amber-500/20">
                   <div className="absolute left-0 top-0 bottom-0 w-1 gradient-bg" />
                   <div className="pl-4">
-                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">Результат после всех {courses.length} курсов</p>
+                    <p className="text-xs font-semibold text-amber-500 uppercase tracking-widest mb-2">Результат после всех {courses.length} курсов</p>
                     <p className="text-sm text-white/50 leading-relaxed">
                       У тебя работает AI-система для бизнеса: маркетинг привлекает клиентов, продажи закрывают сделки, операционка работает без твоего постоянного участия — ты управляешь стратегией, а не тонешь в рутине.
                     </p>

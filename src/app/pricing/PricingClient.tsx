@@ -51,7 +51,7 @@ const plans = [
     cta: "Вступить в клуб",
     ctaSlug: "club",
     ctaHref: "/buy/club",
-    ctaStyle: "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/30",
+    ctaStyle: "bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-indigo-500/30",
     highlight: false,
     badge: null,
     features: [
@@ -81,7 +81,7 @@ export default function PricingClient() {
     <section className="max-w-5xl mx-auto px-6 py-20">
       {/* Header */}
       <div className="text-center mb-14">
-        <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+        <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
           Тарифы
         </p>
         <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -134,7 +134,7 @@ export default function PricingClient() {
           >
             {plan.badge && (
               <div className="absolute top-5 right-5">
-                <span className="text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 px-2.5 py-1 rounded-full tracking-wide uppercase">
+                <span className="text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full tracking-wide uppercase">
                   {plan.badge}
                 </span>
               </div>
@@ -189,7 +189,7 @@ export default function PricingClient() {
                   <li key={f.text} className="flex items-start gap-3">
                     <span
                       className={`shrink-0 mt-0.5 text-sm ${
-                        f.included ? "text-indigo-400" : "text-white/15"
+                        f.included ? "text-amber-500" : "text-white/15"
                       }`}
                     >
                       {f.included ? "✓" : "✗"}
@@ -277,7 +277,7 @@ export default function PricingClient() {
         </p>
         <Link
           href="https://t.me/+0ip_wx4Y4pFkMTAy"
-          className="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium"
+          className="text-amber-500 hover:text-amber-400 transition-colors text-sm font-medium"
         >
           Написать в Telegram →
         </Link>

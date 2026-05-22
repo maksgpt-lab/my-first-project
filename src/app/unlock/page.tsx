@@ -9,7 +9,7 @@ function UnlockForm() {
   const [state, action, pending] = useActionState(unlockAccess, null);
 
   return (
-    <div className="bg-[#080810] min-h-screen flex items-center justify-center px-6">
+    <div className="bg-[#0C0A08] min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-10">
@@ -35,7 +35,7 @@ function UnlockForm() {
               placeholder="••••••••"
               required
               autoFocus
-              className="w-full bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-white/20 text-base outline-none focus:border-indigo-500/50 focus:bg-white/[0.08] transition-all mb-4"
+              className="w-full bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-white/20 text-base outline-none focus:border-amber-500/50 focus:bg-white/[0.08] transition-all mb-4"
             />
 
             {state?.error && (
@@ -58,7 +58,7 @@ function UnlockForm() {
           Нет пароля?{" "}
           <a
             href="/pricing"
-            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="text-amber-500 hover:text-amber-400 transition-colors"
           >
             Смотреть тарифы →
           </a>

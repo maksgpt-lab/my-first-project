@@ -119,8 +119,8 @@ export default function AgentWidget() {
       <div className="flex-1 overflow-y-auto px-4 py-6 space-y-5">
         {isEmpty && (
           <div className="flex flex-col items-center justify-center h-full text-center py-16">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4">
-              <span className="text-indigo-400 text-xl">✦</span>
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+              <span className="text-amber-500 text-xl">✦</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Расскажи что хочешь автоматизировать в своём бизнесе — разберём вместе.
@@ -153,14 +153,14 @@ export default function AgentWidget() {
           >
             <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mt-0.5 ${
               msg.role === "user"
-                ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
+                ? "bg-amber-500/20 text-amber-400 border border-amber-500/30"
                 : "bg-white/[0.06] text-white/40 border border-white/[0.1]"
             }`}>
               {msg.role === "user" ? "Я" : "✦"}
             </div>
             <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
               msg.role === "user"
-                ? "bg-indigo-500/15 text-white/80 border border-indigo-500/20"
+                ? "bg-indigo-500/15 text-white/80 border border-amber-500/20"
                 : "bg-white/[0.04] text-white/70 border border-white/[0.07]"
             }`}>
               {msg.content}
@@ -175,9 +175,9 @@ export default function AgentWidget() {
             </div>
             <div className="bg-white/[0.04] border border-white/[0.07] rounded-2xl px-4 py-3">
               <span className="flex gap-1 items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400/60 animate-bounce [animation-delay:0ms]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400/60 animate-bounce [animation-delay:150ms]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400/60 animate-bounce [animation-delay:300ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500/60 animate-bounce [animation-delay:0ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500/60 animate-bounce [animation-delay:150ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500/60 animate-bounce [animation-delay:300ms]" />
               </span>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function AgentWidget() {
 
       {/* Paywall */}
       {limitReached && (
-        <div className="mx-4 mb-4 p-6 bg-indigo-500/5 border border-indigo-500/30 rounded-2xl text-center">
+        <div className="mx-4 mb-4 p-6 bg-indigo-500/5 border border-amber-500/30 rounded-2xl text-center">
           <p className="text-white/70 font-semibold mb-1">Бесплатные вопросы закончились</p>
           <p className="text-white/35 text-sm mb-4 leading-relaxed">
             Вступи в клуб — и задавай сколько угодно вопросов без ограничений.
@@ -224,7 +224,7 @@ export default function AgentWidget() {
               onKeyDown={handleKeyDown}
               placeholder="Напиши вопрос..."
               rows={2}
-              className="flex-1 bg-[#080810] border border-white/[0.08] rounded-2xl px-3 sm:px-4 py-3 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-indigo-500/40 transition-colors"
+              className="flex-1 bg-[#0C0A08] border border-white/[0.08] rounded-2xl px-3 sm:px-4 py-3 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-amber-500/40 transition-colors"
             />
             <div className="flex flex-col gap-2 shrink-0">
               <button

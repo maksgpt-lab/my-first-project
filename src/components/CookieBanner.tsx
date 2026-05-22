@@ -21,11 +21,11 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-50 p-4">
-      <div className="max-w-5xl mx-auto bg-[#13131f] border border-white/[0.1] rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-2xl">
+      <div className="max-w-5xl mx-auto bg-[#130E09] border border-white/[0.1] rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-2xl">
         <p className="text-sm text-white/50 leading-relaxed flex-1">
           Мы используем файлы cookie и Яндекс Метрику для анализа посещаемости.
           Продолжая использовать сайт, вы соглашаетесь с нашей{" "}
-          <Link href="/privacy" className="text-indigo-400 hover:text-indigo-300 transition-colors underline">
+          <Link href="/privacy" className="text-amber-500 hover:text-amber-400 transition-colors underline">
             политикой конфиденциальности
           </Link>
           .

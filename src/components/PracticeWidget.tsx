@@ -86,13 +86,13 @@ export default function PracticeWidget() {
   }
 
   return (
-    <div className="mt-14 bg-white/[0.03] border border-indigo-500/20 rounded-3xl p-8">
+    <div className="mt-14 bg-white/[0.03] border border-amber-500/20 rounded-3xl p-8">
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-            <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">
               Практика прямо здесь
             </span>
           </div>
@@ -112,7 +112,7 @@ export default function PracticeWidget() {
         placeholder="Вставь промпт из урока и подставь свои данные..."
         rows={5}
         disabled={usesLeft <= 0}
-        className="w-full bg-[#080810] border border-white/[0.08] rounded-2xl px-5 py-4 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-indigo-500/40 transition-colors disabled:opacity-40"
+        className="w-full bg-[#0C0A08] border border-white/[0.08] rounded-2xl px-5 py-4 text-white/70 placeholder-white/20 text-sm leading-relaxed resize-none focus:outline-none focus:border-amber-500/40 transition-colors disabled:opacity-40"
       />
 
       {/* Controls */}
@@ -136,7 +136,7 @@ export default function PracticeWidget() {
 
       {/* Limit reached */}
       {usesLeft <= 0 && (
-        <div className="mt-4 text-center p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-2xl">
+        <div className="mt-4 text-center p-4 bg-indigo-500/5 border border-amber-500/20 rounded-2xl">
           <p className="text-white/50 text-sm">
             Лимит на сегодня исчерпан. Завтра счётчик обновится.
           </p>
@@ -162,7 +162,7 @@ export default function PracticeWidget() {
               {copied ? "Скопировано ✓" : "Скопировать"}
             </button>
           </div>
-          <div className="bg-[#080810] border border-white/[0.07] rounded-2xl px-6 py-5">
+          <div className="bg-[#0C0A08] border border-white/[0.07] rounded-2xl px-6 py-5">
             <p className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap">{result}</p>
           </div>
         </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PromptsPage() {
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
       <main className="flex-1">
         <PromptsClient />

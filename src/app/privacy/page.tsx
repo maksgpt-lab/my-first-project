@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
           <div className="mb-12">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+            <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
               Юридические документы
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
@@ -50,15 +50,15 @@ export default function PrivacyPage() {
               <p>При использовании Сайта мы можем собирать следующие данные:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span><strong className="text-white/70">Данные при оплате:</strong> имя, email-адрес, необходимые для проведения платежа и предоставления доступа к материалам.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span><strong className="text-white/70">Технические данные:</strong> IP-адрес, тип браузера, страницы Сайта которые вы посещаете, время посещения — собираются автоматически в целях аналитики (Яндекс Метрика).</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span><strong className="text-white/70">Данные из форм:</strong> сообщения которые вы отправляете через формы обратной связи или AI-ассистент на Сайте.</span>
                 </li>
               </ul>
@@ -69,23 +69,23 @@ export default function PrivacyPage() {
               <p>Мы обрабатываем персональные данные в следующих целях:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Исполнение договора: предоставление доступа к приобретённым информационным материалам.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Обработка платежей через платёжный сервис ЮКасса.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Улучшение работы Сайта на основе анализа пользовательского поведения.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Ответы на обращения и вопросы пользователей.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Соблюдение требований законодательства Российской Федерации.</span>
                 </li>
               </ul>
@@ -99,15 +99,15 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span><strong className="text-white/70">ЮКасса (ООО «ЮМани»):</strong> платёжный сервис для обработки транзакций. Передаются только данные необходимые для проведения платежа.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span><strong className="text-white/70">Яндекс Метрика:</strong> сервис веб-аналитики. Данные обезличены и используются только в аналитических целях.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>По требованию уполномоченных государственных органов в случаях, предусмотренных законодательством РФ.</span>
                 </li>
               </ul>
@@ -134,25 +134,25 @@ export default function PrivacyPage() {
               <p>В соответствии с ФЗ-152 вы имеете право:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Получить информацию о том, какие ваши данные обрабатываются.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Потребовать исправления неточных или неполных данных.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Потребовать удаления ваших данных (право на забвение).</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">—</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">—</span>
                   <span>Отозвать согласие на обработку персональных данных.</span>
                 </li>
               </ul>
               <p>
                 Для реализации своих прав направьте запрос на email:{" "}
-                <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                   maks.gpt@gmail.com
                 </a>
               </p>
@@ -187,13 +187,13 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-1 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Email:</span>
-                  <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span className="text-amber-500 shrink-0">Email:</span>
+                  <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                     maks.gpt@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Сайт:</span>
+                  <span className="text-amber-500 shrink-0">Сайт:</span>
                   <span>aidabusiness.ru</span>
                 </li>
               </ul>

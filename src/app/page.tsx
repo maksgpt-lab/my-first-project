@@ -7,16 +7,15 @@ export default function Home() {
   const courses = getCourses();
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
 
       <main className="overflow-hidden">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[90vh] flex items-center dot-grid">
+        <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="animate-aurora absolute -top-60 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-600/15 blur-[130px]" />
-            <div className="animate-aurora absolute -bottom-60 -left-40 w-[400px] h-[400px] rounded-full bg-violet-600/10 blur-[110px]" style={{ animationDelay: "4s" }} />
+            <div className="absolute -top-60 -right-40 w-[600px] h-[600px] rounded-full bg-amber-600/8 blur-[160px]" />
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 w-full">
@@ -24,8 +23,8 @@ export default function Home() {
 
               {/* Left: copy */}
               <div>
-                <span className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                <span className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
                   На русском · Практика в уроке · Без кода
                 </span>
 
@@ -64,8 +63,8 @@ export default function Home() {
 
               {/* Right: lesson preview */}
               <div className="hidden lg:flex flex-col">
-                <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-[0_0_80px_rgba(99,102,241,0.08)]">
-                  <div className="bg-[#13131f] px-4 py-3 flex items-center gap-2 border-b border-white/[0.06]">
+                <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-[0_0_80px_rgba(217,119,6,0.08)]">
+                  <div className="bg-[#130E09] px-4 py-3 flex items-center gap-2 border-b border-white/[0.06]">
                     <div className="flex gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                       <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
@@ -91,7 +90,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#080810] to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0C0A08] to-transparent" />
         </section>
 
         {/* ── Courses ── */}
@@ -100,7 +99,7 @@ export default function Home() {
             <div className="max-w-5xl mx-auto px-6">
               <div className="flex items-end justify-between mb-10">
                 <div>
-                  <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3">
+                  <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
                     Программа
                   </p>
                   <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -126,14 +125,14 @@ export default function Home() {
                     className="card-hover gradient-border glass-dark rounded-2xl p-7 block group"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
                         {course.lessons.filter((l) => l.free).length} урока бесплатно
                       </span>
-                      <span className="text-white/20 group-hover:text-indigo-400 transition-colors">
+                      <span className="text-white/20 group-hover:text-amber-500 transition-colors">
                         ↗
                       </span>
                     </div>
-                    <h3 className="font-bold text-white text-xl group-hover:text-indigo-300 transition-colors mb-2 leading-snug">
+                    <h3 className="font-bold text-white text-xl group-hover:text-amber-400 transition-colors mb-2 leading-snug">
                       {course.title}
                     </h3>
                     <p className="text-white/45 leading-relaxed text-[15px] mb-6">
@@ -141,7 +140,7 @@ export default function Home() {
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="flex-1 h-px bg-white/[0.06]">
-                        <div className="h-full w-[28%] bg-indigo-500/40 rounded-full" />
+                        <div className="h-full w-[28%] bg-amber-500/40 rounded-full" />
                       </div>
                       <span className="text-xs text-white/25">{course.lessons.length} уроков</span>
                     </div>
@@ -164,7 +163,7 @@ export default function Home() {
         )}
 
         {/* ── Author ── */}
-        <section className="py-24 bg-[#0b0b16]">
+        <section className="py-24 bg-[#100D0A]">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center max-w-3xl mx-auto">
 
@@ -180,7 +179,7 @@ export default function Home() {
               </div>
 
               <div>
-                <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+                <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
                   Кто за этим стоит
                 </p>
                 <h2 className="text-2xl font-bold text-white mb-1">Максим Батов</h2>
@@ -204,10 +203,10 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ── */}
-        <section className="py-20 bg-[#0b0b16]">
+        <section className="py-20 bg-[#100D0A]">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-12">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">
+              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-4">
                 Частые вопросы
               </p>
               <h2 className="text-2xl sm:text-3xl font-bold text-white">

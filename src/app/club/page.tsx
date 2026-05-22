@@ -10,7 +10,7 @@ export default function ClubPage() {
   );
 
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1">
@@ -18,7 +18,7 @@ export default function ClubPage() {
           {/* Header */}
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1 rounded-full">
+              <span className="text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full">
                 Клуб
               </span>
               <span className="text-white/20 text-sm">Закрытый доступ</span>
@@ -83,7 +83,7 @@ export default function ClubPage() {
                             </div>
                           )}
                         </div>
-                        <span className="text-white/20 group-hover:text-indigo-400 transition-colors text-sm shrink-0">
+                        <span className="text-white/20 group-hover:text-amber-500 transition-colors text-sm shrink-0">
                           →
                         </span>
                       </Link>
@@ -110,7 +110,7 @@ export default function ClubPage() {
           <div className="mt-14">
             <Link
               href="/club/agent"
-              className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-white/[0.03] hover:bg-white/[0.05] border border-indigo-500/20 hover:border-indigo-500/40 rounded-3xl p-8 transition-all"
+              className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-white/[0.03] hover:bg-white/[0.05] border border-amber-500/20 hover:border-amber-500/40 rounded-3xl p-8 transition-all"
             >
               <div className="absolute inset-0 rounded-3xl bg-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
@@ -127,7 +127,7 @@ export default function ClubPage() {
                   Задаёт правильные вопросы, находит точки автоматизации и даёт готовые промпты под твою ситуацию. Не общие советы — конкретный разбор.
                 </p>
               </div>
-              <span className="relative z-10 shrink-0 text-indigo-400 group-hover:text-indigo-300 transition-colors text-2xl">
+              <span className="relative z-10 shrink-0 text-amber-500 group-hover:text-amber-400 transition-colors text-2xl">
                 →
               </span>
             </Link>
@@ -148,7 +148,7 @@ export default function ClubPage() {
               </div>
               <Link
                 href="https://t.me/+0ip_wx4Y4pFkMTAy"
-                className="shrink-0 bg-white text-indigo-600 px-6 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl text-sm"
+                className="shrink-0 bg-white text-amber-600 px-6 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl text-sm"
               >
                 Перейти в Telegram →
               </Link>

@@ -85,7 +85,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
         <p className="text-white/50 leading-relaxed mb-2">
           Напишите нам в Telegram и укажите ваш email:
         </p>
-        <p className="text-indigo-300 font-medium mb-8">{email}</p>
+        <p className="text-amber-400 font-medium mb-8">{email}</p>
         <p className="text-white/40 text-sm mb-6">
           Мы выставим счёт на оплату через ЮКасса в течение нескольких минут.
         </p>
@@ -117,7 +117,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* Form */}
         <div>
-          <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
             Оформление заказа
           </p>
           <h1 className="text-3xl font-bold text-white mb-8">
@@ -134,7 +134,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Иван Иванов"
-                className={`w-full bg-white/[0.05] border rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:border-indigo-500/60 transition-colors text-sm ${
+                className={`w-full bg-white/[0.05] border rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:border-amber-500/60 transition-colors text-sm ${
                   errors.name ? "border-red-500/50" : "border-white/[0.1]"
                 }`}
               />
@@ -152,7 +152,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ivan@example.com"
-                className={`w-full bg-white/[0.05] border rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:border-indigo-500/60 transition-colors text-sm ${
+                className={`w-full bg-white/[0.05] border rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:border-amber-500/60 transition-colors text-sm ${
                   errors.email ? "border-red-500/50" : "border-white/[0.1]"
                 }`}
               />
@@ -206,7 +206,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
           <ul className="space-y-3 mb-8">
             {data.features.map((f) => (
               <li key={f} className="flex items-start gap-3">
-                <span className="text-indigo-400 shrink-0 mt-0.5 text-sm">✓</span>
+                <span className="text-amber-500 shrink-0 mt-0.5 text-sm">✓</span>
                 <span className="text-sm text-white/60 leading-snug">{f}</span>
               </li>
             ))}

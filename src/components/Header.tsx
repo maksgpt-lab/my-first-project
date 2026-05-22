@@ -15,7 +15,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#080810]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0C0A08]/80 backdrop-blur-xl">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
@@ -34,12 +34,12 @@ export default function Header() {
               href={link.href}
               className={`transition-colors font-medium flex items-center gap-1.5 ${
                 link.pulse
-                  ? "text-indigo-300 hover:text-indigo-200"
+                  ? "text-amber-400 hover:text-amber-300"
                   : "text-white/50 hover:text-white"
               }`}
             >
               {link.pulse && (
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
               )}
               {link.label}
             </Link>
@@ -73,7 +73,7 @@ export default function Header() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="sm:hidden border-t border-white/[0.06] bg-[#080810]/98 backdrop-blur-xl">
+        <div className="sm:hidden border-t border-white/[0.06] bg-[#0C0A08]/98 backdrop-blur-xl">
           <nav className="max-w-5xl mx-auto px-6 py-2 flex flex-col">
             {navLinks.map((link) => (
               <Link
@@ -81,16 +81,16 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`transition-colors font-medium py-3.5 border-b border-white/[0.05] flex items-center justify-between ${
-                  link.pulse ? "text-indigo-300" : "text-white/70 hover:text-white"
+                  link.pulse ? "text-amber-400" : "text-white/70 hover:text-white"
                 }`}
               >
                 <span className="flex items-center gap-2">
                   {link.pulse && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
                   )}
                   {link.label}
                 </span>
-                <span className={`text-sm ${link.pulse ? "text-indigo-400/40" : "text-white/20"}`}>→</span>
+                <span className={`text-sm ${link.pulse ? "text-amber-500/40" : "text-white/20"}`}>→</span>
               </Link>
             ))}
             <Link

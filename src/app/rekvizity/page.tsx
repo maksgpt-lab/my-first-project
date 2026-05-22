@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RekvizityPage() {
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-16">
@@ -38,7 +38,7 @@ export default function RekvizityPage() {
 
         <p className="mt-8 text-sm text-white/25 leading-relaxed">
           Оказание услуг осуществляется на основании публичной оферты.{" "}
-          <a href="/oferta" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+          <a href="/oferta" className="text-amber-500 hover:text-amber-400 transition-colors">
             Читать оферту →
           </a>
         </p>

@@ -30,7 +30,7 @@ export default function PromptsClient() {
     <section className="max-w-5xl mx-auto px-6 py-20">
       {/* Header */}
       <div className="mb-14">
-        <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+        <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
           Библиотека
         </p>
         <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -83,7 +83,7 @@ export default function PromptsClient() {
               {/* Card header */}
               <div className="px-6 pt-6 pb-4 flex-1">
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className="text-xs font-mono text-indigo-500/60 bg-indigo-500/10 px-2 py-0.5 rounded">
+                  <span className="text-xs font-mono text-indigo-500/60 bg-amber-500/10 px-2 py-0.5 rounded">
                     {categoryIcons[p.category]} {p.category}
                   </span>
                 </div>
@@ -98,11 +98,11 @@ export default function PromptsClient() {
               {/* Prompt text (expandable) */}
               <div className="px-6 pb-2">
                 <div
-                  className={`bg-[#0d0d1a] border border-indigo-500/20 rounded-xl overflow-hidden transition-all duration-300 ${
+                  className={`bg-[#120D07] border border-amber-500/20 rounded-xl overflow-hidden transition-all duration-300 ${
                     isExpanded ? "" : "max-h-24"
                   }`}
                 >
-                  <div className="px-4 py-3 border-b border-indigo-500/10 flex items-center justify-between">
+                  <div className="px-4 py-3 border-b border-amber-500/10 flex items-center justify-between">
                     <span className="text-[10px] font-mono font-bold text-indigo-500/50 tracking-widest">
                       ▸ ПРОМПТ
                     </span>
@@ -113,7 +113,7 @@ export default function PromptsClient() {
                       {isExpanded ? "свернуть ↑" : "развернуть ↓"}
                     </button>
                   </div>
-                  <pre className="px-4 py-3 text-[13px] text-indigo-200/70 font-mono whitespace-pre-wrap leading-relaxed">
+                  <pre className="px-4 py-3 text-[13px] text-amber-300/70 font-mono whitespace-pre-wrap leading-relaxed">
                     {p.prompt}
                   </pre>
                 </div>
@@ -126,7 +126,7 @@ export default function PromptsClient() {
                   className={`w-full py-2.5 rounded-xl text-sm font-semibold transition-all ${
                     isCopied
                       ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20"
-                      : "bg-indigo-600/20 text-indigo-300 border border-indigo-500/20 hover:bg-indigo-600/30 hover:text-indigo-200"
+                      : "bg-indigo-600/20 text-amber-400 border border-amber-500/20 hover:bg-indigo-600/30 hover:text-amber-300"
                   }`}
                 >
                   {isCopied ? "Скопировано ✓" : "Скопировать промпт"}
@@ -150,7 +150,7 @@ export default function PromptsClient() {
           </p>
           <a
             href="/courses/prompt-inzhiniring"
-            className="inline-block bg-white text-indigo-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
+            className="inline-block bg-white text-amber-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
           >
             Смотреть курс →
           </a>

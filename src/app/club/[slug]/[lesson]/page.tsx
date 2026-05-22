@@ -52,11 +52,11 @@ export default async function ClubLessonPage({
   const readMinutes = Math.max(1, Math.round(wordCount / 200));
 
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
 
       {/* ── Dark header ── */}
-      <div className="bg-[#080810] border-b border-white/[0.06]">
+      <div className="bg-[#0C0A08] border-b border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-6 pt-10 pb-12">
           <nav className="text-sm text-white/25 mb-8 flex items-center gap-2 flex-wrap">
             <Link href="/courses" className="hover:text-white/50 transition-colors">Курсы</Link>
@@ -67,7 +67,7 @@ export default async function ClubLessonPage({
           </nav>
 
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1 rounded-full">
+            <span className="text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full">
               Клуб
             </span>
             <span className="text-xs text-white/20">{readMinutes} мин чтения</span>
@@ -80,7 +80,7 @@ export default async function ClubLessonPage({
       </div>
 
       {/* ── Reading area ── */}
-      <main className="flex-1 bg-[#080810] relative">
+      <main className="flex-1 bg-[#0C0A08] relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-indigo-600/5 blur-[100px]" />
         </div>
@@ -93,9 +93,9 @@ export default async function ClubLessonPage({
                 prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5
                 prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-3
                 prose-p:text-gray-300 prose-p:leading-[1.9] prose-p:text-[17px]
-                prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline
+                prose-a:text-amber-500 prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-white prose-strong:font-semibold
-                prose-code:bg-indigo-500/15 prose-code:text-indigo-300 prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
+                prose-code:bg-indigo-500/15 prose-code:text-amber-400 prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
                 prose-pre:bg-[#0d0f1e] prose-pre:border prose-pre:border-white/10
                 prose-li:text-gray-300 prose-li:leading-relaxed
                 prose-ul:space-y-2 prose-ol:space-y-2
@@ -115,14 +115,14 @@ export default async function ClubLessonPage({
       </main>
 
       {/* ── Navigation ── */}
-      <div className="bg-[#080810] border-t border-white/[0.06]">
+      <div className="bg-[#0C0A08] border-t border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-6 py-8 flex justify-between gap-4">
           {prevLesson ? (
             <Link
               href={`/club/${slug}/${prevLesson.slug}`}
-              className="flex-1 p-5 glass-dark rounded-2xl hover:border-indigo-500/30 transition-all group"
+              className="flex-1 p-5 glass-dark rounded-2xl hover:border-amber-500/30 transition-all group"
             >
-              <div className="text-xs text-white/25 mb-1.5 group-hover:text-indigo-400 transition-colors">← Предыдущий</div>
+              <div className="text-xs text-white/25 mb-1.5 group-hover:text-amber-500 transition-colors">← Предыдущий</div>
               <div className="text-sm font-medium text-white/60 group-hover:text-white transition-colors">
                 {prevLesson.title}
               </div>
@@ -132,9 +132,9 @@ export default async function ClubLessonPage({
           {nextLesson ? (
             <Link
               href={`/club/${slug}/${nextLesson.slug}`}
-              className="flex-1 p-5 glass-dark rounded-2xl hover:border-indigo-500/30 transition-all text-right group"
+              className="flex-1 p-5 glass-dark rounded-2xl hover:border-amber-500/30 transition-all text-right group"
             >
-              <div className="text-xs text-white/25 mb-1.5 group-hover:text-indigo-400 transition-colors">Следующий →</div>
+              <div className="text-xs text-white/25 mb-1.5 group-hover:text-amber-500 transition-colors">Следующий →</div>
               <div className="text-sm font-medium text-white/60 group-hover:text-white transition-colors">
                 {nextLesson.title}
               </div>

@@ -18,12 +18,12 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
 
-          <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">О проекте</p>
+          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">О проекте</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
             AI для тех, кто<br />
             <span className="gradient-text">зарабатывает деньги</span>
@@ -35,7 +35,7 @@ export default function AboutPage() {
           {/* Author */}
           <div className="glass-dark rounded-3xl p-8 mb-6">
             <div className="flex items-start gap-5 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl shrink-0">
+              <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl shrink-0">
                 М
               </div>
               <div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/courses"
-                className="inline-block bg-white text-indigo-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
+                className="inline-block bg-white text-amber-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
               >
                 Смотреть курсы
               </Link>

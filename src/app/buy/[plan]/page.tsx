@@ -45,7 +45,7 @@ export default async function BuyPage({
   const isOnce = type === "once";
 
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <BuyClient plan={plan as Plan} isOnce={isOnce} />

@@ -13,11 +13,11 @@ export default function GuidesPage() {
   const guides = getGuides();
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
-          <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">Гайды</p>
+          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">Гайды</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
             Бесплатные материалы
           </h1>
@@ -44,7 +44,7 @@ export default function GuidesPage() {
                         {guide.description}
                       </p>
                     </div>
-                    <span className="text-white/20 group-hover:text-indigo-400 transition-colors text-lg shrink-0">↗</span>
+                    <span className="text-white/20 group-hover:text-amber-500 transition-colors text-lg shrink-0">↗</span>
                   </div>
                   {guide.publishedAt && (
                     <p className="text-xs text-white/20 mt-4">{guide.publishedAt}</p>

@@ -10,7 +10,7 @@ const professionLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080810] border-t border-white/[0.06]">
+    <footer className="bg-[#0C0A08] border-t border-white/[0.06]">
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-4 border-b border-white/[0.04]">
         <p className="text-[10px] font-semibold tracking-widest text-white/20 uppercase mb-3">ChatGPT для специалистов</p>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
@@ -80,7 +80,7 @@ export default function Footer() {
         <div className="flex flex-col items-center sm:items-end gap-2">
           <Link
             href="https://t.me/+0ip_wx4Y4pFkMTAy"
-            className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
+            className="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium"
           >
             Telegram-клуб →
           </Link>

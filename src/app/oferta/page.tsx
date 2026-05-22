@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function OfertaPage() {
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
           <div className="mb-12">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+            <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
               Юридические документы
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
@@ -73,7 +73,7 @@ export default function OfertaPage() {
               <p>
                 При оплате по модели «ежемесячная подписка» повторный платёж осуществляется каждые 30 дней.
                 Покупатель вправе отменить подписку в любое время, направив запрос на email{" "}
-                <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                   maks.gpt@gmail.com
                 </a>{" "}
                 или в Telegram; доступ сохраняется до окончания оплаченного периода.
@@ -145,19 +145,19 @@ export default function OfertaPage() {
               </p>
               <ul className="space-y-1.5 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Email:</span>
-                  <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span className="text-amber-500 shrink-0">Email:</span>
+                  <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                     maks.gpt@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Telegram:</span>
-                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span className="text-amber-500 shrink-0">Telegram:</span>
+                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-amber-500 hover:text-amber-400 transition-colors">
                     написать в Telegram
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Сайт:</span>
+                  <span className="text-amber-500 shrink-0">Сайт:</span>
                   <span>aidabusiness.ru</span>
                 </li>
               </ul>

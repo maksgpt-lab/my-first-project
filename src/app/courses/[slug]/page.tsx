@@ -38,7 +38,7 @@ export default async function CoursePage({
   const nextCourse = allCourses[currentIndex + 1] ?? null;
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-16">
@@ -59,7 +59,7 @@ export default async function CoursePage({
           <CourseProgress courseSlug={slug} lessons={course.lessons} />
 
           {/* Lessons */}
-          <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
             Содержание курса
           </p>
           <div className="divide-y divide-white/[0.05] glass-dark rounded-3xl overflow-hidden">
@@ -133,7 +133,7 @@ export default async function CoursePage({
               </p>
               <Link
                 href="/pricing"
-                className="inline-block bg-white text-indigo-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
+                className="inline-block bg-white text-amber-600 px-7 py-3 rounded-2xl font-bold hover:bg-indigo-50 transition-colors shadow-xl"
               >
                 Смотреть тарифы →
               </Link>

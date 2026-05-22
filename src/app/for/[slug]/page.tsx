@@ -394,7 +394,7 @@ export default async function ForProfessionPage({
   if (!prof) notFound();
 
   return (
-    <div className="bg-[#080810] min-h-screen">
+    <div className="bg-[#0C0A08] min-h-screen">
       <Header />
 
       <main className="overflow-hidden">
@@ -408,8 +408,8 @@ export default async function ForProfessionPage({
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 py-28 w-full">
             <div className="animate-fade-up">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+              <span className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
                 ChatGPT для {prof.title === "Продажи" ? "отдела продаж" : prof.title === "HR" ? "HR" : prof.title.toLowerCase() + "а"}
               </span>
             </div>
@@ -443,14 +443,14 @@ export default async function ForProfessionPage({
             </p>
           </div>
 
-          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#080810] to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0C0A08] to-transparent" />
         </section>
 
         {/* Pain points */}
-        <section className="bg-[#080810] py-24">
+        <section className="bg-[#0C0A08] py-24">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Узнаёшь себя?</p>
+              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-4">Узнаёшь себя?</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
                 Что отнимает больше всего времени
               </h2>
@@ -468,10 +468,10 @@ export default async function ForProfessionPage({
         </section>
 
         {/* Use cases with prompts */}
-        <section className="bg-[#080810] pb-24">
+        <section className="bg-[#0C0A08] pb-24">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Попробуй прямо сейчас</p>
+              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-4">Попробуй прямо сейчас</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
                 Готовые промпты — копируй и используй
               </h2>
@@ -483,15 +483,15 @@ export default async function ForProfessionPage({
               {prof.useCases.map((uc, i) => (
                 <div key={i} className="glass-dark rounded-3xl p-8 border border-white/[0.07]">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="shrink-0 w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-indigo-400">{String(i + 1).padStart(2, "0")}</span>
+                    <div className="shrink-0 w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-amber-500">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white text-lg leading-snug">{uc.title}</h3>
                       <p className="text-white/35 text-sm mt-1">{uc.description}</p>
                     </div>
                   </div>
-                  <div className="bg-[#0d0d1a] rounded-2xl p-5 border border-white/[0.05]">
+                  <div className="bg-[#120D07] rounded-2xl p-5 border border-white/[0.05]">
                     <p className="text-[11px] font-mono text-indigo-500/50 mb-3 uppercase tracking-widest">Промпт</p>
                     <p className="text-white/55 text-sm leading-relaxed font-mono">{uc.prompt}</p>
                   </div>
@@ -502,10 +502,10 @@ export default async function ForProfessionPage({
         </section>
 
         {/* Courses */}
-        <section className="bg-[#080810] pb-24">
+        <section className="bg-[#0C0A08] pb-24">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-4">Углубись</p>
+              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-4">Углубись</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
                 Курсы под твои задачи
               </h2>
@@ -518,10 +518,10 @@ export default async function ForProfessionPage({
                   className="card-hover gradient-border glass-dark rounded-3xl p-8 block group"
                 >
                   <div className="flex items-start justify-between mb-5">
-                    <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full">
+                    <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
                       3 урока бесплатно
                     </span>
-                    <span className="text-white/20 group-hover:text-indigo-400 transition-colors text-lg">↗</span>
+                    <span className="text-white/20 group-hover:text-amber-500 transition-colors text-lg">↗</span>
                   </div>
                   <h3 className="font-bold text-white text-xl group-hover:gradient-text transition-all mb-3 leading-snug">
                     {course.title}
@@ -536,7 +536,7 @@ export default async function ForProfessionPage({
         </section>
 
         {/* Result + CTA */}
-        <section className="bg-[#080810] pb-28">
+        <section className="bg-[#0C0A08] pb-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="relative rounded-3xl overflow-hidden">
               <div className="absolute inset-0 gradient-bg opacity-90" />
@@ -551,7 +551,7 @@ export default async function ForProfessionPage({
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href={`/courses/${prof.courses[0].slug}`}
-                    className="inline-block bg-white text-indigo-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
+                    className="inline-block bg-white text-amber-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
                   >
                     Начать бесплатно →
                   </Link>
@@ -569,9 +569,9 @@ export default async function ForProfessionPage({
         </section>
 
         {/* Other professions */}
-        <section className="bg-[#080810] pb-24">
+        <section className="bg-[#0C0A08] pb-24">
           <div className="max-w-5xl mx-auto px-6">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-6 text-center">
+            <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-6 text-center">
               Для других специалистов
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
@@ -581,7 +581,7 @@ export default async function ForProfessionPage({
                   <Link
                     key={s}
                     href={`/for/${s}`}
-                    className="glass-dark text-white/50 hover:text-white border border-white/[0.07] hover:border-indigo-500/30 px-5 py-2.5 rounded-xl text-sm font-medium transition-all"
+                    className="glass-dark text-white/50 hover:text-white border border-white/[0.07] hover:border-amber-500/30 px-5 py-2.5 rounded-xl text-sm font-medium transition-all"
                   >
                     ChatGPT для {p.title === "Продажи" ? "продаж" : p.title === "HR" ? "HR" : p.title.toLowerCase() + "а"} →
                   </Link>

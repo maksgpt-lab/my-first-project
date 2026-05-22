@@ -29,7 +29,7 @@ export default function Image() {
             width: 500,
             height: 500,
             borderRadius: "50%",
-            background: "rgba(99,102,241,0.25)",
+            background: "rgba(217,119,6,0.25)",
             filter: "blur(80px)",
             display: "flex",
           }}
@@ -58,10 +58,10 @@ export default function Image() {
             fontWeight: 600,
             color: "rgba(165,180,252,0.9)",
             letterSpacing: "0.1em",
-            border: "1px solid rgba(99,102,241,0.35)",
+            border: "1px solid rgba(217,119,6,0.35)",
             borderRadius: 100,
             padding: "10px 24px",
-            background: "rgba(99,102,241,0.12)",
+            background: "rgba(217,119,6,0.12)",
             marginBottom: 32,
           }}
         >

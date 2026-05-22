@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function RefundPage() {
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
           <div className="mb-12">
-            <p className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-5">
+            <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
               Юридические документы
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
@@ -44,17 +44,17 @@ export default function RefundPage() {
               <p>Возврат возможен если выполнены все три условия одновременно:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">1.</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">1.</span>
                   <span>Прошло не более 7 календарных дней с момента оплаты.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">2.</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">2.</span>
                   <span>
                     Просмотрено не более 2 уроков из приобретённого доступа (менее 20% контента).
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 mt-0.5">3.</span>
+                  <span className="text-amber-500 shrink-0 mt-0.5">3.</span>
                   <span>Покупатель указал причину возврата.</span>
                 </li>
               </ul>
@@ -91,18 +91,18 @@ export default function RefundPage() {
               <h2 className="text-lg font-bold text-white">Как запросить возврат</h2>
               <ol className="space-y-3 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 font-semibold mt-0.5">1.</span>
+                  <span className="text-amber-500 shrink-0 font-semibold mt-0.5">1.</span>
                   <span>
                     Напиши нам в Telegram с темой «Возврат» и укажи: дату оплаты, сумму,
                     причину возврата.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 font-semibold mt-0.5">2.</span>
+                  <span className="text-amber-500 shrink-0 font-semibold mt-0.5">2.</span>
                   <span>Мы ответим в течение 1 рабочего дня и подтвердим запрос.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0 font-semibold mt-0.5">3.</span>
+                  <span className="text-amber-500 shrink-0 font-semibold mt-0.5">3.</span>
                   <span>
                     Средства возвращаются на карту, с которой производилась оплата,
                     в течение 10 рабочих дней.
@@ -120,7 +120,7 @@ export default function RefundPage() {
               </p>
               <p>
                 Для отмены подписки напишите на{" "}
-                <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                   maks.gpt@gmail.com
                 </a>{" "}
                 или в Telegram с темой «Отмена подписки». Запрос обрабатывается в течение 1 рабочего дня.
@@ -132,14 +132,14 @@ export default function RefundPage() {
               <p>Все запросы принимаются по следующим контактам:</p>
               <ul className="space-y-1.5 ml-4">
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Email:</span>
-                  <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span className="text-amber-500 shrink-0">Email:</span>
+                  <a href="mailto:maks.gpt@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                     maks.gpt@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-indigo-400 shrink-0">Telegram:</span>
-                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span className="text-amber-500 shrink-0">Telegram:</span>
+                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-amber-500 hover:text-amber-400 transition-colors">
                     написать в Telegram
                   </a>
                 </li>

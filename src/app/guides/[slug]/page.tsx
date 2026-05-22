@@ -65,7 +65,7 @@ export default async function GuidePage({
               prose-headings:font-bold prose-headings:text-gray-900 prose-headings:tracking-tight
               prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
               prose-p:text-gray-600 prose-p:leading-[1.8] prose-p:text-[17px]
-              prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
+              prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline
               prose-strong:text-gray-900 prose-strong:font-semibold
               prose-code:bg-indigo-50 prose-code:text-indigo-700 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-lg prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
               prose-blockquote:border-l-4 prose-blockquote:border-indigo-400 prose-blockquote:bg-indigo-50/50 prose-blockquote:rounded-r-xl prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:not-italic
@@ -78,7 +78,7 @@ export default async function GuidePage({
           />
 
           <div className="mt-16 pt-8 border-t border-gray-100">
-            <Link href="/guides" className="text-sm text-indigo-600 hover:underline">
+            <Link href="/guides" className="text-sm text-amber-600 hover:underline">
               ← Все гайды
             </Link>
           </div>

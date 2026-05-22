@@ -9,14 +9,14 @@ export const metadata = {
 
 export default function AgentPage() {
   return (
-    <div className="bg-[#080810] min-h-screen flex flex-col">
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-6 py-12 flex flex-col gap-8">
         {/* Header */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1 rounded-full">
+            <span className="text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full">
               Клуб
             </span>
             <span className="flex items-center gap-1.5">

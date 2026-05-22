@@ -48,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${geist.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#080810] text-gray-900">
+      <body className="min-h-full flex flex-col bg-[#0C0A08] text-gray-900">
         {children}
         <CookieBanner />
         <Script id="ym-init" strategy="afterInteractive">{`
