@@ -118,6 +118,13 @@ export default function RefundPage() {
                 Доступ к материалам сохраняется до конца оплаченного месяца. Частичный возврат
                 за неиспользованные дни не производится.
               </p>
+              <p>
+                Для отмены подписки напишите на{" "}
+                <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                  maks.gpt@gmail.com
+                </a>{" "}
+                или в Telegram с темой «Отмена подписки». Запрос обрабатывается в течение 1 рабочего дня.
+              </p>
             </div>
 
             <div className="space-y-3">
