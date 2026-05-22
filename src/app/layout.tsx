@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const geist = Geist({
@@ -49,6 +50,7 @@ export default function RootLayout({
     <html lang="ru" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#080810] text-gray-900">
         {children}
+        <CookieBanner />
         <Script id="ym-init" strategy="afterInteractive">{`
           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
