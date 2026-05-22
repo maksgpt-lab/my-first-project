@@ -20,7 +20,7 @@ export default function OfertaPage() {
             <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
               Публичная оферта
             </h1>
-            <p className="text-white/30 text-sm">Редакция от 21 мая 2026 года</p>
+            <p className="text-white/30 text-sm">Редакция от 22 мая 2026 года</p>
           </div>
 
           <div className="glass-dark rounded-3xl border border-white/[0.07] px-8 sm:px-12 py-12 space-y-10 text-white/55 leading-relaxed text-[15px]">
