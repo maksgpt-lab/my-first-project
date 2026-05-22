@@ -28,8 +28,10 @@ export default function OfertaPage() {
             <div className="space-y-3">
               <h2 className="text-lg font-bold text-white">1. Общие положения</h2>
               <p>
-                Настоящий документ является публичной офертой (далее — «Оферта») и содержит все существенные условия
-                приобретения информационных продуктов, размещённых на сайте (далее — «Сайт»).
+                Настоящий документ является публичной офертой (далее — «Оферта») Батова Максима Дмитриевича,
+                ИНН 631609803763, плательщика налога на профессиональный доход (самозанятого), именуемого далее
+                «Продавец», и содержит все существенные условия приобретения информационных продуктов,
+                размещённых на сайте aidabusiness.ru (далее — «Сайт»).
               </p>
               <p>
                 Лицо, осуществившее акцепт настоящей Оферты, считается заключившим договор на изложенных ниже условиях.
@@ -61,11 +63,11 @@ export default function OfertaPage() {
                 в одностороннем порядке; изменение цены не затрагивает уже оплаченные периоды.
               </p>
               <p>
-                Оплата производится в рублях Российской Федерации безналичным способом через платёжный сервис,
-                интегрированный на Сайте.
+                Оплата производится в рублях Российской Федерации безналичным способом через платёжный сервис
+                ЮКасса, интегрированный на Сайте. Продавец не является плательщиком НДС.
               </p>
               <p>
-                При оплате по модели «ежемесячная подписка» списание производится автоматически каждые 30 дней.
+                При оплате по модели «ежемесячная подписка» повторный платёж осуществляется каждые 30 дней.
                 Покупатель вправе отменить подписку в любое время; доступ сохраняется до окончания оплаченного периода.
               </p>
             </div>
@@ -127,14 +129,26 @@ export default function OfertaPage() {
             <div className="space-y-3">
               <h2 className="text-lg font-bold text-white">9. Контактная информация</h2>
               <p>
-                По всем вопросам, связанным с исполнением настоящей Оферты, обращайтесь через Telegram:
-                <a
-                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors ml-1"
-                >
-                  написать в Telegram
-                </a>
+                По всем вопросам, связанным с исполнением настоящей Оферты, обращайтесь:
               </p>
+              <ul className="space-y-1.5 ml-4">
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 shrink-0">Email:</span>
+                  <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                    maks.gpt@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 shrink-0">Telegram:</span>
+                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                    написать в Telegram
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 shrink-0">Сайт:</span>
+                  <span>aidabusiness.ru</span>
+                </li>
+              </ul>
             </div>
 
           </div>

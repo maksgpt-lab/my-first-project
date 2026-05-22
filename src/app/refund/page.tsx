@@ -122,14 +122,24 @@ export default function RefundPage() {
 
             <div className="space-y-3">
               <h2 className="text-lg font-bold text-white">Контакт для возвратов</h2>
+              <p>Все запросы принимаются по следующим контактам:</p>
+              <ul className="space-y-1.5 ml-4">
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 shrink-0">Email:</span>
+                  <a href="mailto:maks.gpt@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                    maks.gpt@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 shrink-0">Telegram:</span>
+                  <a href="https://t.me/+0ip_wx4Y4pFkMTAy" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                    написать в Telegram
+                  </a>
+                </li>
+              </ul>
               <p>
-                Все запросы принимаются через Telegram:
-                <a
-                  href="https://t.me/+0ip_wx4Y4pFkMTAy"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors ml-1"
-                >
-                  написать в Telegram
-                </a>
+                Срок ответа на запрос о возврате — 1 рабочий день. Возврат средств осуществляется
+                через платёжный сервис ЮКасса на реквизиты, с которых производилась оплата.
               </p>
             </div>
 

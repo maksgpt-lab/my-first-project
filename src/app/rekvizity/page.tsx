@@ -18,8 +18,9 @@ export default function RekvizityPage() {
         <div className="bg-white/[0.03] border border-white/[0.07] rounded-3xl overflow-hidden">
           {[
             { label: "Исполнитель", value: "Батов Максим Дмитриевич" },
-            { label: "Статус", value: "Самозанятый" },
+            { label: "Статус", value: "Самозанятый (плательщик НПД)" },
             { label: "ИНН", value: "631609803763" },
+            { label: "Регион", value: "Самарская область, г. Самара" },
             { label: "Email", value: "maks.gpt@gmail.com" },
             { label: "Сайт", value: "aidabusiness.ru" },
           ].map((row, i, arr) => (
