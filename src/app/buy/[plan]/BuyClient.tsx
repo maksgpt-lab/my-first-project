@@ -165,7 +165,7 @@ export default function BuyClient({ plan, isOnce }: Props) {
               type="submit"
               className="w-full btn-glow text-white font-semibold py-3.5 rounded-xl text-sm mt-2"
             >
-              Оплатить {formatPrice(price)} {isOnce ? "₽" : "₽/мес"}
+              Получить счёт на оплату — {formatPrice(price)} {isOnce ? "₽" : "₽/мес"}
             </button>
           </form>
 
