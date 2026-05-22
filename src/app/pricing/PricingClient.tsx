@@ -2,8 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const TG_LINK = "https://t.me/+0ip_wx4Y4pFkMTAy";
-
 const plans = [
   {
     name: "Бесплатно",
@@ -11,6 +9,7 @@ const plans = [
     priceOnce: 0,
     description: "Попробуй без риска. Бесплатные уроки доступны сразу.",
     cta: "Начать бесплатно",
+    ctaSlug: null,
     ctaHref: "/courses",
     ctaStyle: "glass-dark text-white/70 hover:text-white border border-white/10",
     highlight: false,
@@ -30,7 +29,8 @@ const plans = [
     priceOnce: 7900,
     description: "Все курсы целиком + шаблоны. Оптимальный выбор.",
     cta: "Купить доступ",
-    ctaHref: TG_LINK,
+    ctaSlug: "pro",
+    ctaHref: "/buy/pro",
     ctaStyle: "btn-glow text-white",
     highlight: true,
     badge: "Популярный",
@@ -49,7 +49,8 @@ const plans = [
     priceOnce: 14900,
     description: "Максимум: все курсы, шаблоны и живое общение с автором.",
     cta: "Вступить в клуб",
-    ctaHref: TG_LINK,
+    ctaSlug: "club",
+    ctaHref: "/buy/club",
     ctaStyle: "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/30",
     highlight: false,
     badge: null,
@@ -176,7 +177,7 @@ export default function PricingClient() {
 
               {/* CTA */}
               <Link
-                href={plan.ctaHref}
+                href={plan.ctaSlug ? `${plan.ctaHref}${isOnce ? "?type=once" : ""}` : plan.ctaHref}
                 className={`w-full py-3 rounded-xl text-sm font-semibold text-center transition-all mb-8 block ${plan.ctaStyle}`}
               >
                 {plan.cta}
@@ -275,7 +276,7 @@ export default function PricingClient() {
           Остались вопросы перед покупкой?
         </p>
         <Link
-          href={TG_LINK}
+          href="https://t.me/+0ip_wx4Y4pFkMTAy"
           className="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium"
         >
           Написать в Telegram →
