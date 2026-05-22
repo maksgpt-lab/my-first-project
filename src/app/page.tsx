@@ -23,18 +23,13 @@ export default function Home() {
 
               {/* Left: copy */}
               <div>
-                <span className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-full mb-8 tracking-wider uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                  На русском · Практика в уроке · Без кода
-                </span>
-
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-white mb-6">
-                  YouTube объясняет ChatGPT.{" "}
-                  <span className="gradient-text">Здесь — учатся им пользоваться.</span>
+                  Большинство курсов по ChatGPT написаны ChatGPT.{" "}
+                  <span className="gradient-text">Этот — нет.</span>
                 </h1>
 
                 <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-lg">
-                  Структурированный курс с практикой прямо в уроке. Применяешь пока читаешь — не потом.
+                  Практика прямо в уроке. Применяешь пока читаешь — не потом. На русском, без кода.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -99,9 +94,6 @@ export default function Home() {
             <div className="max-w-5xl mx-auto px-6">
               <div className="flex items-end justify-between mb-10">
                 <div>
-                  <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
-                    Программа
-                  </p>
                   <h2 className="text-3xl sm:text-4xl font-bold text-white">
                     6 курсов — от основ до системы
                   </h2>
@@ -179,9 +171,6 @@ export default function Home() {
               </div>
 
               <div>
-                <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">
-                  Кто за этим стоит
-                </p>
                 <h2 className="text-2xl font-bold text-white mb-1">Максим Батов</h2>
                 <p className="text-white/30 text-sm mb-6">Санкт-Петербург · Предприниматель</p>
                 <div className="space-y-4 text-white/55 leading-relaxed">
@@ -204,16 +193,11 @@ export default function Home() {
 
         {/* ── FAQ ── */}
         <section className="py-20 bg-[#100D0A]">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-4">
-                Частые вопросы
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                Отвечаем на главное
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12">
+              Частые вопросы
+            </h2>
+            <div className="divide-y divide-white/[0.07]">
               {[
                 {
                   q: "Нужен ли опыт с ChatGPT?",
@@ -232,8 +216,8 @@ export default function Home() {
                   a: "Нет. Только браузер и ChatGPT. Все курсы рассчитаны на людей без технического background.",
                 },
               ].map((item) => (
-                <div key={item.q} className="glass-dark rounded-2xl border border-white/[0.07] p-6">
-                  <h3 className="font-semibold text-white mb-2 text-[15px]">{item.q}</h3>
+                <div key={item.q} className="py-7 grid grid-cols-1 sm:grid-cols-[2fr_3fr] gap-3 sm:gap-8">
+                  <h3 className="font-semibold text-white text-[15px] leading-snug">{item.q}</h3>
                   <p className="text-white/50 text-sm leading-relaxed">{item.a}</p>
                 </div>
               ))}
@@ -257,7 +241,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/courses/chatgpt-dlya-biznesa"
-                    className="inline-block bg-white text-indigo-600 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-colors"
+                    className="inline-block bg-white text-amber-800 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-amber-50 transition-colors"
                   >
                     Открыть первый курс →
                   </Link>
