@@ -116,19 +116,92 @@ export default function Home() {
           <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0C0A08] to-transparent" />
         </section>
 
+        {/* ── Разрыв ── */}
+        <section className="py-28 border-t border-white/[0.05]">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                  Почему большинство<br />курсов по ChatGPT<br />не работают
+                </h2>
+                <p className="text-white/35 mt-5 text-base leading-relaxed max-w-xs">
+                  И что мы сделали иначе.
+                </p>
+              </div>
+              <div className="divide-y divide-white/[0.06]">
+                {[
+                  {
+                    problem: "Смотришь видео — ничего не делаешь",
+                    fix: "Практика встроена в каждый урок. Промпт — прямо здесь.",
+                  },
+                  {
+                    problem: "Нет структуры — сам ищи, сам пробуй",
+                    fix: "6 курсов от основ до системы. Идёшь по пути.",
+                  },
+                  {
+                    problem: "Написано ИИ — нет реального опыта",
+                    fix: "Автор сам строит AI-агентов. Только то, что работает.",
+                  },
+                ].map((item) => (
+                  <div key={item.problem} className="py-6 grid grid-cols-2 gap-6">
+                    <p className="text-white/30 text-sm leading-relaxed line-through decoration-white/15">
+                      {item.problem}
+                    </p>
+                    <p className="text-white/65 text-sm leading-relaxed">
+                      <span className="text-amber-500 mr-1.5">→</span>
+                      {item.fix}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Как это устроено ── */}
+        <section className="py-24 bg-[#100D0A]">
+          <div className="max-w-5xl mx-auto px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-16">
+              Как это устроено
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+              {[
+                {
+                  n: "01",
+                  title: "Читаешь, не смотришь",
+                  body: "Текстовые уроки — в своём темпе, без перемотки, в любое время.",
+                },
+                {
+                  n: "02",
+                  title: "Практикуешься сразу",
+                  body: "Промпт прямо в уроке. Открываешь ChatGPT рядом — и применяешь пока тема свежая.",
+                },
+                {
+                  n: "03",
+                  title: "Один урок — один навык",
+                  body: "Каждый урок даёт что-то конкретное. Не теорию — инструмент, который используешь сегодня.",
+                },
+              ].map((step) => (
+                <div key={step.n}>
+                  <div className="text-6xl font-bold text-white/[0.05] mb-5 leading-none tabular-nums">
+                    {step.n}
+                  </div>
+                  <h3 className="font-semibold text-white text-lg mb-3">{step.title}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{step.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Courses ── */}
         {courses.length > 0 && (
           <section className="py-24">
             <div className="max-w-5xl mx-auto px-6">
-              <div className="flex items-end justify-between mb-10">
-                <div>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                    6 курсов — от основ до системы
-                  </h2>
-                  <p className="text-white/40 mt-2 text-base max-w-md">
-                    Проходи по порядку или начни с того, что нужно прямо сейчас.
-                  </p>
-                </div>
+              <div className="flex items-end justify-between mb-12">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                  Программа
+                </h2>
                 <Link
                   href="/courses"
                   className="text-white/30 hover:text-white transition-colors text-sm font-medium hidden sm:block shrink-0"
@@ -137,82 +210,74 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {courses.slice(0, 4).map((course) => (
+              <div className="divide-y divide-white/[0.06]">
+                {courses.slice(0, 6).map((course, i) => (
                   <Link
                     key={course.slug}
                     href={`/courses/${course.slug}`}
-                    className="card-hover gradient-border glass-dark rounded-2xl p-7 block group"
+                    className="group flex items-center gap-6 py-6 hover:bg-white/[0.02] -mx-4 px-4 rounded-xl transition-colors"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-                        {course.lessons.filter((l) => l.free).length} урока бесплатно
-                      </span>
-                      <span className="text-white/20 group-hover:text-amber-500 transition-colors">
-                        ↗
-                      </span>
+                    <span className="text-3xl font-bold text-white/[0.07] tabular-nums w-10 shrink-0 group-hover:text-white/[0.12] transition-colors">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-white text-lg group-hover:text-amber-400 transition-colors mb-1 leading-snug">
+                        {course.title}
+                      </h3>
+                      <p className="text-white/35 text-sm leading-relaxed truncate">
+                        {course.description}
+                      </p>
                     </div>
-                    <h3 className="font-bold text-white text-xl group-hover:text-amber-400 transition-colors mb-2 leading-snug">
-                      {course.title}
-                    </h3>
-                    <p className="text-white/45 leading-relaxed text-[15px] mb-6">
-                      {course.description}
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="flex-1 h-px bg-white/[0.06]">
-                        <div className="h-full w-[28%] bg-amber-500/40 rounded-full" />
-                      </div>
-                      <span className="text-xs text-white/25">{course.lessons.length} уроков</span>
+                    <div className="shrink-0 flex items-center gap-4">
+                      <span className="text-white/20 text-xs hidden sm:block">
+                        {course.lessons.length} уроков
+                      </span>
+                      {course.lessons.filter((l) => l.free).length > 0 && (
+                        <span className="text-xs text-amber-500/70 bg-amber-500/8 border border-amber-500/15 px-2.5 py-1 rounded-full hidden sm:block">
+                          {course.lessons.filter((l) => l.free).length} бесплатно
+                        </span>
+                      )}
+                      <span className="text-white/20 group-hover:text-amber-500 transition-colors text-lg">→</span>
                     </div>
                   </Link>
                 ))}
               </div>
-
-              {courses.length > 4 && (
-                <div className="mt-4 text-center">
-                  <Link
-                    href="/courses"
-                    className="glass-dark text-white/40 hover:text-white border border-white/[0.07] px-7 py-3 rounded-xl text-sm font-medium transition-all inline-block"
-                  >
-                    Ещё {courses.length - 4} курса →
-                  </Link>
-                </div>
-              )}
             </div>
           </section>
         )}
 
         {/* ── Author ── */}
-        <section className="py-24 bg-[#100D0A]">
+        <section className="py-24 bg-[#100D0A] border-t border-white/[0.04]">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20 items-start">
 
-              <div className="flex justify-center sm:justify-start">
-                <div className="relative w-60 h-72">
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative w-56 h-64 lg:w-full lg:h-80">
                   <img
                     src="/author.jpg"
                     alt="Максим Батов"
-                    className="w-full h-full object-cover object-top rounded-2xl"
+                    className="w-full h-full object-cover object-top rounded-2xl grayscale-[15%]"
                   />
                   <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.07]" />
                 </div>
               </div>
 
-              <div>
+              <div className="lg:pt-2">
                 <h2 className="text-2xl font-bold text-white mb-1">Максим Батов</h2>
-                <p className="text-white/30 text-sm mb-6">Санкт-Петербург · Предприниматель</p>
-                <div className="space-y-4 text-white/55 leading-relaxed">
-                  <p>
-                    У меня есть агент, который каждое утро читает мою почту и присылает
-                    сводку: что срочно, что подождёт, что можно удалить. Папку «Входящие»
-                    я не открывал уже несколько месяцев.
+                <p className="text-white/25 text-sm mb-8">Санкт-Петербург · Предприниматель</p>
+
+                <blockquote className="border-l-2 border-amber-600/50 pl-5 mb-8">
+                  <p className="text-white/70 text-lg leading-relaxed italic">
+                    "У меня есть агент, который каждое утро читает мою почту и присылает сводку:
+                    что срочно, что подождёт, что удалить. Папку «Входящие» я не открывал уже несколько месяцев."
                   </p>
-                  <p>
-                    Я строю такие инструменты для себя — и точно знаю, что реально
-                    работает, а что нет. На западе это уже норма. На русском материалов
-                    почти нет, и разрыв только растёт. Это я и решил исправить.
-                  </p>
-                </div>
+                </blockquote>
+
+                <p className="text-white/45 text-[15px] leading-relaxed max-w-lg">
+                  Я строю такие инструменты для себя — и точно знаю, что реально работает, а что нет.
+                  На западе это уже норма. На русском материалов почти нет, и разрыв только растёт.
+                  Это я и решил исправить.
+                </p>
               </div>
 
             </div>
@@ -254,37 +319,26 @@ export default function Home() {
         </section>
 
         {/* ── Final CTA ── */}
-        <section className="pb-28">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="relative rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 gradient-bg opacity-90" />
-              <div className="absolute inset-0 dot-grid opacity-20" />
-              <div className="relative z-10 px-8 py-16 text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                  Начни с бесплатного урока
-                </h2>
-                <p className="text-white/65 text-lg mb-8 max-w-md mx-auto leading-relaxed">
-                  Три урока в каждом курсе — без регистрации и без карты.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/courses/chatgpt-dlya-biznesa"
-                    className="inline-block bg-white text-amber-800 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-amber-50 transition-colors"
-                  >
-                    Открыть первый курс →
-                  </Link>
-                  <Link
-                    href="/pricing"
-                    className="inline-block bg-white/10 text-white border border-white/20 px-9 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-colors"
-                  >
-                    Смотреть тарифы
-                  </Link>
-                </div>
-                <p className="mt-5 text-white/40 text-sm">
-                  Без регистрации · Без карты · Первые 3 урока бесплатно
-                </p>
-              </div>
-            </div>
+        <section className="py-28 border-t border-white/[0.05]">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <p className="text-amber-500/70 text-xs tracking-widest uppercase font-medium mb-6">
+              Начать прямо сейчас
+            </p>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-5 leading-tight">
+              Три урока — бесплатно.<br />Без регистрации.
+            </h2>
+            <p className="text-white/40 text-lg mb-10 max-w-sm mx-auto leading-relaxed">
+              Открой первый курс и реши сам — подходит или нет.
+            </p>
+            <Link
+              href="/courses/chatgpt-dlya-biznesa"
+              className="btn-glow text-white px-10 py-4 rounded-xl font-semibold text-lg inline-block"
+            >
+              Открыть первый курс →
+            </Link>
+            <p className="mt-6 text-white/20 text-sm">
+              Без карты · Первые 3 урока в каждом курсе бесплатно
+            </p>
           </div>
         </section>
 
