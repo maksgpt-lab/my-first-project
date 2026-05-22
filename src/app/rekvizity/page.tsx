@@ -20,7 +20,7 @@ export default function RekvizityPage() {
             { label: "Исполнитель", value: "Батов Максим Дмитриевич" },
             { label: "Статус", value: "Самозанятый (плательщик НПД)" },
             { label: "ИНН", value: "631609803763" },
-            { label: "Регион", value: "Самарская область, г. Самара" },
+            { label: "Регион", value: "г. Санкт-Петербург" },
             { label: "Email", value: "maks.gpt@gmail.com" },
             { label: "Сайт", value: "aidabusiness.ru" },
           ].map((row, i, arr) => (
