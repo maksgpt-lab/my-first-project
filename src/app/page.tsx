@@ -60,44 +60,52 @@ export default function Home() {
 
                 <div className="flex items-center border-t border-white/[0.06] pt-6">
                   <div className="pr-6">
-                    <div className="text-white font-bold text-xl leading-none">6</div>
-                    <div className="text-white/35 text-xs mt-1.5">курсов</div>
+                    <div className="text-amber-500 font-bold text-xl leading-none">6</div>
+                    <div className="text-white/35 text-xs mt-1.5 uppercase tracking-wide">курсов</div>
                   </div>
                   <div className="w-px h-8 bg-white/[0.08] shrink-0" />
                   <div className="px-6">
-                    <div className="text-white font-bold text-xl leading-none">30+</div>
-                    <div className="text-white/35 text-xs mt-1.5">промптов</div>
+                    <div className="text-amber-500 font-bold text-xl leading-none">30+</div>
+                    <div className="text-white/35 text-xs mt-1.5 uppercase tracking-wide">промптов</div>
                   </div>
                   <div className="w-px h-8 bg-white/[0.08] shrink-0" />
                   <div className="pl-6">
-                    <div className="text-white font-bold text-xl leading-none">3</div>
-                    <div className="text-white/35 text-xs mt-1.5">урока бесплатно</div>
+                    <div className="text-amber-500 font-bold text-xl leading-none">3</div>
+                    <div className="text-white/35 text-xs mt-1.5 uppercase tracking-wide">урока бесплатно</div>
                   </div>
                 </div>
               </div>
 
               {/* Right: lesson preview */}
               <div className="hidden lg:flex flex-col">
-                <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-[0_0_80px_rgba(217,119,6,0.08)]">
-                  <div className="bg-[#130E09] px-4 py-3 flex items-center gap-2 border-b border-white/[0.06]">
-                    <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                    </div>
-                    <div className="flex-1 mx-3">
-                      <div className="bg-white/[0.04] rounded-md px-3 py-1 text-[11px] text-white/20 text-center">
-                        aidabusiness.ru/courses/…
+                <div className="relative">
+                  <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-[0_0_80px_rgba(217,119,6,0.08)]">
+                    <div className="bg-[#130E09] px-4 py-3 flex items-center gap-2 border-b border-white/[0.06]">
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                      </div>
+                      <div className="flex-1 mx-3">
+                        <div className="bg-white/[0.04] rounded-md px-3 py-1 text-[11px] text-white/20 flex items-center justify-center gap-1.5">
+                          <svg className="w-2.5 h-2.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          </svg>
+                          aidabusiness.ru/courses/…
+                        </div>
                       </div>
                     </div>
+                    <div className="aspect-video">
+                      <img
+                        src="/lesson-preview.png"
+                        alt="Урок на платформе"
+                        className="w-full h-full object-cover block"
+                      />
+                    </div>
                   </div>
-                  <img
-                    src="/lesson-preview.png"
-                    alt="Урок на платформе"
-                    className="w-full block"
-                  />
+                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/8 to-orange-600/8 rounded-3xl blur-3xl -z-10" />
                 </div>
-                <p className="text-white/25 text-sm text-center mt-4">
+                <p className="text-white/25 text-sm text-center mt-5">
                   Практика прямо в уроке — не нужно никуда переходить
                 </p>
               </div>
