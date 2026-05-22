@@ -99,7 +99,7 @@ export default function KatanaSection() {
 
   return (
     <div ref={containerRef} className="relative h-[270vh] bg-[#0C0A08]">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-[57px] h-[calc(100vh-57px)] flex items-center justify-center overflow-hidden">
 
         {/* Scroll hint */}
         <motion.div

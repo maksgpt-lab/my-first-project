@@ -13,7 +13,7 @@ export default function Home() {
     <div className="bg-[#0C0A08] min-h-screen">
       <Header />
 
-      <main className="overflow-hidden">
+      <main>
 
         {/* ── Hero ── */}
         <section className="relative min-h-[90vh] flex items-center">
