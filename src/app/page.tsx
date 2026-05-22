@@ -15,7 +15,9 @@ export default function Home() {
         {/* ── Hero ── */}
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-60 -right-40 w-[600px] h-[600px] rounded-full bg-amber-600/8 blur-[160px]" />
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-600/25 to-transparent" />
+            <div className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-amber-700/7 blur-[150px]" />
+            <div className="absolute top-1/2 -left-60 w-[400px] h-[400px] rounded-full bg-amber-900/6 blur-[120px]" />
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 w-full">
@@ -23,16 +25,25 @@ export default function Home() {
 
               {/* Left: copy */}
               <div>
-                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-white mb-6">
-                  Большинство курсов по ChatGPT написаны ChatGPT.{" "}
-                  <span className="gradient-text">Этот — нет.</span>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-5 h-px bg-amber-600/60" />
+                  <span className="text-amber-500/75 text-xs tracking-widest uppercase font-medium">
+                    Курсы по ChatGPT · На русском
+                  </span>
+                </div>
+
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.05] text-white mb-7">
+                  Большинство<br />
+                  курсов по ChatGPT<br />
+                  написаны ChatGPT.{" "}
+                  <span className="gradient-text">Этот&nbsp;— нет.</span>
                 </h1>
 
-                <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-lg">
+                <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-sm">
                   Практика прямо в уроке. Применяешь пока читаешь — не потом. На русском, без кода.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                <div className="flex flex-col sm:flex-row gap-3 mb-12">
                   <Link
                     href="/courses"
                     className="btn-glow text-white px-8 py-3.5 rounded-xl font-semibold text-center"
@@ -41,18 +52,27 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/pricing"
-                    className="glass-dark text-white/55 hover:text-white px-8 py-3.5 rounded-xl font-medium transition-colors border border-white/[0.08] text-center"
+                    className="text-white/50 hover:text-white px-8 py-3.5 rounded-xl font-medium transition-colors border border-white/[0.08] text-center"
                   >
                     Тарифы — от 990 ₽
                   </Link>
                 </div>
 
-                <div className="flex items-center gap-5 text-sm text-white/40">
-                  <span><strong className="text-white/80 font-semibold">6</strong> курсов</span>
-                  <span className="text-white/15">·</span>
-                  <span><strong className="text-white/80 font-semibold">30+</strong> промптов</span>
-                  <span className="text-white/15">·</span>
-                  <span><strong className="text-white/80 font-semibold">3 урока</strong> бесплатно</span>
+                <div className="flex items-center border-t border-white/[0.06] pt-6">
+                  <div className="pr-6">
+                    <div className="text-white font-bold text-xl leading-none">6</div>
+                    <div className="text-white/35 text-xs mt-1.5">курсов</div>
+                  </div>
+                  <div className="w-px h-8 bg-white/[0.08] shrink-0" />
+                  <div className="px-6">
+                    <div className="text-white font-bold text-xl leading-none">30+</div>
+                    <div className="text-white/35 text-xs mt-1.5">промптов</div>
+                  </div>
+                  <div className="w-px h-8 bg-white/[0.08] shrink-0" />
+                  <div className="pl-6">
+                    <div className="text-white font-bold text-xl leading-none">3</div>
+                    <div className="text-white/35 text-xs mt-1.5">урока бесплатно</div>
+                  </div>
                 </div>
               </div>
 
@@ -77,7 +97,7 @@ export default function Home() {
                     className="w-full block"
                   />
                 </div>
-                <p className="text-white/30 text-sm text-center mt-4 leading-relaxed">
+                <p className="text-white/25 text-sm text-center mt-4">
                   Практика прямо в уроке — не нужно никуда переходить
                 </p>
               </div>
