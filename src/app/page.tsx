@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
 import AnimateIn from "@/components/AnimateIn";
 import HeroStats from "@/components/HeroStats";
-import KatanaSection from "@/components/KatanaSection";
+import PromptDemoSection from "@/components/PromptDemoSection";
 
 export default function Home() {
   const courses = getCourses();
@@ -108,7 +108,7 @@ export default function Home() {
           <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0C0A08] to-transparent" />
         </section>
 
-        <KatanaSection />
+        <PromptDemoSection />
 
         {/* ── Разрыв ── */}
         <section className="py-28 border-t border-white/[0.05]">
