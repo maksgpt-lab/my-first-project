@@ -5,6 +5,7 @@ import { getCourses } from "@/lib/courses";
 import AnimateIn from "@/components/AnimateIn";
 import HeroStats from "@/components/HeroStats";
 import PromptDemoSection from "@/components/PromptDemoSection";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   const courses = getCourses();
@@ -31,7 +32,7 @@ export default function Home() {
                 <div className="flex items-center gap-3 mb-8 animate-fade-up">
                   <div className="w-5 h-px bg-amber-600/60" />
                   <span className="text-amber-500/75 text-xs tracking-widest uppercase font-medium">
-                    Курсы по ChatGPT · На русском
+                    AI для бизнеса · Обучение и внедрение
                   </span>
                 </div>
 
@@ -58,6 +59,12 @@ export default function Home() {
                     className="text-white/50 hover:text-white px-8 py-3.5 rounded-xl font-medium transition-colors border border-white/[0.08] text-center"
                   >
                     Тарифы — от 990 ₽
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="text-amber-400/70 hover:text-amber-400 px-8 py-3.5 rounded-xl font-medium transition-colors border border-amber-600/20 hover:border-amber-600/40 text-center"
+                  >
+                    Обсудить внедрение →
                   </Link>
                 </div>
 
@@ -109,6 +116,8 @@ export default function Home() {
         </section>
 
         <PromptDemoSection />
+
+        <ServicesSection />
 
         {/* ── Разрыв ── */}
         <section className="py-28 border-t border-white/[0.05]">
@@ -278,9 +287,9 @@ export default function Home() {
                   </blockquote>
 
                   <p className="text-white/45 text-[15px] leading-relaxed max-w-lg">
-                    Я строю такие инструменты для себя — и точно знаю, что реально работает, а что нет.
-                    На западе это уже норма. На русском материалов почти нет, и разрыв только растёт.
-                    Это я и решил исправить.
+                    Я строю AI-системы для бизнеса и делаю курсы, которые помогают людям самим работать с AI.
+                    Агент в примере выше — реальный инструмент, который я использую каждый день.
+                    На русском таких материалов почти нет. Я это исправляю.
                   </p>
                 </div>
               </AnimateIn>
