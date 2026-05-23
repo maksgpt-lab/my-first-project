@@ -19,25 +19,17 @@ function KatanaSVG() {
           <stop offset="100%" stopColor="#fff" stopOpacity="0.1" />
         </linearGradient>
       </defs>
-
-      {/* Blade */}
       <polygon points="478,28 102,37 102,19" fill="url(#kat-blade)" />
       <line x1="102" y1="28" x2="477" y2="28" stroke="url(#kat-shine)" strokeWidth="1.2" />
       <polygon points="480,28 462,31 462,25" fill="white" opacity="0.95" />
-
-      {/* Guard (tsuba) */}
       <ellipse cx="93" cy="28" rx="11" ry="23" fill="#3D2510" />
       <ellipse cx="93" cy="28" rx="8"  ry="18" fill="#6A4525" />
       <ellipse cx="93" cy="28" rx="4"  ry="10" fill="#3D2510" />
-
-      {/* Handle (tsuka) */}
       <rect x="4" y="22" width="87" height="12" rx="6" fill="#180C06" />
       <rect x="7" y="24" width="81" height="8"  rx="4" fill="#2A1608" />
       {[11, 22, 33, 44, 55, 66, 77].map((x) => (
         <line key={x} x1={x} y1="22" x2={x + 4} y2="34" stroke="#0A0603" strokeWidth="2" opacity="0.75" />
       ))}
-
-      {/* Pommel */}
       <ellipse cx="5" cy="28" rx="6" ry="10" fill="#3D2510" />
       <ellipse cx="5" cy="28" rx="3" ry="6"  fill="#4A2C18" />
     </svg>
@@ -76,30 +68,36 @@ export default function KatanaSection() {
     offset: ["start start", "end end"],
   });
 
-  // useMotionTemplate correctly handles vw units in the transform string
-  const katanaVw      = useTransform(scrollYProgress, [0.04, 0.58], [58, -82]);
-  const katanaOpacity = useTransform(scrollYProgress, [0.02, 0.1, 0.88, 0.96], [0, 1, 1, 0]);
+  // Katana sweeps early and clears by 72%
+  const katanaVw      = useTransform(scrollYProgress, [0.02, 0.46], [60, -85]);
+  const katanaOpacity = useTransform(scrollYProgress, [0.01, 0.08, 0.68, 0.78], [0, 1, 1, 0]);
   const katanaTransform = useMotionTemplate`translateX(calc(-50% + ${katanaVw}vw)) translateY(-50%) rotate(-13deg)`;
 
-  // Slash glow — scaleX from center
-  const slashOpacity = useTransform(scrollYProgress, [0.28, 0.40, 0.68, 0.88], [0, 1, 1, 0]);
-  const slashScaleX  = useTransform(scrollYProgress, [0.28, 0.44], [0, 1]);
+  // Slash — brighter, appears earlier
+  const slashOpacity = useTransform(scrollYProgress, [0.20, 0.32, 0.56, 0.70], [0, 1, 1, 0]);
+  const slashScaleX  = useTransform(scrollYProgress, [0.20, 0.36], [0, 1]);
 
-  // Logo halves — pixel values, more reliable than %
-  const topY      = useTransform(scrollYProgress, [0.40, 0.76], [0, -130]);
-  const bottomY   = useTransform(scrollYProgress, [0.40, 0.76], [0,  130]);
-  const logoOpacity = useTransform(scrollYProgress, [0.56, 0.82], [1, 0]);
+  // Logo halves — dramatic split with rotation
+  const topY      = useTransform(scrollYProgress, [0.30, 0.62], [0, -220]);
+  const topRot    = useTransform(scrollYProgress, [0.30, 0.62], [0, -5]);
+  const bottomY   = useTransform(scrollYProgress, [0.30, 0.62], [0,  220]);
+  const bottomRot = useTransform(scrollYProgress, [0.30, 0.62], [0,  5]);
+  const logoOpacity = useTransform(scrollYProgress, [0.48, 0.64], [1, 0]);
 
-  // Tagline
-  const tagOpacity = useTransform(scrollYProgress, [0.78, 0.94], [0, 1]);
-  const tagY       = useTransform(scrollYProgress, [0.78, 0.94], [18, 0]);
+  // Tagline — appears as logo clears, occupies full viewport center
+  const tagOpacity     = useTransform(scrollYProgress, [0.58, 0.72, 0.96, 1.0], [0, 1, 1, 0]);
+  const tagY           = useTransform(scrollYProgress, [0.58, 0.72], [44, 0]);
+  const tagScale       = useTransform(scrollYProgress, [0.58, 0.72], [0.88, 1.0]);
+  const subtitleOpacity = useTransform(scrollYProgress, [0.68, 0.80], [0, 1]);
+  const glowOpacity    = useTransform(scrollYProgress, [0.60, 0.76, 0.96], [0, 1, 0]);
 
   // Scroll hint
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
 
   return (
-    <div ref={containerRef} className="relative h-[270vh] bg-[#0C0A08]">
-      <div className="sticky top-[57px] h-[calc(100vh-57px)] flex items-center justify-center overflow-hidden">
+    <div ref={containerRef} className="relative h-[380vh] bg-[#0C0A08]">
+      {/* relative needed so absolute children (tagline, katana) are positioned within the sticky viewport */}
+      <div className="sticky top-[57px] h-[calc(100vh-57px)] relative flex items-center justify-center overflow-hidden">
 
         {/* Scroll hint */}
         <motion.div
@@ -114,77 +112,104 @@ export default function KatanaSection() {
           />
         </motion.div>
 
-        {/* Scene */}
-        <div className="relative w-full flex flex-col items-center">
+        {/* Logo + slash — centered by parent flex */}
+        <div className="relative" style={{ width: "min(480px, 88vw)", height: "168px" }}>
 
-          {/* Logo + slash — fixed size container */}
-          <div className="relative" style={{ width: "min(480px, 88vw)", height: "168px" }}>
-
-            {/* Top half */}
-            <motion.div
-              className="absolute inset-0"
-              style={{ clipPath: "inset(0 0 50% 0)", y: topY, opacity: logoOpacity }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <ChatGPTLogo />
-              </div>
-            </motion.div>
-
-            {/* Bottom half */}
-            <motion.div
-              className="absolute inset-0"
-              style={{ clipPath: "inset(50% 0 0 0)", y: bottomY, opacity: logoOpacity }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <ChatGPTLogo />
-              </div>
-            </motion.div>
-
-            {/* Amber slash line */}
-            <motion.div
-              className="absolute rounded-full pointer-events-none"
-              style={{
-                left: "-20%",
-                right: "-20%",
-                top: "calc(50% - 1px)",
-                height: "2px",
-                background: "linear-gradient(90deg, transparent 0%, #F59E0B 18%, #FBBF24 50%, #F59E0B 82%, transparent 100%)",
-                boxShadow: "0 0 18px 6px rgba(251,191,36,0.65), 0 0 56px 12px rgba(251,191,36,0.28)",
-                opacity: slashOpacity,
-                scaleX: slashScaleX,
-                transformOrigin: "50% 50%",
-              }}
-            />
-          </div>
-
-          {/* Katana — transform string handles vw positioning correctly */}
+          {/* Top half */}
           <motion.div
-            className="absolute pointer-events-none"
+            className="absolute inset-0"
+            style={{ clipPath: "inset(0 0 50% 0)", y: topY, rotate: topRot, opacity: logoOpacity }}
+          >
+            <div className="absolute inset-0 flex items-center justify-center">
+              <ChatGPTLogo />
+            </div>
+          </motion.div>
+
+          {/* Bottom half */}
+          <motion.div
+            className="absolute inset-0"
+            style={{ clipPath: "inset(50% 0 0 0)", y: bottomY, rotate: bottomRot, opacity: logoOpacity }}
+          >
+            <div className="absolute inset-0 flex items-center justify-center">
+              <ChatGPTLogo />
+            </div>
+          </motion.div>
+
+          {/* Slash line — thicker and brighter */}
+          <motion.div
+            className="absolute rounded-full pointer-events-none"
             style={{
-              top: "84px",
-              left: "50%",
-              transform: katanaTransform,
-              opacity: katanaOpacity,
+              left: "-20%",
+              right: "-20%",
+              top: "calc(50% - 1.5px)",
+              height: "3px",
+              background: "linear-gradient(90deg, transparent 0%, #F59E0B 10%, #FBBF24 30%, #fff 50%, #FBBF24 70%, #F59E0B 90%, transparent 100%)",
+              boxShadow: "0 0 24px 8px rgba(251,191,36,0.9), 0 0 64px 22px rgba(251,191,36,0.45), 0 0 110px 44px rgba(251,191,36,0.18)",
+              opacity: slashOpacity,
+              scaleX: slashScaleX,
+              transformOrigin: "50% 50%",
             }}
-          >
-            <KatanaSVG />
-          </motion.div>
-
-          {/* Tagline */}
-          <motion.div
-            style={{ opacity: tagOpacity, y: tagY }}
-            className="text-center mt-8 px-6 pointer-events-none"
-          >
-            <p className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-              Освой ChatGPT.{" "}
-              <span className="gradient-text">Стань мастером.</span>
-            </p>
-            <p className="text-white/35 mt-3 text-base max-w-xs mx-auto leading-relaxed">
-              Не бойся инструмента — научись им управлять.
-            </p>
-          </motion.div>
-
+          />
         </div>
+
+        {/* Katana */}
+        <motion.div
+          className="absolute pointer-events-none"
+          style={{
+            top: "84px",
+            left: "50%",
+            transform: katanaTransform,
+            opacity: katanaOpacity,
+          }}
+        >
+          <KatanaSVG />
+        </motion.div>
+
+        {/* Tagline — absolute, fills the full sticky viewport, centered */}
+        <motion.div
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-20"
+          style={{ opacity: tagOpacity, scale: tagScale }}
+        >
+          {/* Ambient amber glow behind text */}
+          <motion.div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[360px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse, rgba(217,119,6,0.16) 0%, transparent 65%)",
+              filter: "blur(70px)",
+              opacity: glowOpacity,
+            }}
+          />
+
+          {/* Main headline */}
+          <motion.p
+            className="relative text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight"
+            style={{ y: tagY }}
+          >
+            Освой ChatGPT.<br />
+            <span className="gradient-text">Стань мастером.</span>
+          </motion.p>
+
+          {/* Subtitle — delayed, more visible */}
+          <motion.p
+            className="relative text-white/65 mt-6 text-lg sm:text-xl max-w-sm mx-auto leading-relaxed"
+            style={{ y: tagY, opacity: subtitleOpacity }}
+          >
+            Не бойся инструмента —<br className="hidden sm:block" /> научись им управлять.
+          </motion.p>
+
+          {/* Price hint */}
+          <motion.div
+            className="relative flex items-center gap-4 mt-9"
+            style={{ opacity: subtitleOpacity }}
+          >
+            <div className="w-10 h-px bg-amber-600/35" />
+            <span className="text-amber-500/55 text-[11px] tracking-[0.35em] uppercase font-semibold">
+              Курсы · от 990 ₽
+            </span>
+            <div className="w-10 h-px bg-amber-600/35" />
+          </motion.div>
+        </motion.div>
+
       </div>
     </div>
   );
