@@ -1,10 +1,6 @@
-import OpenAI from "openai";
 import { NextRequest, NextResponse } from "next/server";
 
-const openai = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1",
-});
+const WORKER_URL = "https://ai-proxy.maks-gpt.workers.dev";
 
 // In-memory rate limit: 10 requests per minute per IP
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -45,17 +41,25 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
-      messages: [{ role: "user", content: prompt }],
-      max_tokens: 500,
-      temperature: 0.7,
+    const workerRes = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Secret": process.env.WORKER_SECRET ?? "",
+      },
+      body: JSON.stringify({ prompt }),
     });
 
-    const result = completion.choices[0]?.message?.content ?? "";
-    return NextResponse.json({ result });
+    const data = await workerRes.json();
+
+    if (!workerRes.ok) {
+      console.error("[/api/ai] Worker error:", data);
+      return NextResponse.json({ error: "Не удалось получить ответ. Попробуй ещё раз." }, { status: 500 });
+    }
+
+    return NextResponse.json({ result: data.result ?? "" });
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Ошибка OpenAI";
+    const message = err instanceof Error ? err.message : "Worker error";
     console.error("[/api/ai]", message);
     return NextResponse.json({ error: "Не удалось получить ответ. Попробуй ещё раз." }, { status: 500 });
   }
