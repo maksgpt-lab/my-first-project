@@ -32,8 +32,8 @@ function RegisterForm() {
       return;
     }
 
-    router.push(next);
-    router.refresh();
+    // Жёсткая навигация чтобы браузер отправил cookies на сервер
+    window.location.href = next;
   }
 
   return (

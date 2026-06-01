@@ -30,6 +30,10 @@ export default async function ClubLessonPage({
   params: Promise<{ slug: string; lesson: string }>;
 }) {
   const { slug, lesson: lessonSlug } = await params;
+  // Все уроки теперь на /courses/ с проверкой доступа
+  const { redirect } = await import("next/navigation");
+  redirect(`/courses/${slug}/${lessonSlug}`);
+
   const course = getCourse(slug);
   if (!course) notFound();
 
