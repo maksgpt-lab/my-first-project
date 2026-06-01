@@ -33,16 +33,16 @@ function LoginForm() {
   }
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="glass-dark rounded-3xl p-8 border border-white/[0.07] shadow-2xl">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white mb-1">Добро пожаловать</h1>
-          <p className="text-white/40 text-sm">Войди в свой аккаунт</p>
+    <div className="w-full max-w-md">
+      <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-2xl backdrop-blur-xl">
+        <div className="mb-7">
+          <h1 className="text-2xl font-bold text-white">Добро пожаловать</h1>
+          <p className="mt-1 text-sm text-white/40">Войди в свой аккаунт</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-xs font-medium text-white/40 mb-2 uppercase tracking-wider">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium uppercase tracking-widest text-white/40">
               Email
             </label>
             <input
@@ -51,12 +51,13 @@ function LoginForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-indigo-500/60 focus:bg-white/[0.06] transition-all placeholder:text-white/20"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/20 focus:border-amber-500/50 focus:bg-white/8 focus:ring-2 focus:ring-amber-500/10"
               placeholder="you@example.com"
             />
           </div>
-          <div>
-            <label className="block text-xs font-medium text-white/40 mb-2 uppercase tracking-wider">
+
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium uppercase tracking-widest text-white/40">
               Пароль
             </label>
             <input
@@ -65,32 +66,32 @@ function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
-              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-indigo-500/60 focus:bg-white/[0.06] transition-all placeholder:text-white/20"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/20 focus:border-amber-500/50 focus:bg-white/8 focus:ring-2 focus:ring-amber-500/10"
               placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3">
+              <p className="text-sm text-red-400">{error}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-glow text-white py-3 rounded-xl text-sm font-semibold disabled:opacity-50 transition-opacity mt-2"
+            className="btn-glow mt-2 w-full rounded-xl py-3 text-sm font-semibold text-white transition-opacity disabled:opacity-50"
           >
             {loading ? "Входим..." : "Войти"}
           </button>
         </form>
 
-        <div className="mt-6 pt-6 border-t border-white/[0.06] text-center">
+        <div className="mt-6 border-t border-white/[0.06] pt-6 text-center">
           <p className="text-sm text-white/30">
             Нет аккаунта?{" "}
             <Link
               href={`/auth/register${next !== "/courses" ? `?next=${encodeURIComponent(next)}` : ""}`}
-              className="text-amber-500 hover:text-amber-400 font-medium transition-colors"
+              className="font-medium text-amber-500 transition-colors hover:text-amber-400"
             >
               Зарегистрироваться
             </Link>
@@ -103,14 +104,22 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16">
-      <Link href="/" className="font-bold text-xl tracking-tight flex items-center gap-1.5 mb-10">
-        <span className="gradient-text">AI</span>
-        <span className="text-white/90"> для бизнеса</span>
-      </Link>
-      <Suspense>
-        <LoginForm />
-      </Suspense>
+    <div className="relative min-h-screen overflow-hidden bg-[#0C0A08]">
+      {/* фоновые блики */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-amber-600/10 blur-[120px]" />
+        <div className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-amber-800/8 blur-[120px]" />
+      </div>
+
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-16">
+        <Link href="/" className="mb-10 flex items-center gap-1.5 text-xl font-bold tracking-tight">
+          <span className="gradient-text">AI</span>
+          <span className="text-white/90"> для бизнеса</span>
+        </Link>
+        <Suspense>
+          <LoginForm />
+        </Suspense>
+      </div>
     </div>
   );
 }
