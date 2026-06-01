@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHANNEL_ID;
+  const token = process.env.CONTACT_BOT_TOKEN;
+  const chatId = process.env.CONTACT_CHAT_ID;
 
   if (!token || !chatId) {
     return NextResponse.json({ error: "Not configured" }, { status: 500 });
