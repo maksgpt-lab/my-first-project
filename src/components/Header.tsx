@@ -15,6 +15,7 @@ const navLinks: { href: string; label: string; pulse?: boolean }[] = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
@@ -30,6 +31,8 @@ export default function Header() {
     await supabase.auth.signOut();
     window.location.href = "/";
   }
+
+  const initial = user?.email?.[0].toUpperCase() ?? "?";
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0C0A08]/80 backdrop-blur-xl">
@@ -61,21 +64,36 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
           {user ? (
-            <button
-              onClick={handleLogout}
-              className="text-white/40 hover:text-white text-sm font-medium transition-colors"
-            >
-              Выйти
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setShowMenu((v) => !v)}
+                className="w-8 h-8 rounded-full bg-indigo-600/80 border border-indigo-500/50 flex items-center justify-center text-white text-xs font-bold hover:bg-indigo-600 transition-colors"
+              >
+                {initial}
+              </button>
+              {showMenu && (
+                <div className="absolute right-0 top-10 glass-dark border border-white/[0.08] rounded-2xl p-1 min-w-[160px] shadow-xl">
+                  <p className="px-3 py-2 text-xs text-white/30 truncate">{user.email}</p>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-3 py-2 text-sm text-white/60 hover:text-white hover:bg-white/[0.05] rounded-xl transition-colors"
+                  >
+                    Выйти
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <Link
               href="/auth/login"
-              className="text-white/50 hover:text-white text-sm font-medium transition-colors"
+              className="px-4 py-2 rounded-xl border border-white/15 text-white/60 hover:text-white hover:border-white/30 text-sm font-medium transition-all"
             >
               Войти
             </Link>
           )}
+
           <Link
             href="https://t.me/+0ip_wx4Y4pFkMTAy"
             className="btn-glow text-white px-5 py-2.5 rounded-xl font-semibold text-sm shrink-0"
@@ -126,17 +144,20 @@ export default function Header() {
               </Link>
             ))}
             {user ? (
-              <button
-                onClick={handleLogout}
-                className="mt-3 mb-2 text-white/40 text-sm font-medium py-3 text-center"
-              >
-                Выйти из аккаунта
-              </button>
+              <>
+                <p className="py-3 text-xs text-white/30 border-b border-white/[0.05]">{user.email}</p>
+                <button
+                  onClick={handleLogout}
+                  className="py-3.5 text-left text-sm text-white/50 hover:text-white transition-colors"
+                >
+                  Выйти из аккаунта
+                </button>
+              </>
             ) : (
               <Link
                 href="/auth/login"
                 onClick={() => setOpen(false)}
-                className="mt-3 mb-1 text-white/60 text-sm font-medium py-3 text-center border-b border-white/[0.05]"
+                className="py-3.5 border-b border-white/[0.05] text-sm text-white/60 hover:text-white transition-colors"
               >
                 Войти
               </Link>
