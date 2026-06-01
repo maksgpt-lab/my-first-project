@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") || "/courses";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +28,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/courses");
+    router.push(next);
     router.refresh();
   }
 
@@ -92,7 +95,10 @@ export default function LoginPage() {
           <div className="mt-6 pt-6 border-t border-white/[0.06] text-center">
             <p className="text-sm text-white/30">
               Нет аккаунта?{" "}
-              <Link href="/auth/register" className="text-amber-500 hover:text-amber-400 font-medium transition-colors">
+              <Link
+                href={`/auth/register${next !== "/courses" ? `?next=${encodeURIComponent(next)}` : ""}`}
+                className="text-amber-500 hover:text-amber-400 font-medium transition-colors"
+              >
                 Зарегистрироваться
               </Link>
             </p>

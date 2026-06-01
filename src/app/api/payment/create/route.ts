@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase/server";
 
 const AMOUNTS = {
   pro:  { monthly: 990,  once: 7900  },
@@ -20,6 +21,14 @@ export async function GET(request: NextRequest) {
 
   if (!AMOUNTS[plan]) {
     return NextResponse.redirect(new URL("/pricing", siteUrl));
+  }
+
+  // Проверяем авторизацию — без аккаунта не пускаем
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    const next = encodeURIComponent(`/api/payment/create?plan=${plan}&type=${type}`);
+    return NextResponse.redirect(new URL(`/auth/register?next=${next}`, siteUrl));
   }
 
   const shopId = process.env.YUKASSA_SHOP_ID;
