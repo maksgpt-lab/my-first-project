@@ -30,7 +30,7 @@ const plans = [
     description: "Все курсы целиком + шаблоны. Оптимальный выбор.",
     cta: "Купить доступ",
     ctaSlug: "pro",
-    ctaHref: "/buy/pro",
+    ctaHref: "/api/payment/create?plan=pro",
     ctaStyle: "btn-glow text-white",
     highlight: true,
     badge: "Популярный",
@@ -50,7 +50,7 @@ const plans = [
     description: "Максимум: все курсы, шаблоны и живое общение с автором.",
     cta: "Вступить в клуб",
     ctaSlug: "club",
-    ctaHref: "/buy/club",
+    ctaHref: "/api/payment/create?plan=club",
     ctaStyle: "bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-indigo-500/30",
     highlight: false,
     badge: null,
@@ -177,7 +177,7 @@ export default function PricingClient() {
 
               {/* CTA */}
               <Link
-                href={plan.ctaSlug ? `${plan.ctaHref}${isOnce ? "?type=once" : ""}` : plan.ctaHref}
+                href={plan.ctaSlug ? `${plan.ctaHref}${isOnce ? "&type=once" : ""}` : plan.ctaHref}
                 className={`w-full py-3 rounded-xl text-sm font-semibold text-center transition-all mb-8 block ${plan.ctaStyle}`}
               >
                 {plan.cta}
@@ -234,7 +234,7 @@ export default function PricingClient() {
           {[
             {
               q: "Как получить доступ после оплаты?",
-              a: "Напиши нам в Telegram — пришлём пароль в течение нескольких минут.",
+              a: "Автоматически — сразу после оплаты тебя перенаправит на страницу с курсами. Доступ открывается мгновенно.",
             },
             {
               q: "Можно ли отменить подписку?",
