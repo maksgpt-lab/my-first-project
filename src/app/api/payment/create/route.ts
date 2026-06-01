@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
       },
       capture: true,
       description: `Доступ «${LABELS[plan]}» ${typeLabel} — AI для бизнеса`,
-      metadata: { plan, type, user_id: user.id },
+      metadata: { plan, type, user_id: user.id, email: user.email },
     }),
   });
 
