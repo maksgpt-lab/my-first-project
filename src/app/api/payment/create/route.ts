@@ -16,17 +16,18 @@ export async function GET(request: NextRequest) {
   const plan = searchParams.get("plan") as "pro" | "club";
   const type = searchParams.get("type") === "once" ? "once" : "monthly";
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aidabusiness.ru";
+
   if (!AMOUNTS[plan]) {
-    return NextResponse.redirect(new URL("/pricing", request.url));
+    return NextResponse.redirect(new URL("/pricing", siteUrl));
   }
 
   const shopId = process.env.YUKASSA_SHOP_ID;
   const secretKey = process.env.YUKASSA_SECRET_KEY;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aidabusiness.ru";
 
   if (!shopId || !secretKey) {
     console.error("YUKASSA_SHOP_ID or YUKASSA_SECRET_KEY not set");
-    return NextResponse.redirect(new URL("/pricing?error=config", request.url));
+    return NextResponse.redirect(new URL("/pricing?error=config", siteUrl));
   }
 
   const amount = AMOUNTS[plan][type];
@@ -56,7 +57,7 @@ export async function GET(request: NextRequest) {
   if (!res.ok) {
     const error = await res.text();
     console.error("YuKassa create payment error:", error);
-    return NextResponse.redirect(new URL("/pricing?error=payment", request.url));
+    return NextResponse.redirect(new URL("/pricing?error=payment", siteUrl));
   }
 
   const payment = await res.json();
