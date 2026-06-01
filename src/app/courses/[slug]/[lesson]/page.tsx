@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LessonProgressButton from "@/components/LessonProgress";
 import CopyPromptButtons from "@/components/CopyPromptButtons";
 import PracticeWidget from "@/components/PracticeWidget";
 import { getCourse, getCourses, getLessonContent } from "@/lib/courses";
+import { createClient } from "@/lib/supabase/server";
 
 export async function generateMetadata({
   params,
@@ -23,6 +25,8 @@ export async function generateMetadata({
     description: lesson.description,
   };
 }
+
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const params = [];
@@ -46,7 +50,36 @@ export default async function LessonPage({
   const lessonMeta = course.lessons.find((l) => l.slug === lessonSlug);
   if (!lessonMeta) notFound();
 
-  if (!lessonMeta.free) notFound();
+  if (!lessonMeta.free) {
+    // Проверяем доступ: сессия Supabase с активным планом
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    let hasPlan = false;
+    if (user) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("plan, plan_type, plan_expires_at")
+        .eq("id", user.id)
+        .single();
+
+      if (profile?.plan) {
+        const isOnce = profile.plan_type === "once";
+        const notExpired = isOnce || !profile.plan_expires_at
+          || new Date(profile.plan_expires_at) > new Date();
+        hasPlan = notExpired;
+      }
+    }
+
+    // Fallback: старый club_token cookie
+    if (!hasPlan) {
+      const jar = await cookies();
+      const token = jar.get("club_token")?.value;
+      hasPlan = token === process.env.CLUB_TOKEN;
+    }
+
+    if (!hasPlan) redirect("/pricing");
+  }
 
   const lessonData = getLessonContent(slug, lessonSlug);
   if (!lessonData) notFound();

@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const navLinks: { href: string; label: string; pulse?: boolean }[] = [
   { href: "/courses", label: "Курсы" },
@@ -10,9 +12,24 @@ const navLinks: { href: string; label: string; pulse?: boolean }[] = [
   { href: "/club/agent", label: "AI-консультант", pulse: true },
 ];
 
-
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    window.location.href = "/";
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0C0A08]/80 backdrop-blur-xl">
@@ -44,6 +61,21 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="text-white/40 hover:text-white text-sm font-medium transition-colors"
+            >
+              Выйти
+            </button>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="text-white/50 hover:text-white text-sm font-medium transition-colors"
+            >
+              Войти
+            </Link>
+          )}
           <Link
             href="https://t.me/+0ip_wx4Y4pFkMTAy"
             className="btn-glow text-white px-5 py-2.5 rounded-xl font-semibold text-sm shrink-0"
@@ -93,6 +125,22 @@ export default function Header() {
                 <span className={`text-sm ${link.pulse ? "text-amber-500/40" : "text-white/20"}`}>→</span>
               </Link>
             ))}
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="mt-3 mb-2 text-white/40 text-sm font-medium py-3 text-center"
+              >
+                Выйти из аккаунта
+              </button>
+            ) : (
+              <Link
+                href="/auth/login"
+                onClick={() => setOpen(false)}
+                className="mt-3 mb-1 text-white/60 text-sm font-medium py-3 text-center border-b border-white/[0.05]"
+              >
+                Войти
+              </Link>
+            )}
             <Link
               href="https://t.me/+0ip_wx4Y4pFkMTAy"
               onClick={() => setOpen(false)}
