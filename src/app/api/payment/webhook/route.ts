@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const auth = () =>
   "Basic " +
@@ -37,6 +38,11 @@ export async function POST(request: NextRequest) {
       .from("profiles")
       .update({ plan, plan_type: type, plan_expires_at: planExpiresAt })
       .eq("id", user_id);
+
+    // Welcome-письмо пользователю
+    if (email) {
+      sendWelcomeEmail({ email, plan, type }).catch(() => {});
+    }
 
     // Уведомление в Telegram
     const amount = payment.amount?.value
