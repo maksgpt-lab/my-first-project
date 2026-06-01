@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const WORKER_URL = "https://ai-proxy.maks-gpt.workers.dev";
-
 // In-memory rate limit: 10 requests per minute per IP
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
@@ -70,25 +68,40 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Сообщение слишком длинное (макс. 3000 символов)" }, { status: 400 });
   }
 
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json({ error: "AI временно недоступен." }, { status: 500 });
+  }
+
   try {
-    const workerRes = await fetch(WORKER_URL, {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Secret": process.env.WORKER_SECRET ?? "",
+        Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({ messages, system: SYSTEM_PROMPT }),
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...messages.slice(-10),
+        ],
+        max_tokens: 1024,
+        temperature: 0.7,
+      }),
     });
 
-    const data = await workerRes.json();
-
-    if (!workerRes.ok) {
+    if (!res.ok) {
+      const err = await res.text();
+      console.error("[/api/agent] Groq error:", err);
       return NextResponse.json({ error: "Не удалось получить ответ. Попробуй ещё раз." }, { status: 500 });
     }
 
-    return NextResponse.json({ result: data.result ?? "" });
+    const data = await res.json();
+    const result = data.choices?.[0]?.message?.content ?? "";
+    return NextResponse.json({ result });
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Worker error";
+    const message = err instanceof Error ? err.message : "Unknown error";
     console.error("[/api/agent]", message);
     return NextResponse.json({ error: "Не удалось получить ответ. Попробуй ещё раз." }, { status: 500 });
   }
