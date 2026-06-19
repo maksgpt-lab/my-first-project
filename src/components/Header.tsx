@@ -76,6 +76,13 @@ export default function Header() {
               {showMenu && (
                 <div className="absolute right-0 top-10 glass-dark border border-white/[0.08] rounded-2xl p-1 min-w-[160px] shadow-xl">
                   <p className="px-3 py-2 text-xs text-white/30 truncate">{user.email}</p>
+                  <Link
+                    href="/account"
+                    onClick={() => setShowMenu(false)}
+                    className="block w-full text-left px-3 py-2 text-sm text-white/60 hover:text-white hover:bg-white/[0.05] rounded-xl transition-colors"
+                  >
+                    Мой аккаунт
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-3 py-2 text-sm text-white/60 hover:text-white hover:bg-white/[0.05] rounded-xl transition-colors"
@@ -146,6 +153,13 @@ export default function Header() {
             {user ? (
               <>
                 <p className="py-3 text-xs text-white/30 border-b border-white/[0.05]">{user.email}</p>
+                <Link
+                  href="/account"
+                  onClick={() => setOpen(false)}
+                  className="block py-3.5 border-b border-white/[0.05] text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  Мой аккаунт
+                </Link>
                 <button
                   onClick={handleLogout}
                   className="py-3.5 text-left text-sm text-white/50 hover:text-white transition-colors"

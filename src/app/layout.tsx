@@ -10,7 +10,7 @@ const geist = Geist({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://my-first-project-five-beta.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aidabusiness.ru";
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
+  },
+  verification: {
+    yandex: ["11e42f43a128aa4f", "2bd25c4a7ef8cb44"],
   },
 };
 

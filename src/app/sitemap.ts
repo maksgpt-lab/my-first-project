@@ -3,7 +3,7 @@ import { getCourses } from "@/lib/courses";
 import { getGuides } from "@/lib/guides";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://my-first-project-five-beta.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aidabusiness.ru";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const courses = getCourses();

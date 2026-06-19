@@ -1,9 +1,42 @@
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
+import { createClient } from "@/lib/supabase/server";
 
-export default function ClubPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ClubPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  let hasPlan = false;
+  if (user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("plan, plan_type, plan_expires_at")
+      .eq("id", user.id)
+      .single();
+
+    if (profile?.plan) {
+      const isOnce = profile.plan_type === "once";
+      const notExpired =
+        isOnce ||
+        !profile.plan_expires_at ||
+        new Date(profile.plan_expires_at) > new Date();
+      hasPlan = notExpired;
+    }
+  }
+
+  if (!hasPlan) {
+    const jar = await cookies();
+    hasPlan = jar.get("club_token")?.value === process.env.CLUB_TOKEN;
+  }
+
+  if (!hasPlan) redirect("/pricing");
+
   const courses = getCourses();
   const coursesWithPaid = courses.filter((c) =>
     c.lessons.some((l) => !l.free)
@@ -67,7 +100,7 @@ export default function ClubPage() {
                     {paidLessons.map((lesson, i) => (
                       <Link
                         key={lesson.slug}
-                        href={`/club/${course.slug}/${lesson.slug}`}
+                        href={`/courses/${course.slug}/${lesson.slug}`}
                         className="flex items-center gap-5 px-8 py-5 hover:bg-white/[0.03] transition-colors group"
                       >
                         <span className="text-xs font-mono text-indigo-500/40 w-6 shrink-0">

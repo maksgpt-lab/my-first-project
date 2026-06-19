@@ -7,6 +7,14 @@
     {
       "path": "/api/cron/reminder",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/planner/morning",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/planner/evening",
+      "schedule": "0 17 * * *"
     }
   ]
 }

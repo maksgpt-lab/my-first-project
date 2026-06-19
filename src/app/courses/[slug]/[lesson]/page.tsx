@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -51,11 +51,12 @@ export default async function LessonPage({
   if (!lessonMeta) notFound();
 
   if (!lessonMeta.free) {
-    // Проверяем доступ: сессия Supabase с активным планом
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
     let hasPlan = false;
+    let accessStatus: "no_login" | "expired" | "no_plan" = "no_login";
+
     if (user) {
       const { data: profile } = await supabase
         .from("profiles")
@@ -65,20 +66,38 @@ export default async function LessonPage({
 
       if (profile?.plan) {
         const isOnce = profile.plan_type === "once";
-        const notExpired = isOnce || !profile.plan_expires_at
-          || new Date(profile.plan_expires_at) > new Date();
-        hasPlan = notExpired;
+        const expired =
+          !isOnce &&
+          !!profile.plan_expires_at &&
+          new Date(profile.plan_expires_at) <= new Date();
+        if (!expired) {
+          hasPlan = true;
+        } else {
+          accessStatus = "expired";
+        }
+      } else {
+        accessStatus = "no_plan";
       }
     }
 
-    // Fallback: старый club_token cookie
     if (!hasPlan) {
       const jar = await cookies();
-      const token = jar.get("club_token")?.value;
-      hasPlan = token === process.env.CLUB_TOKEN;
+      if (jar.get("club_token")?.value === process.env.CLUB_TOKEN) {
+        hasPlan = true;
+      }
     }
 
-    if (!hasPlan) redirect("/pricing");
+    if (!hasPlan) {
+      return (
+        <AccessDenied
+          status={accessStatus}
+          lessonTitle={lessonMeta.title}
+          courseSlug={slug}
+          courseTitle={course.title}
+          loginRedirect={`/courses/${slug}/${lessonSlug}`}
+        />
+      );
+    }
   }
 
   const lessonData = getLessonContent(slug, lessonSlug);
@@ -112,9 +131,15 @@ export default async function LessonPage({
 
           {/* Badges */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full">
-              Бесплатный урок
-            </span>
+            {lessonMeta.free ? (
+              <span className="text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full">
+                Бесплатный урок
+              </span>
+            ) : (
+              <span className="text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full">
+                Клуб
+              </span>
+            )}
             <span className="text-xs text-white/20">{readMinutes} мин чтения</span>
             {lessonData.data.updatedAt && (
               <span className="text-xs text-white/20">
@@ -222,4 +247,88 @@ async function markdownToHtml(markdown: string): Promise<string> {
   const { default: html } = await import("remark-html");
   const result = await remark().use(html).process(markdown);
   return result.toString();
+}
+
+function AccessDenied({
+  status,
+  lessonTitle,
+  courseSlug,
+  courseTitle,
+  loginRedirect,
+}: {
+  status: "no_login" | "expired" | "no_plan";
+  lessonTitle: string;
+  courseSlug: string;
+  courseTitle: string;
+  loginRedirect: string;
+}) {
+  const isExpired = status === "expired";
+  const isNoLogin = status === "no_login";
+
+  return (
+    <div className="bg-[#0C0A08] min-h-screen flex flex-col">
+      <Header />
+
+      <main className="flex-1 flex items-center justify-center px-6 py-20">
+        <div className="max-w-md w-full text-center">
+          <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-8">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="18" height="11" rx="2" stroke="#f59e0b" strokeWidth="1.8" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <h1 className="text-2xl font-bold text-white mb-3">
+            {isExpired ? "Подписка истекла" : "Доступ закрыт"}
+          </h1>
+          <p className="text-white/40 mb-2 text-sm leading-relaxed">
+            {isNoLogin
+              ? "Войдите в аккаунт, чтобы открыть этот урок."
+              : isExpired
+              ? "Ваша подписка закончилась. Продлите её, чтобы продолжить обучение."
+              : "Этот урок доступен только участникам Клуба или тарифа Про."}
+          </p>
+          <p className="text-white/25 text-xs mb-10">
+            Урок: {lessonTitle}
+          </p>
+
+          <div className="space-y-3">
+            {isNoLogin ? (
+              <>
+                <Link
+                  href={`/auth/login?next=${encodeURIComponent(loginRedirect)}`}
+                  className="block w-full btn-glow text-white py-3.5 rounded-xl font-semibold text-sm"
+                >
+                  Войти в аккаунт →
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="block w-full bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.07] text-white/60 hover:text-white py-3.5 rounded-xl font-medium text-sm transition-colors"
+                >
+                  Смотреть тарифы
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/pricing"
+                  className="block w-full btn-glow text-white py-3.5 rounded-xl font-semibold text-sm"
+                >
+                  {isExpired ? "Продлить подписку →" : "Открыть доступ →"}
+                </Link>
+                <Link
+                  href={`/courses/${courseSlug}`}
+                  className="block w-full bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.07] text-white/60 hover:text-white py-3.5 rounded-xl font-medium text-sm transition-colors"
+                >
+                  ← Вернуться к курсу «{courseTitle}»
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
 }

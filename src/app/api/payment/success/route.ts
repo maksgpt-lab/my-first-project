@@ -78,5 +78,5 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  return NextResponse.redirect(new URL("/courses", siteUrl));
+  return NextResponse.redirect(new URL("/payment/success", siteUrl));
 }
