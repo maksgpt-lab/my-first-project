@@ -33,30 +33,29 @@ export default async function CoursePage({
   const course = getCourse(slug);
   if (!course) notFound();
 
-  // Проверяем, есть ли у пользователя активный план
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
   let hasPlan = false;
-
-  if (user) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("plan, plan_type, plan_expires_at")
-      .eq("id", user.id)
-      .single();
-
-    if (profile?.plan) {
-      const isOnce = profile.plan_type === "once";
-      const notExpired = isOnce || !profile.plan_expires_at
-        || new Date(profile.plan_expires_at) > new Date();
-      hasPlan = notExpired;
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("plan, plan_type, plan_expires_at")
+        .eq("id", user.id)
+        .single();
+      if (profile?.plan) {
+        const isOnce = profile.plan_type === "once";
+        const notExpired = isOnce || !profile.plan_expires_at
+          || new Date(profile.plan_expires_at) > new Date();
+        hasPlan = notExpired;
+      }
     }
+  } catch {
+    // Supabase недоступен — проверяем club_token
   }
-
   if (!hasPlan) {
     const jar = await cookies();
-    const token = jar.get("club_token")?.value;
-    hasPlan = token === process.env.CLUB_TOKEN;
+    hasPlan = jar.get("club_token")?.value === process.env.CLUB_TOKEN;
   }
 
   const allCourses = getCourses();
@@ -149,7 +148,6 @@ export default async function CoursePage({
             </div>
           )}
 
-          {/* CTA — показываем только если нет доступа */}
           {!hasPlan && (
             <div className="mt-8 relative rounded-3xl overflow-hidden">
               <div className="absolute inset-0 gradient-bg opacity-90" />

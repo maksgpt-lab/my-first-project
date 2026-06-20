@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s — AI для бизнеса",
   },
   description:
-    "Практические курсы по AI-инструментам для бизнеса — без программирования, на русском языке. ChatGPT, промпт-инжиниринг, автоматизация.",
+    "Курсы по AI для предпринимателей и менеджеров — от человека, который строит AI-агентов для компаний. Без кода. На русском.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "AI для бизнеса",
     title: "AI для бизнеса",
-    description: "Практические курсы по AI-инструментам для предпринимателей — без программирования, на русском языке.",
+    description: "Курсы по AI для предпринимателей — от человека, который строит AI-агентов для компаний. Без кода. На русском.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "AI для бизнеса" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI для бизнеса",
-    description: "Практические курсы по AI-инструментам для предпринимателей.",
+    description: "Курсы по AI для предпринимателей — от человека, который строит AI-агентов для компаний.",
     images: ["/og-image.png"],
   },
   icons: {

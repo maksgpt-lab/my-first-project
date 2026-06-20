@@ -10,6 +10,8 @@ import PracticeWidget from "@/components/PracticeWidget";
 import { getCourse, getCourses, getLessonContent } from "@/lib/courses";
 import { createClient } from "@/lib/supabase/server";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,18 +28,6 @@ export async function generateMetadata({
   };
 }
 
-export const dynamic = "force-dynamic";
-
-export async function generateStaticParams() {
-  const params = [];
-  for (const course of getCourses()) {
-    for (const lesson of course.lessons) {
-      params.push({ slug: course.slug, lesson: lesson.slug });
-    }
-  }
-  return params;
-}
-
 export default async function LessonPage({
   params,
 }: {
@@ -51,33 +41,37 @@ export default async function LessonPage({
   if (!lessonMeta) notFound();
 
   if (!lessonMeta.free) {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
     let hasPlan = false;
     let accessStatus: "no_login" | "expired" | "no_plan" = "no_login";
 
-    if (user) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("plan, plan_type, plan_expires_at")
-        .eq("id", user.id)
-        .single();
+    try {
+      const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
 
-      if (profile?.plan) {
-        const isOnce = profile.plan_type === "once";
-        const expired =
-          !isOnce &&
-          !!profile.plan_expires_at &&
-          new Date(profile.plan_expires_at) <= new Date();
-        if (!expired) {
-          hasPlan = true;
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("plan, plan_type, plan_expires_at")
+          .eq("id", user.id)
+          .single();
+
+        if (profile?.plan) {
+          const isOnce = profile.plan_type === "once";
+          const expired =
+            !isOnce &&
+            !!profile.plan_expires_at &&
+            new Date(profile.plan_expires_at) <= new Date();
+          if (!expired) {
+            hasPlan = true;
+          } else {
+            accessStatus = "expired";
+          }
         } else {
-          accessStatus = "expired";
+          accessStatus = "no_plan";
         }
-      } else {
-        accessStatus = "no_plan";
       }
+    } catch {
+      // Supabase недоступен — проверяем только club_token
     }
 
     if (!hasPlan) {

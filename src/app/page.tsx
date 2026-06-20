@@ -44,7 +44,7 @@ export default function Home() {
                 </h1>
 
                 <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-sm animate-fade-up-d2">
-                  Практика прямо в уроке. Применяешь пока читаешь — не потом. На русском, без кода.
+                  Автор строит AI-агентов для компаний — это основная работа, не хобби. Практика прямо в уроке, без кода.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-12 animate-fade-up-d3">
@@ -277,7 +277,7 @@ export default function Home() {
               <AnimateIn delay={0.15}>
                 <div className="lg:pt-2">
                   <h2 className="text-2xl font-bold text-white mb-1">Максим Батов</h2>
-                  <p className="text-white/25 text-sm mb-8">Санкт-Петербург · Предприниматель</p>
+                  <p className="text-white/25 text-sm mb-8">Санкт-Петербург · Строит AI-агентов для бизнеса</p>
 
                   <blockquote className="border-l-2 border-amber-600/50 pl-5 mb-8">
                     <p className="text-white/70 text-lg leading-relaxed italic">
@@ -287,9 +287,10 @@ export default function Home() {
                   </blockquote>
 
                   <p className="text-white/45 text-[15px] leading-relaxed max-w-lg">
-                    Я строю AI-системы для бизнеса и делаю курсы, которые помогают людям самим работать с AI.
-                    Агент в примере выше — реальный инструмент, который я использую каждый день.
-                    На русском таких материалов почти нет. Я это исправляю.
+                    Я строю AI-агентов для компаний — это основная работа, за которую платят деньги. Не блог, не хобби.
+                    Знаю что работает на практике, потому что за это несу ответственность перед клиентами.
+                    Агент в примере выше — реальный инструмент из моей ежедневной работы.
+                    Таких материалов на русском почти нет. Я это исправляю.
                   </p>
                 </div>
               </AnimateIn>

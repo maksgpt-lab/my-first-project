@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import { getCourses } from "@/lib/courses";
 
 export const metadata: Metadata = {
-  title: "О проекте — AI для бизнеса",
-  description: "Кто мы и зачем создали этот проект. Практические курсы по AI-инструментам для предпринимателей на русском языке.",
+  title: "Об авторе — AI для бизнеса",
+  description: "Максим Батов строит AI-агентов для компаний — это основная работа. Курсы о том, за что платят на практике.",
 };
 
 export default function AboutPage() {
@@ -23,35 +23,37 @@ export default function AboutPage() {
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-6 py-20">
 
-          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">О проекте</p>
+          <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-5">Об авторе</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
             AI для тех, кто<br />
             <span className="gradient-text">зарабатывает деньги</span>
           </h1>
           <p className="text-white/40 text-lg leading-relaxed mb-16 max-w-xl">
-            Не для программистов. Не для энтузиастов технологий. Для предпринимателей, менеджеров и маркетологов которые хотят работать быстрее и зарабатывать больше.
+            Не для программистов. Не для энтузиастов. Для предпринимателей и менеджеров, которые хотят работать быстрее — от человека, которому за это платят.
           </p>
 
           {/* Author */}
           <div className="glass-dark rounded-3xl p-8 mb-6">
             <div className="flex items-start gap-5 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl shrink-0">
-                М
-              </div>
+              <img
+                src="/author.jpg"
+                alt="Максим Батов"
+                className="w-14 h-14 rounded-2xl object-cover object-top shrink-0"
+              />
               <div>
                 <p className="text-white font-bold text-lg">Батов Максим</p>
-                <p className="text-white/40 text-sm mt-0.5">Создаёт AI-агентов для бизнеса · Использует AI каждый день как основной рабочий инструмент</p>
+                <p className="text-white/40 text-sm mt-0.5">Строит AI-агентов для компаний · Санкт-Петербург</p>
               </div>
             </div>
             <div className="space-y-4 text-white/50 leading-relaxed">
               <p>
-                Я строю AI-агентов для компаний — это моя основная работа. Каждый день работаю с ChatGPT, Claude, автоматизациями и вижу как бизнес меняется когда начинает использовать AI правильно.
+                Строю AI-агентов для компаний — это основная работа, за которую платят деньги. Не блог, не курсы ради курсов. Компании нанимают меня когда хотят автоматизировать продажи, операционку, поддержку или онбординг.
               </p>
               <p>
-                Проблема в том, что большинство обучения по AI — либо слишком техническое, либо слишком общее. Предпринимателям нужны конкретные ответы: <span className="text-white/70">«Что именно написать? Как автоматизировать этот процесс? С чего начать?»</span>
+                Каждый день работаю с ChatGPT, Claude, n8n и вижу в чём разница между тем что выглядит красиво на слайде — и тем что реально работает в бизнесе.
               </p>
               <p>
-                Этот проект — то что я сам хотел бы иметь когда начинал. Только практика. Только то что работает в реальных задачах.
+                Большинство обучения по AI написано людьми, которые читали о нём. Этот проект — о том, за что я лично несу ответственность перед клиентами. <span className="text-white/70">Только практика. Только то что работает.</span>
               </p>
             </div>
           </div>
