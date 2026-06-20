@@ -44,13 +44,30 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL("/pricing?error=not_paid", siteUrl));
   }
 
+  // Берём план из метаданных платежа (YuKassa), а не из cookie
+  // Это предотвращает подмену плана через редактирование cookie
+  const VALID_PLANS = ["pro", "club"] as const;
+  const VALID_TYPES = ["once", "monthly"] as const;
+  type Plan = typeof VALID_PLANS[number];
+  type PType = typeof VALID_TYPES[number];
+
+  const metaPlan = payment.metadata?.plan as string;
+  const metaType = payment.metadata?.type as string;
+
+  if (!VALID_PLANS.includes(metaPlan as Plan) || !VALID_TYPES.includes(metaType as PType)) {
+    return NextResponse.redirect(new URL("/pricing?error=invalid_plan", siteUrl));
+  }
+
+  const plan = metaPlan as Plan;
+  const planType = metaType as PType;
+
   jar.delete("pending_payment");
 
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (user) {
-    const planExpiresAt = pending.type === "once"
+    const planExpiresAt = planType === "once"
       ? null
       : new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).toISOString();
 
@@ -58,14 +75,14 @@ export async function GET(request: NextRequest) {
     await admin
       .from("profiles")
       .update({
-        plan: pending.plan,
-        plan_type: pending.type,
+        plan,
+        plan_type: planType,
         plan_expires_at: planExpiresAt,
       })
       .eq("id", user.id);
   } else {
     // Fallback: cookie для тех, кто не зарегистрирован
-    const maxAge = pending.type === "once"
+    const maxAge = planType === "once"
       ? 60 * 60 * 24 * 365 * 10
       : 60 * 60 * 24 * 31;
 

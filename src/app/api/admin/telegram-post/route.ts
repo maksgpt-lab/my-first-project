@@ -140,7 +140,12 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const filePath = path.join(POSTS_DIR, file.endsWith(".md") ? file : `${file}.md`);
+  const safeName = path.basename(file.endsWith(".md") ? file : `${file}.md`);
+  const filePath = path.join(POSTS_DIR, safeName);
+
+  if (!filePath.startsWith(POSTS_DIR + path.sep)) {
+    return NextResponse.json({ error: "Invalid file" }, { status: 400 });
+  }
 
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: "File not found" }, { status: 404 });

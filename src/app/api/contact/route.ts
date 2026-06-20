@@ -25,11 +25,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not configured" }, { status: 500 });
   }
 
+  const esc = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
   const text =
-    `📋 Новая заявка на внедрение AI\n\n` +
-    `👤 Имя: ${name.trim()}\n` +
-    `📧 Email: ${email.trim()}\n` +
-    `💬 Задача:\n${comment.trim()}`;
+    `📋 <b>Новая заявка на внедрение AI</b>\n\n` +
+    `👤 Имя: ${esc(name.trim())}\n` +
+    `📧 Email: ${esc(email.trim())}\n` +
+    `💬 Задача:\n${esc(comment.trim())}`;
 
   const tgRes = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
